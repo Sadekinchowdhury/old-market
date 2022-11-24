@@ -11,7 +11,7 @@ const Displaypic = () => {
                         You can buy less money but good products.
 
                     </p>
-                    <button className="btn btn-primary">Get Started</button>
+                    <button className="btn btn-primary">See more</button>
                 </div>
             </div>
         </div>

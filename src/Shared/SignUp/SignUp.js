@@ -48,7 +48,7 @@ const SignUp = () => {
                     .then(() => { })
 
                 //  save user
-                saveUser(data.email, data.name)
+                saveUser(data.email, data.name, data.role)
 
                     .catch(error => console.log(error))
                 console.log(user)
@@ -62,9 +62,9 @@ const SignUp = () => {
 
         //  saveUser
 
-        const saveUser = (email, name) => {
-            const user = { name, email }
-            fetch('', {
+        const saveUser = (email, name, role) => {
+            const user = { name, email, role }
+            fetch('http://localhost:5000/users', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
