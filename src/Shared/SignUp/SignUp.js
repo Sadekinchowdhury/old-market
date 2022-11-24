@@ -4,6 +4,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form'
 // import { toast } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/AuthProvider';
 import GoogleLogin from '../Google/GoogleLogin';
 
@@ -16,7 +17,7 @@ const SignUp = () => {
 
     const [signuperror, setsignUperror] = useState('')
 
-    const { creatUsers } = useContext(AuthContext)
+    const { creatUsers, updatePro } = useContext(AuthContext)
 
 
     const [createmail, setCreatemail] = useState('')
@@ -36,23 +37,23 @@ const SignUp = () => {
         creatUsers(data.email, data.password)
             .then(result => {
                 const user = result.user
-                console.log(user)
-                // toast('user created succesfully')
-                //         const userinfo = {
-                //             displayName: data.name
-                //         }
+                console.log(user, data.role)
+                toast('user created succesfully')
+                const userinfo = {
+                    displayName: data.name
+                }
 
                 // update user
-                // updatePro(userinfo)
-                //     .then(() => { })
+                updatePro(userinfo)
+                    .then(() => { })
 
-                // //  save user
-                // saveUser(data.email, data.name)
+                //  save user
+                saveUser(data.email, data.name)
 
-                //     .catch(error => console.log(error))
-                // console.log(user)
-                // })
-                // .catch(errors => {
+                    .catch(error => console.log(error))
+                console.log(user)
+            })
+            .catch(errors => {
 
                 setsignUperror(errors.message)
             })
@@ -61,29 +62,27 @@ const SignUp = () => {
 
         //  saveUser
 
-        // const saveUser = (email, name) => {
-        //     const user = { name, email }
-        //     fetch('http://localhost:5000/users', {
-        //         method: 'POST',
-        //         headers: {
-        //             'content-type': 'application/json'
-        //         },
-        //         body: JSON.stringify(user)
-        //     })
-        //         .then(res => res.json())
-        //         .then(data => {
-        //             console.log(data)
-        //             setCreatemail(email)
-        //         })
-        // }
+        const saveUser = (email, name) => {
+            const user = { name, email }
+            fetch('', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(user)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+
+                })
+        }
     }
 
 
     // get token
 
-    const handGoogle = () => {
-        <GoogleLogin></GoogleLogin>
-    }
+
 
     return (
         <div className=' flex justify-center items-center'>
@@ -112,6 +111,22 @@ const SignUp = () => {
                             className="input input-bordered w-full max-w-xs" />
                         {errors.email && <p className='text-red-600'>{errors.email?.message}</p>}
                     </div>
+
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label">
+                            <span className="label-text">Condition</span></label>
+                        <select
+                            {...register('role')}
+                            className="select select-bordered w-full max-w-xs">
+                            <option>buyer</option>
+                            <option>seller</option>
+                        </select>
+
+                    </div>
+
+
+
+
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
                             <span className="label-text">password</span></label>

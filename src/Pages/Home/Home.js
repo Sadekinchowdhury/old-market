@@ -1,9 +1,10 @@
 import React from 'react';
+import Displaypic from './Displaypic';
 
 const Home = () => {
     return (
         <div>
-            <h1>this is home</h1>
+            <Displaypic></Displaypic>
         </div>
     );
 };
