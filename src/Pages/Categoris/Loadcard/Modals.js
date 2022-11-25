@@ -1,13 +1,15 @@
 
 
 import { React, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import { AuthContext } from '../../../Context/AuthProvider';
 
 
 const Modal = ({ booking, setBooking }) => {
+    const navigate = useNavigate()
 
-    console.log(booking)
     const { name, price, } = booking
 
     const { user } = useContext(AuthContext)
@@ -32,27 +34,26 @@ const Modal = ({ booking, setBooking }) => {
         }
         console.log(booking)
 
-        fetch('', {
+        fetch('http://localhost:5000/booking', {
             method: 'POST',
-            // headers: {
-            //     'content-type': 'application/json'
-            // },
+            headers: {
+                'content-type': 'application/json'
+            },
             body: JSON.stringify(booking)
 
         })
             .then(res => res.json())
             .then(data => {
-                // if (data.acknowledged) {
-                //     setBooking(null)
-                //     toast.success('successfully added')
-                //     refetch()
-                // }
-                // else {
-                //     toast.error(data.message)
-                // }
+                if (data.acknowledged) {
+                    setBooking(null)
+
+                    toast.success('congratulations you are successfully booking ')
+                    navigate('/dashboard/myorders')
+                }
+
                 console.log(data)
             })
-        console.log(booking)
+
     }
 
     return (

@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Authprovide from './Context/AuthProvider';
+import 'react-toastify/dist/ReactToastify.css';
 import {
 
   QueryClient,

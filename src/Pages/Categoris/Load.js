@@ -5,9 +5,9 @@ const Load = ({ allcat, setBooking }) => {
     const { name, price, location, description, originalprice, sellername, postedtime, brand, picture, usedtime } = allcat
 
     return (
-        <div className="card border bg-base-100 shadow-xl">
-            <figure className="px-10 pt-10">
-                <img src={picture} alt="Shoes" className="rounded-xl" />
+        <div className="card border h-2/3 bg-base-100 shadow-xl">
+            <figure className="px-4 ">
+                <img src={picture} alt="Shoes" className="rounded-xl w-full h-1/2" />
             </figure>
 
             <div className="card-body">
@@ -20,7 +20,7 @@ const Load = ({ allcat, setBooking }) => {
 
                 <div className="justify-center">
 
-                    <label onClick={() => setBooking(allcat)} htmlFor="booking-modal" className="btn">Appointment</label>
+                    <label onClick={() => setBooking(allcat)} htmlFor="booking-modal" className="btn btn-accent">Book now</label>
 
                 </div>
             </div>
