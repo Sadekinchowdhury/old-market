@@ -42,6 +42,9 @@ const AllSellers = () => {
     const hadlVerify = id => {
         fetch(`http://localhost:5000/users/${id}`, {
             method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            }
             // headers: {
             //     authorization: `bearer ${localStorage.getItem('accessToken')}`
             // }
@@ -49,10 +52,11 @@ const AllSellers = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    toast.success('Admin make successfully')
+                    toast.success('verify make successfully')
+                    refetch()
                 }
                 console.log(data)
-                refetch()
+
             })
     }
 
@@ -80,7 +84,8 @@ const AllSellers = () => {
 
                                 <td>{data.name}</td>
                                 <td>{data.email}</td>
-                                <td>{data?.role !== 'verify' ? <>
+                                {console.log(data)}
+                                <td>{data?.verify !== true ? <>
 
 
                                     <button onClick={() => hadlVerify(data._id)} className='btn btn-xs btn-primary'>verify</button></>

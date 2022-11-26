@@ -12,6 +12,8 @@ const Modal = ({ booking, setBooking }) => {
 
     const { name, price, } = booking
 
+    console.log(booking)
+
     const { user } = useContext(AuthContext)
 
 
@@ -49,6 +51,11 @@ const Modal = ({ booking, setBooking }) => {
 
                     toast.success('congratulations you are successfully booking ')
                     navigate('/dashboard/myorders')
+
+
+
+
+
                 }
                 else {
                     toast.error(data.message)
@@ -58,6 +65,8 @@ const Modal = ({ booking, setBooking }) => {
             })
 
     }
+
+
 
     return (
 

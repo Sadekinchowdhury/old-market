@@ -2,6 +2,7 @@ import React from 'react';
 
 const Load = ({ allcat, setBooking }) => {
 
+
     const { name, price, location, description, originalprice, sellername, postedtime, brand, picture, usedtime } = allcat
 
 
@@ -10,7 +11,7 @@ const Load = ({ allcat, setBooking }) => {
     return (
         <div className="card border bg-base-100 shadow-xl">
             <figure className="px-4 ">
-                <img src={picture} alt="Shoes" className="rounded-xl w-full h-1/2" />
+                <img src={picture} alt="Shoes" className="rounded-xl w-full h-50" />
             </figure>
 
             <div className="card-body">
@@ -22,8 +23,16 @@ const Load = ({ allcat, setBooking }) => {
                 <p className='font-mono'>seller name: {sellername}</p>
 
                 <div className="justify-center">
+                    {
+                        allcat?.paid !== true ? <>
 
-                    <label onClick={() => setBooking(allcat)} htmlFor="booking-modal" className="btn btn-accent">Book now</label>
+                            <label onClick={() => setBooking(allcat)} htmlFor="booking-modal" className="btn btn-accent">Book now</label>
+                        </> :
+                            <>
+                                <button disabled className=''>purchess</button>
+                            </>
+                    }
+
 
                 </div>
             </div>

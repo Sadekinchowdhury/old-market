@@ -9,7 +9,7 @@ import { AuthContext } from '../../Context/AuthProvider';
 
 const AddProducts = () => {
     const { user } = useContext(AuthContext)
-    console.log(user?.email)
+
     const navigate = useNavigate()
     const { register, formState: { errors }, handleSubmit } = useForm()
 
@@ -35,7 +35,7 @@ const AddProducts = () => {
 
 
         const image = data.img[0]
-        console.log(image)
+
         const formData = new FormData()
         formData.append('image', image)
         const url = `https://api.imgbb.com/1/upload?key=${imageHostkeyk}`
@@ -51,6 +51,7 @@ const AddProducts = () => {
                 // if (imgData.success) {
                 //     // console.log(imgData.data.url)
                 // }
+                refetch()
             })
         const products = {
             name: data.name,
@@ -82,6 +83,7 @@ const AddProducts = () => {
                 console.log(result)
 
                 toast.success('Wow Product added successfully')
+                refetch()
                 navigate('/dashboard/myproducts')
 
             })

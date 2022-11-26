@@ -5,10 +5,13 @@ import Footer from '../Shared/Footer/Footer';
 
 import Navbar from '../Shared/Navbar/Navbar';
 import UseAdmin from '../UseAdmin/UseAdmin';
+import UseSeller from '../UseSeller/UseSeller';
 
 const DashBoard = () => {
     const { user } = useContext(AuthContext)
     const [isAdmin] = UseAdmin(user?.email)
+
+    const [isSeller] = UseSeller(user?.email)
     return (
         <div>
             <Navbar></Navbar>
@@ -26,14 +29,6 @@ const DashBoard = () => {
                     <ul className="menu p-4 bg-base-100 text-base-content">
                         {/* <!-- Sidebar content here --> */}
                         <li><Link to='/dashboard/myorders'>My Orders</Link></li>
-
-
-
-                        <li><Link to='/dashboard/myproducts'>My products</Link></li>
-                        <li>
-                            <Link to='/dashboard/add'>Add product</Link>
-                        </li>
-
                         {
                             isAdmin && <>
                                 <li><Link to='/dashboard'>All user</Link></li>
@@ -41,6 +36,16 @@ const DashBoard = () => {
 
                                 <li><Link to='/dashboard/buyer'>All buyers</Link></li>
 
+                            </>
+
+                        }
+                        {
+                            isSeller || isAdmin ||
+                            <>
+                                <li><Link to='/dashboard/myproducts'>My products</Link></li>
+                                <li>
+                                    <Link to='/dashboard/add'>Add product</Link>
+                                </li>
                             </>
 
                         }

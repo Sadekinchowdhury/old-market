@@ -20,7 +20,7 @@ const MyOrders = () => {
 
             const data = await res.json()
 
-            console.log(data)
+
             return data;
 
         }
@@ -29,7 +29,7 @@ const MyOrders = () => {
 
 
     return (
-        <div className='bg-black'>
+        <div className=''>
             <h1 className='mb-7 text-3xl text-orange-600 font-bold'>My Orders</h1>
             <div className="overflow-x-auto ">
                 <table className="table  w-full">

@@ -13,6 +13,7 @@ import MyProducts from '../DashboardUnder/MyProducts/MyProducts';
 import DashBoard from '../Laout/Dahboard';
 
 import Main from '../Laout/Main';
+import BadRoutes from '../Pages/BadRoute/BadRoutes';
 import Blog from '../Pages/Blog/Blog';
 import AllCategoris from '../Pages/Categoris/Categoris';
 
@@ -25,6 +26,7 @@ import Login from '../Shared/Login/Login';
 import SignUp from '../Shared/SignUp/SignUp';
 import AdminRoutes from './AdminRoutes';
 import PrivetRoute from './PrivetRoutes';
+import SellerRoutes from './SelleRoute/SellerRoutes';
 
 const routes = createBrowserRouter([
 
@@ -68,11 +70,11 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/dashboard/add',
-                element: <AddProducts></AddProducts>
+                element: <SellerRoutes><AddProducts></AddProducts></SellerRoutes>
             },
             {
                 path: '/dashboard/myproducts',
-                element: <MyProducts></MyProducts>
+                element: <SellerRoutes> <MyProducts></MyProducts></SellerRoutes>
             },
             {
                 path: '/dashboard',
@@ -92,6 +94,10 @@ const routes = createBrowserRouter([
                 element: <AllBuyers></AllBuyers>
             }
         ]
+    },
+    {
+        path: '/*',
+        element: <BadRoutes></BadRoutes>
     }
 
 ])

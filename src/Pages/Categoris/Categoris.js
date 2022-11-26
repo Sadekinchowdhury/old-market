@@ -10,6 +10,7 @@ const AllCategoris = () => {
 
     const [booking, setBooking] = useState(null)
 
+
     return (
         <section>
 
@@ -31,6 +32,7 @@ const AllCategoris = () => {
                 booking && <Modal
                     booking={booking}
                     setBooking={setBooking}
+
                 >
 
                 </Modal>
