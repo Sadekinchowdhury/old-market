@@ -5,7 +5,7 @@ const Load = ({ allcat, setBooking }) => {
     const { name, price, location, description, originalprice, sellername, postedtime, brand, picture, usedtime } = allcat
 
     return (
-        <div className="card border h-2/3 bg-base-100 shadow-xl">
+        <div className="card border bg-base-100 shadow-xl">
             <figure className="px-4 ">
                 <img src={picture} alt="Shoes" className="rounded-xl w-full h-1/2" />
             </figure>

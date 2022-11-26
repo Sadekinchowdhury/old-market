@@ -50,6 +50,9 @@ const Modal = ({ booking, setBooking }) => {
                     toast.success('congratulations you are successfully booking ')
                     navigate('/dashboard/myorders')
                 }
+                else {
+                    toast.error(data.message)
+                }
 
                 console.log(data)
             })

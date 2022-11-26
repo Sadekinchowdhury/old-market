@@ -3,12 +3,14 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const AddProducts = () => {
     const { user } = useContext(AuthContext)
     console.log(user?.email)
+    const navigate = useNavigate()
     const { register, formState: { errors }, handleSubmit } = useForm()
 
     const imageHostkeyk = process.env.REACT_APP_IMG_KEY
@@ -74,6 +76,7 @@ const AddProducts = () => {
                 console.log(result)
 
                 toast.success('Wow Product added successfully')
+                navigate('/dashboard/myproducts')
 
             })
 
