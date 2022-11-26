@@ -17,6 +17,27 @@ const AllBuyers = () => {
 
 
     })
+    const handlDeleteBuyers = id => {
+
+        console.log('delete')
+
+        fetch(`http://localhost:5000/users/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    toast(`You are successfully deleted buyers`)
+                    refetch()
+                }
+                console.log(data)
+            })
+
+
+    }
 
 
 
@@ -46,7 +67,7 @@ const AllBuyers = () => {
 
 
                                 <td>
-                                    <button className='btn btn-sm'>Delete</button>
+                                    <button onClick={() => handlDeleteBuyers(data._id)} className='btn btn-sm'>Delete</button>
                                 </td>
 
                             </tr>)
