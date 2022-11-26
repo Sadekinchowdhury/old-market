@@ -13,6 +13,11 @@ const AddProducts = () => {
     const navigate = useNavigate()
     const { register, formState: { errors }, handleSubmit } = useForm()
 
+
+
+    const date = new Date().toLocaleDateString('en-us', { year: "numeric", month: "short", day: "numeric" });
+
+
     const imageHostkeyk = process.env.REACT_APP_IMG_KEY
 
     const { data: categorisBrand = [], refetch } = useQuery({
@@ -53,9 +58,10 @@ const AddProducts = () => {
             location: data.location,
             category_id: data.brand,
             email: user?.email,
+            salestatus: 'unsold',
             phone: data.phone,
             usedtime: data.usedtime,
-            postedtime: data.postedtime,
+            postedtime: date,
             sellername: user?.displayName,
             originalprice: data.originalprice,
             description: data.description,
@@ -81,88 +87,12 @@ const AddProducts = () => {
             })
 
 
-
-
     }
-    // const handleSubmit = event => {
-    //     event.preventDefault()
 
-    //     const form = event.target
-    //     const name = form.name.value;
-    //     const price = form.price.value;
-    //     const location = form.location.value;
-    //     const brand = form.brand.value;
-    //     // const picture = form.picture.value;
-    //     const usedtime = form.usedtime.value;
-    //     const postedtime = form.postedtime.value;
-    //     const sellername = form.sellername.value;
-    //     const originalprice = form.originalprice.value;
-    //     const description = form.description.value;
 
-    //     const productData = {
-
-    //         name,
-    //         price,
-    //         location,
-    //         brand,
-
-    //         usedtime,
-    //         postedtime,
-    //         sellername,
-    //         originalprice,
-    //         description
-    //     }
-    //     console.log(productData)
-
-    // }
 
     return (
-        // <div className='w-1/2 mx-auto mb-14'>
 
-        //     <h1 className='text-4xl text-orange-500 text-center py-6'>Add your product</h1>
-
-        //     <form className='' onSubmit={handleSubmit}>
-
-        //         <select
-        //             type='text' name='brand'
-        //             className="select select-bordered w-full">
-        //             <option selected disabled>Select Category</option>
-        //             {
-        //                 categorisBrand.map(categorybrand =>
-        //                     <option value={categorybrand._id}>{categorybrand.brand}</option>
-        //                 )
-        //             }
-
-        //         </select>
-
-        //         <input type="text" name='sellername' defaultValue={user?.displayName} readOnly placeholder="name" className="input w-full mt-4  input-bordered " />
-
-        //         <input type="text" name='name' placeholder="name" className="input w-full mt-4   input-bordered " />
-
-        //         <input type="email" name='email' defaultValue={user?.email} readOnly disabled placeholder="email" className="input w-full mt-4   input-bordered " />
-
-        //         <input type="number" name='price' placeholder="price" className="input w-full mt-4  input-bordered " />
-
-        //         <input type="number" name='originalprice' placeholder="OriginalPrice" className="input w-full mt-4  input-bordered " />
-
-
-
-        //         <input type="text" name='usedtime' placeholder="usedtime" className="input w-full mt-4   input-bordered " />
-
-        //         <input type="text" name='postedtime' placeholder="postedtime" className="input w-full mt-4   input-bordered " />
-
-        //         <input type="text" name='phone' placeholder="your phone number" className="input w-full mt-4   input-bordered " />
-
-        //         <input type="text" name='location' placeholder="your location " className="input w-full mt-4   input-bordered " />
-
-        //         <input type="text" name='description' placeholder="description" className="input w-full mt-4   input-bordered " />
-
-        //         <input type="file" name='img' placeholder='picture'
-        //             className="input input-bordered w-full h-32 mt-4  " />
-
-        //         <input className='w-full btn btn-primary rounded mt-4' type="submit" value="submit" />
-        //     </form>
-        // </div>
         <div className=' flex justify-center items-center'>
             <div className='w-96 p-7'>
                 <h1 className='text-4xl text-green-700 font-bold text-center'>add products</h1>
@@ -194,9 +124,7 @@ const AddProducts = () => {
                         <input type="text" {...register("location")} placeholder='add location' className="input input-bordered w-full max-w-xs" />
                     </div>
 
-                    <div className="form-control w-full max-w-xs">
-                        <input type="text" {...register("postedtime")} placeholder='Posted time' className="input input-bordered w-full max-w-xs" />
-                    </div>
+
 
                     <div className="form-control w-full max-w-xs">
                         <input type="text" {...register("usedtime")} placeholder='usedtime' className="input input-bordered w-full max-w-xs" />

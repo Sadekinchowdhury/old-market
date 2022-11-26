@@ -39,7 +39,22 @@ const AllSellers = () => {
 
 
     }
-
+    const hadlVerify = id => {
+        fetch(`http://localhost:5000/users/${id}`, {
+            method: 'PUT',
+            // headers: {
+            //     authorization: `bearer ${localStorage.getItem('accessToken')}`
+            // }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    toast.success('Admin make successfully')
+                }
+                console.log(data)
+                refetch()
+            })
+    }
 
     return (
         <div>
@@ -52,6 +67,7 @@ const AllSellers = () => {
                             <th></th>
                             <th>Name</th>
                             <th>email</th>
+                            <th>verify seller</th>
                             <th>Delete user</th>
 
                         </tr>
@@ -64,6 +80,19 @@ const AllSellers = () => {
 
                                 <td>{data.name}</td>
                                 <td>{data.email}</td>
+                                <td>{data?.role !== 'verify' ? <>
+
+
+                                    <button onClick={() => hadlVerify(data._id)} className='btn btn-xs btn-primary'>verify</button></>
+
+                                    :
+                                    <>
+                                        <button className='btn btn-sm'>verifed</button>
+
+                                    </>
+
+                                }
+                                </td>
 
                                 <td>
                                     <button onClick={() => handlDelete(data._id)} className='btn btn-sm'>Delete</button>
