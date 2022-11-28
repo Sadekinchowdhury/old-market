@@ -12,7 +12,7 @@ const Home = () => {
             <Displaypic></Displaypic>
             <Category></Category>
             <Addvirtize></Addvirtize>
-            {/* <Sliders></Sliders> */}
+            <Sliders></Sliders>
         </div>
     );
 };

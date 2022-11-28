@@ -23,7 +23,7 @@ const AddProducts = () => {
     const { data: categorisBrand = [], refetch } = useQuery({
         queryKey: ['categorisBrand'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/categorisBrand', {
+            const res = await fetch('https://old-server.vercel.app/categorisBrand', {
                 headers: {
                     'content-type': 'application/json',
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -75,7 +75,7 @@ const AddProducts = () => {
 
 
                 }
-                fetch('http://localhost:5000/products', {
+                fetch('https://old-server.vercel.app/products', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',

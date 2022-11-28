@@ -21,7 +21,7 @@ const CheckoutForm = ({ book }) => {
     const elements = useElements()
 
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://old-server.vercel.app/create-payment-intent', {
             method: "POST",
             headers: {
                 'content-type': 'application/json',
@@ -99,7 +99,7 @@ const CheckoutForm = ({ book }) => {
             }
 
 
-            fetch('http://localhost:5000/payment', {
+            fetch('https://old-server.vercel.app/payment', {
                 method: "POST",
                 headers: {
                     'content-type': 'application/json',
@@ -128,7 +128,7 @@ const CheckoutForm = ({ book }) => {
     }
 
     const handleSoldStatus = id => {
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`https://old-server.vercel.app/products/${id}`, {
             method: 'PUT'
         })
             .then(res => res.json())

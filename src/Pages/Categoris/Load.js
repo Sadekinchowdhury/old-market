@@ -19,7 +19,7 @@ const Load = ({ allcat, setBooking }) => {
         queryKey: ['user', email],
         queryFn: async () => {
 
-            const res = await fetch(`http://localhost:5000/user?email=${allcat.email}`, {
+            const res = await fetch(`https://old-server.vercel.app/user?email=${allcat.email}`, {
                 headers: {
                     'content-type': 'application/json',
                     authorization: `bearer ${localStorage.getItem('accessToken')}`

@@ -5,18 +5,12 @@ import CategoryCard from './CategoryCard';
 const Category = () => {
 
 
-    const { data: catagoris = [], refetch } = useQuery({
+    const { data: categoryProduct = [], refetch } = useQuery({
 
         queryKey: ['categoris'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/categoris', {
-                headers: {
-                    'content-type': 'application/json',
-                    authorization: `bearer ${localStorage.getItem('accessToken')}`
-                }
-            })
-            const data = await res.json();
-            console.log(data)
+            const res = await fetch('https://old-server.vercel.app/categoris')
+            const data = await res.json()
             refetch()
             return data;
         }
@@ -32,8 +26,10 @@ const Category = () => {
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 mt-10 px-28 mb-9'>
 
                 {
+                    categoryProduct.length &&
 
-                    catagoris?.map(category =>
+                    categoryProduct?.map(category =>
+
 
                         <CategoryCard
                             key={category._id}

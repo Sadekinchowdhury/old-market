@@ -9,11 +9,6 @@ const BadRoutes = () => {
                 got to <Link to='/' className='btn btn-accent'>Homepage</Link>
             </p>
 
-
-
-
-
-
         </div>
     );
 };

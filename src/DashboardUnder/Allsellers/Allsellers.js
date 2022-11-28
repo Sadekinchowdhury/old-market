@@ -11,7 +11,7 @@ const AllSellers = () => {
     const { data: datatype = [], refetch } = useQuery({
         queryKey: ['datatype'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users/seller', {
+            const res = await fetch('https://old-server.vercel.app/users/seller', {
                 headers: {
                     'content-type': 'application/json',
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -30,7 +30,7 @@ const AllSellers = () => {
 
         console.log('delete')
 
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://old-server.vercel.app/users/${id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
@@ -49,7 +49,7 @@ const AllSellers = () => {
 
     }
     const hadlVerify = id => {
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://old-server.vercel.app/users/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

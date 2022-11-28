@@ -38,7 +38,7 @@ const Modal = ({ booking, setBooking }) => {
         }
         console.log(booking)
 
-        fetch('http://localhost:5000/booking', {
+        fetch('https://old-server.vercel.app/booking', {
             method: 'POST',
 
             headers: {
