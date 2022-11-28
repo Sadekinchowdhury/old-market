@@ -15,7 +15,7 @@ const AddvirtisCard = ({ product, setBooking }) => {
 
             const res = await fetch(`http://localhost:5000/user?email=${product?.email}`);
             const data = await res.json()
-
+            refetch()
             return data;
         }
     })

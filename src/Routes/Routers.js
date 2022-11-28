@@ -27,6 +27,7 @@ import Home from '../Pages/Home/Home';
 import Login from '../Shared/Login/Login';
 import SignUp from '../Shared/SignUp/SignUp';
 import AdminRoutes from './AdminRoutes';
+import BuyerRoute from './BuyerRoute/BuyerRoute';
 import PrivetRoute from './PrivetRoutes';
 import SellerRoutes from './SelleRoute/SellerRoutes';
 
@@ -75,7 +76,7 @@ const routes = createBrowserRouter([
         children: [
             {
                 path: '/dashboard/myorders',
-                element: <MyOrders></MyOrders>
+                element: <BuyerRoute><MyOrders></MyOrders></BuyerRoute>
             },
             {
                 path: '/dashboard/add',

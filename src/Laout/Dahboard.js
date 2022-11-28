@@ -5,12 +5,13 @@ import Footer from '../Shared/Footer/Footer';
 
 import Navbar from '../Shared/Navbar/Navbar';
 import UseAdmin from '../UseAdmin/UseAdmin';
+import UseBuyer from '../UseBuyer/UseBuyer';
 import UseSeller from '../UseSeller/UseSeller';
 
 const DashBoard = () => {
     const { user } = useContext(AuthContext)
     const [isAdmin] = UseAdmin(user?.email)
-
+    const [isBuyer] = UseBuyer(user?.email)
     const [isSeller] = UseSeller(user?.email)
     return (
         <div>
@@ -28,7 +29,13 @@ const DashBoard = () => {
                     <label htmlFor="das-drawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 bg-base-100 text-base-content">
                         {/* <!-- Sidebar content here --> */}
-                        <li><Link to='/dashboard/myorders'>My Orders</Link></li>
+
+
+                        {
+                            isBuyer && <li><Link to='/dashboard/myorders'>My Orders</Link></li>
+                        }
+
+
                         {
                             isAdmin && <>
                                 <li><Link to='/dashboard'>All user</Link></li>
