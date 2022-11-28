@@ -28,6 +28,7 @@ import Login from '../Shared/Login/Login';
 import SignUp from '../Shared/SignUp/SignUp';
 import AdminRoutes from './AdminRoutes';
 import BuyerRoute from './BuyerRoute/BuyerRoute';
+
 import PrivetRoute from './PrivetRoutes';
 import SellerRoutes from './SelleRoute/SellerRoutes';
 
@@ -56,7 +57,12 @@ const routes = createBrowserRouter([
             {
                 path: '/category/:id',
                 element: <PrivetRoute> <AllCategoris></AllCategoris></PrivetRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/categoris/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/categoris/${params.id}`, {
+                    headers: {
+                        'content-type': 'application/json',
+                        authorization: `bearer ${localStorage.getItem('accessToken')}`
+                    }
+                })
             }, {
                 path: '/loadcat',
                 element: <Load></Load>
@@ -93,7 +99,12 @@ const routes = createBrowserRouter([
             {
                 path: '/dashboard/payment/:id',
                 element: <Payment></Payment>,
-                loader: ({ params }) => fetch(`http://localhost:5000/booking/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/booking/${params.id}`, {
+                    headers: {
+                        'content-type': 'application/json',
+                        authorization: `bearer ${localStorage.getItem('accessToken')}`
+                    }
+                })
             },
             {
                 path: '/dashboard/seller',

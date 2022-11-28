@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/AuthProvider';
+import UseToken from '../../UseToken/UseToken';
 import GoogleLogin from '../Google/GoogleLogin';
 
 
@@ -19,17 +20,19 @@ const SignUp = () => {
 
     const { creatUsers, updatePro } = useContext(AuthContext)
 
-
     const [createmail, setCreatemail] = useState('')
 
-    // const [token] = UseToken(createmail)
+    const [token] = UseToken(createmail)
 
 
-    // const navigate = useNavigate()
-    // if (token) {
-    //     console.log(token)
-    //     navigate('/')
-    // }
+
+
+
+    const navigate = useNavigate()
+    if (token) {
+        console.log(token)
+        navigate('/')
+    }
 
     const handlsignup = data => {
 
@@ -74,6 +77,7 @@ const SignUp = () => {
                 .then(res => res.json())
                 .then(data => {
                     console.log(data)
+                    setCreatemail(email)
 
                 })
         }

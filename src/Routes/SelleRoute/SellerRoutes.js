@@ -21,7 +21,7 @@ const SellerRoutes = ({ children }) => {
         return <p>looding...</p>
     }
 
-    if (user || isSeller || isAdmin) {
+    if (user || isSeller) {
         return children;
     }
     <Navigate to='/login' state={{ from: location }} replace ></Navigate>

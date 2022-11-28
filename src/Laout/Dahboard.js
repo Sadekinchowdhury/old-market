@@ -6,13 +6,15 @@ import Footer from '../Shared/Footer/Footer';
 import Navbar from '../Shared/Navbar/Navbar';
 import UseAdmin from '../UseAdmin/UseAdmin';
 import UseBuyer from '../UseBuyer/UseBuyer';
+
 import UseSeller from '../UseSeller/UseSeller';
 
 const DashBoard = () => {
     const { user } = useContext(AuthContext)
     const [isAdmin] = UseAdmin(user?.email)
-    const [isBuyer] = UseBuyer(user?.email)
+
     const [isSeller] = UseSeller(user?.email)
+    const [isBuyer] = UseBuyer(user?.email)
     return (
         <div>
             <Navbar></Navbar>
@@ -31,9 +33,9 @@ const DashBoard = () => {
                         {/* <!-- Sidebar content here --> */}
 
 
-                        {
-                            isBuyer && <li><Link to='/dashboard/myorders'>My Orders</Link></li>
-                        }
+
+                        <li><Link to='/dashboard/myorders'>My Orders</Link></li>
+
 
 
                         {
@@ -48,7 +50,7 @@ const DashBoard = () => {
                         }
 
                         {
-                            isSeller || isAdmin ||
+                            isSeller &&
                             <>
                                 <li><Link to='/dashboard/myproducts'>My products</Link></li>
                                 <li>
@@ -59,6 +61,7 @@ const DashBoard = () => {
 
 
                         }
+
                     </ul>
 
                 </div>

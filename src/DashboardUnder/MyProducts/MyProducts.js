@@ -10,7 +10,12 @@ const MyProducts = () => {
     const { data: products = [], refetch } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/products?email=${user?.email}`)
+            const res = await fetch(`http://localhost:5000/products?email=${user?.email}`, {
+                headers: {
+                    'content-type': 'application/json',
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
             const data = await res.json()
             console.log(data)
             return data;
@@ -24,7 +29,8 @@ const MyProducts = () => {
         fetch(`http://localhost:5000/products/${id}`, {
             method: 'DELETE',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
         })
             .then(res => res.json())
@@ -38,27 +44,16 @@ const MyProducts = () => {
 
 
     }
-    // const handlAddvirtised = product => {
 
-    //     console.log(products)
-    //     fetch(`http://localhost:5000/advirtise?id=${product._id}`, {
-    //         method: 'PUT',
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(product)
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data)
-
-    //         })
-
-    // }
 
     const handleAdvertiseProduct = id => {
         fetch(`http://localhost:5000/product/${id}`, {
-            method: 'PUT'
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+
         })
             .then(res => res.json())
             .then(data => {
@@ -112,12 +107,23 @@ const MyProducts = () => {
                                 </td>
                                 <td>
                                     {
-                                        product?.advertise || product?.soldStatus === false ? <>
+                                        product?.advertise && !product?.soldStatus ? <>
                                             <button onClick={() => handleAdvertiseProduct(product._id)} className='btn btn-primary btn-sm'>add advirtised</button>
-                                        </> : <>
-                                            <button disabled className='btn btn-sm btn-warning'>advirtised</button>
-                                        </>
+                                        </> :
+
+                                            <>
+                                                <button onClick={() => handleAdvertiseProduct(product._id)}
+
+                                                    className='btn btn-primary 
+                                                
+                                                btn-sm'>add advirtised</button>
+                                            </>
+
+
+
                                     }
+
+
                                 </td>
 
                             </tr>)

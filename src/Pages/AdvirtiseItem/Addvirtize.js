@@ -11,7 +11,12 @@ const Addvirtize = () => {
     const { data: products = [] } = useQuery({
         queryKey: ['advertise', 'product'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/advertise/product');
+            const res = await fetch('http://localhost:5000/advertise/product', {
+                headers: {
+                    'content-type': 'application/json',
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            });
             const data = await res.json();
             return data;
         }
@@ -21,10 +26,12 @@ const Addvirtize = () => {
         <section>
 
             <div>
+
                 <p className='text-6xl text-orange-500 font-bold text-center py-6'> Addvirtise </p>
             </div>
             <div className='grid gap-5 h-1/2  grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
+
                     products.map(product =>
 
                         <AddvirtisCard

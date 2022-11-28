@@ -11,7 +11,12 @@ const AllSellers = () => {
     const { data: datatype = [], refetch } = useQuery({
         queryKey: ['datatype'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users/seller')
+            const res = await fetch('http://localhost:5000/users/seller', {
+                headers: {
+                    'content-type': 'application/json',
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
 
             const data = await res.json()
             console.log(data)
@@ -28,7 +33,8 @@ const AllSellers = () => {
         fetch(`http://localhost:5000/users/${id}`, {
             method: 'DELETE',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
         })
             .then(res => res.json())
@@ -46,7 +52,8 @@ const AllSellers = () => {
         fetch(`http://localhost:5000/users/${id}`, {
             method: 'PUT',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
             // headers: {
             //     authorization: `bearer ${localStorage.getItem('accessToken')}`

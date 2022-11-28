@@ -10,7 +10,12 @@ const UseSeller = email => {
     useEffect(() => {
 
         if (email) {
-            fetch(`http://localhost:5000/users/seller/${email}`)
+            fetch(`http://localhost:5000/users/seller/${email}`, {
+                headers: {
+                    'content-type': 'application/json',
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
                 .then(res => res.json())
                 .then(data => {
                     console.log(data)

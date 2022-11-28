@@ -23,7 +23,12 @@ const AddProducts = () => {
     const { data: categorisBrand = [], refetch } = useQuery({
         queryKey: ['categorisBrand'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/categorisBrand')
+            const res = await fetch('http://localhost:5000/categorisBrand', {
+                headers: {
+                    'content-type': 'application/json',
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
             const data = await res.json()
 
             return data;
@@ -74,7 +79,7 @@ const AddProducts = () => {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',
-
+                        authorization: `bearer ${localStorage.getItem('accessToken')}`
                     },
                     body: JSON.stringify(products)
 
