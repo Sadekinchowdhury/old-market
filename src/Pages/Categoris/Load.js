@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
+import { FaCheckCircle } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/AuthProvider';
 import UseSeller from '../../UseSeller/UseSeller';
@@ -8,38 +9,23 @@ const Load = ({ allcat, setBooking }) => {
 
     // const [isSeller] = UseSeller(user?.email)
 
-    const [verifyseller, setVerifyseller] = useState({})
+    // const [verifyseller, setVerifyseller] = useState({})
 
     const { name, price, location, description, originalprice, sellername, postedtime, brand, picture, usedtime, email } = allcat
 
 
 
-    const { data: sellers = [], refetch } = useQuery({
-        queryKey: ['sellers'],
+    const { data: user = {}, refetch } = useQuery({
+        queryKey: ['user', email],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users/seller')
 
+            const res = await fetch(`http://localhost:5000/user?email=${allcat.email}`);
             const data = await res.json()
-            console.log(data)
+
             return data;
-        },
-
-
+        }
     })
 
-    // const { data: user = {}, refetch } = useQuery({
-
-    //     queryKey: ['user'],
-    //     queryFn: async () => {
-
-    //         const res = await fetch(`http://localhost:5000/user?email=${email}`);
-    //         const data = await res.json();
-
-    //         return data;
-    //     }
-    // })
-
-    // console.log(user)
 
     return (
 
@@ -62,13 +48,17 @@ const Load = ({ allcat, setBooking }) => {
                         </div>
                         <p className='ml-3 text-sm font-bold'>
 
+                            {
 
-                            <>
-                                <p className='text-blue-600'> verified</p>
-                            </>
-                            <>
-                                {sellername}
-                            </>
+                                user?.role === 'seller' && user?.verify ?
+                                    <>
+                                        <p> {sellername} <FaCheckCircle></FaCheckCircle></p>
+                                    </>
+                                    :
+                                    <>
+                                        {sellername}
+                                    </>
+                            }
 
 
 
@@ -94,38 +84,7 @@ const Load = ({ allcat, setBooking }) => {
             </div>
 
         </div>
-        // <div className="card border shadow-xl">
 
-        //     <div className='h-30'>
-        //         <img src={picture} alt="" className="rounded-xl w-full " />
-        //     </div>
-
-        //     <div className="card-body">
-        // <h2 className="card-title text-center"> {name} </h2>
-        // <p className='text-blue-700 font-semibold'>price: ${price}</p>
-        // <p className='text-red-600 font-medium'>original price: ${originalprice}</p>
-        // <p className='text-orange-900 font-mono'>Used time: {usedtime}</p>
-        // <p className=''>posted time: {postedtime}</p>
-
-        //     </div>
-        // <div className="grid grid-cols-1 lg:grid-cols-2 mx-auto gap-10 mb-1">
-
-
-        //     <div className="avatar">
-        //         <div className="w-12 rounded-full">
-        //             <img src="https://placeimg.com/192/192/people" alt='' />
-
-        //         </div>
-        //         <p>
-        //             {sellername}
-        //         </p>
-        //     </div>
-
-        //     <div>
-        //         <label onClick={() => setBooking(allcat)} htmlFor="booking-modal" className="btn btn-info btn-sm">Book now</label>
-        //     </div>
-        // </div>
-        // </div>
     );
 };
 

@@ -2,6 +2,7 @@
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { useState, useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 
@@ -114,6 +115,8 @@ const CheckoutForm = ({ book }) => {
                         setSuccess('Congratulations dear you payment successfully')
                         setTranjactionid(paymentIntent.id)
                         handleSoldStatus(productId)
+                        Navigate('/dashboard/myorders')
+                        toast.success('Paid by stripe')
 
                     }
                 })
