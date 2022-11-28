@@ -13,6 +13,7 @@ import MyProducts from '../DashboardUnder/MyProducts/MyProducts';
 import DashBoard from '../Laout/Dahboard';
 
 import Main from '../Laout/Main';
+import Addvirtize from '../Pages/AdvirtiseItem/Addvirtize';
 import BadRoutes from '../Pages/BadRoute/BadRoutes';
 import Blog from '../Pages/Blog/Blog';
 import AllCategoris from '../Pages/Categoris/Categoris';
@@ -57,12 +58,16 @@ const routes = createBrowserRouter([
             }, {
                 path: '/loadcat',
                 element: <Load></Load>
+            },
+            {
+                path: '/',
+                element: <Addvirtize></Addvirtize>
             }
         ]
     },
     {
         path: '/dashboard',
-        element: <DashBoard></DashBoard>,
+        element: <PrivetRoute><DashBoard></DashBoard></PrivetRoute>,
         children: [
             {
                 path: '/dashboard/myorders',

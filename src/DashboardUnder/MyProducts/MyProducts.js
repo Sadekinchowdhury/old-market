@@ -5,6 +5,8 @@ import { AuthContext } from '../../Context/AuthProvider';
 
 const MyProducts = () => {
     const { user } = useContext(AuthContext)
+
+
     const { data: products = [], refetch } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
@@ -36,7 +38,39 @@ const MyProducts = () => {
 
 
     }
+    // const handlAddvirtised = product => {
 
+    //     console.log(products)
+    //     fetch(`http://localhost:5000/advirtise?id=${product._id}`, {
+    //         method: 'PUT',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify(product)
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data)
+
+    //         })
+
+    // }
+
+    const handleAdvertiseProduct = id => {
+        fetch(`http://localhost:5000/product/${id}`, {
+            method: 'PUT'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+
+                if (data.modifiedCount > 0) {
+                    toast.success('Product Advertise Successful.')
+                    refetch()
+                }
+
+            })
+    }
 
     return (
         <div>
@@ -49,8 +83,10 @@ const MyProducts = () => {
                             <th></th>
                             <th>Name</th>
                             <th>price</th>
+                            <th>date</th>
                             <th>sale status</th>
                             <th>Delete Product</th>
+                            <th>add advirtised </th>
 
                         </tr>
                     </thead>
@@ -62,9 +98,19 @@ const MyProducts = () => {
 
                                 <td>{product.name}</td>
                                 <td> ${product.price}</td>
+                                <td>{product.postedtime}</td>
                                 <td> {product.salestatus} </td>
                                 <td>
                                     <button onClick={() => handlDeleteProducts(product._id)} className='btn btn-sm'>Delete</button>
+                                </td>
+                                <td>
+                                    {
+                                        product?.advertise ? <>
+                                            <button onClick={() => handleAdvertiseProduct(product._id)} className='btn btn-primary btn-sm'>add advirtised</button>
+                                        </> : <>
+                                            <button className='btn btn-sm btn-warning'>advirtised</button>
+                                        </>
+                                    }
                                 </td>
 
                             </tr>)

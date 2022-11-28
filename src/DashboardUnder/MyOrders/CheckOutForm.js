@@ -2,12 +2,13 @@
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 
 
 
 const CheckoutForm = ({ book }) => {
-    const { price, name, userName, email, _id } = book
+    const { price, name, userName, email, _id, productId } = book
 
     const [cardError, setcardError] = useState('')
     const [clientSecrete, setclientSecrete] = useState('')
@@ -23,8 +24,6 @@ const CheckoutForm = ({ book }) => {
             method: "POST",
             headers: {
                 'content-type': 'application/json',
-
-                authorization: `bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify({ price })
 
@@ -109,10 +108,12 @@ const CheckoutForm = ({ book }) => {
             })
                 .then(res => res.json())
                 .then(data => {
-
+                    console.log(data)
                     if (data.insertedId) {
+
                         setSuccess('Congratulations dear you payment successfully')
                         setTranjactionid(paymentIntent.id)
+                        handleSoldStatus(productId)
 
                     }
                 })
@@ -121,6 +122,22 @@ const CheckoutForm = ({ book }) => {
         }
         console.log('baki', paymentIntent)
     }
+
+    const handleSoldStatus = id => {
+        fetch(`http://localhost:5000/product/${id}`, {
+            method: 'PUT'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+
+                if (data.modifiedCount > 0) {
+                    toast.success('Product Sold Successful.')
+                }
+
+            })
+    }
+
     return (
         <>
             <form onSubmit={handleSubmit}>

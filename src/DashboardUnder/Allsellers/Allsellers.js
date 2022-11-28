@@ -2,6 +2,9 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { toast } from 'react-toastify';
+import { Fa } from 'react-icons/fa';
+import { HiCheck } from "react-icons/hi";
+import { Link } from 'react-router-dom';
 
 const AllSellers = () => {
 
@@ -82,13 +85,34 @@ const AllSellers = () => {
                                 <th>{i + 1}</th>
 
 
-                                <td>{data.name}</td>
+                                <td>
+                                    {
+                                        data?.verify === true
+                                            ? <>
+
+                                                <div>
+
+                                                    <p>
+                                                        {data.name} <HiCheck className='inline-block'></HiCheck>
+                                                    </p>
+
+
+                                                </div>
+
+                                            </> : <>
+                                                {data.name}
+                                            </>
+                                    }
+
+
+                                </td>
                                 <td>{data.email}</td>
-                                {console.log(data)}
-                                <td>{data?.verify !== true ? <>
+
+                                <td>{data?.verify !== true
+                                    ? <>
 
 
-                                    <button onClick={() => hadlVerify(data._id)} className='btn btn-xs btn-primary'>verify</button></>
+                                        <button onClick={() => hadlVerify(data._id)} className='btn btn-xs btn-primary'>verify</button></>
 
                                     :
                                     <>

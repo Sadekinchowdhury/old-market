@@ -48,46 +48,50 @@ const AddProducts = () => {
             .then(res => res.json())
             .then(imgData => {
                 console.log(imgData)
-                // if (imgData.success) {
-                //     // console.log(imgData.data.url)
-                // }
+                if (imgData.success) {
+                    console.log(imgData.data.url)
+                }
                 refetch()
+
+                const products = {
+                    picture: imgData.data.url,
+                    name: data.name,
+                    price: data.price,
+                    location: data.location,
+                    category_id: data.brand,
+                    email: user?.email,
+                    salestatus: 'unsold',
+                    phone: data.phone,
+                    usedtime: data.usedtime,
+                    postedtime: date,
+                    sellername: user?.displayName,
+                    originalprice: data.originalprice,
+                    description: data.description,
+
+
+                }
+                fetch('http://localhost:5000/products', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json',
+
+                    },
+                    body: JSON.stringify(products)
+
+
+                })
+                    .then(res => res.json())
+                    .then(result => {
+                        console.log(result)
+
+                        toast.success('Wow Product added successfully')
+                        refetch()
+                        navigate('/dashboard/myproducts')
+
+                    })
+
+
             })
-        const products = {
-            name: data.name,
-            price: data.price,
-            location: data.location,
-            category_id: data.brand,
-            email: user?.email,
-            salestatus: 'unsold',
-            phone: data.phone,
-            usedtime: data.usedtime,
-            postedtime: date,
-            sellername: user?.displayName,
-            originalprice: data.originalprice,
-            description: data.description,
-
-        }
-        fetch('http://localhost:5000/products', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json',
-
-            },
-            body: JSON.stringify(products)
-
-
-        })
-            .then(res => res.json())
-            .then(result => {
-                console.log(result)
-
-                toast.success('Wow Product added successfully')
-                refetch()
-                navigate('/dashboard/myproducts')
-
-            })
-
 
     }
 

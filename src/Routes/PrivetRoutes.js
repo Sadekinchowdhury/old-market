@@ -8,7 +8,7 @@ const PrivetRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext)
 
     if (loading) {
-        return <p>loading...</p>
+        return
     }
     if (!user) {
         return <Navigate to='/login' state={{ from: location }} replace ></Navigate>

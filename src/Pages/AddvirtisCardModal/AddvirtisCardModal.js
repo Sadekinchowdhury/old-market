@@ -1,13 +1,13 @@
 
-
 import { React, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../../Context/AuthProvider';
 
-import { AuthContext } from '../../../Context/AuthProvider';
 
 
-const Modal = ({ booking, setBooking }) => {
+
+const AddvirtisCardModal = ({ booking, setBooking }) => {
     const navigate = useNavigate()
 
     const { name, price, _id } = booking
@@ -109,4 +109,4 @@ const Modal = ({ booking, setBooking }) => {
     );
 };
 
-export default Modal;
+export default AddvirtisCardModal;
