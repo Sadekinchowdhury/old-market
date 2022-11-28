@@ -13,6 +13,7 @@ import MyProducts from '../DashboardUnder/MyProducts/MyProducts';
 import DashBoard from '../Laout/Dahboard';
 
 import Main from '../Laout/Main';
+import AddvirtisCardModal from '../Pages/AddvirtisCardModal/AddvirtisCardModal';
 import Addvirtize from '../Pages/AdvirtiseItem/Addvirtize';
 import BadRoutes from '../Pages/BadRoute/BadRoutes';
 import Blog from '../Pages/Blog/Blog';
@@ -62,6 +63,9 @@ const routes = createBrowserRouter([
             {
                 path: '/',
                 element: <Addvirtize></Addvirtize>
+            }, {
+                path: '/',
+                element: <PrivetRoute><AddvirtisCardModal></AddvirtisCardModal></PrivetRoute>
             }
         ]
     },

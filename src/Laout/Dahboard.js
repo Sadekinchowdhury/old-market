@@ -13,7 +13,7 @@ const DashBoard = () => {
 
     const [isSeller] = UseSeller(user?.email)
     return (
-        <div>
+        <div className=''>
             <Navbar></Navbar>
 
             <div className="drawer drawer-mobile">

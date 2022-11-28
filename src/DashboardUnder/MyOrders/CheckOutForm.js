@@ -124,7 +124,7 @@ const CheckoutForm = ({ book }) => {
     }
 
     const handleSoldStatus = id => {
-        fetch(`http://localhost:5000/product/${id}`, {
+        fetch(`http://localhost:5000/products/${id}`, {
             method: 'PUT'
         })
             .then(res => res.json())

@@ -80,7 +80,15 @@ const Load = ({ allcat, setBooking }) => {
                     </div>
 
                     <div>
-                        <label onClick={() => setBooking(allcat)} htmlFor="booking-modal" className="btn btn-info btn-sm">Book now</label>
+                        {!allcat?.soldStatus ? <>  <label onClick={() => setBooking(allcat)} htmlFor="booking-modal" className="btn btn-info btn-sm">Book now</label>
+                        </> :
+                            <>
+                                <button className=' btn btn-disabled btn-warning'>SoldOut</button>
+                            </>
+
+
+                        }
+
                     </div>
                 </div>
             </div>

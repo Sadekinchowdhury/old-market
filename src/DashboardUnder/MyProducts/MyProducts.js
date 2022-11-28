@@ -99,16 +99,23 @@ const MyProducts = () => {
                                 <td>{product.name}</td>
                                 <td> ${product.price}</td>
                                 <td>{product.postedtime}</td>
-                                <td> {product.salestatus} </td>
+                                <td> {
+                                    product?.soldStatus ? <> <p>sold</p>
+                                    </> :
+                                        <>
+                                            <p>unsold</p>
+                                        </>
+
+                                } </td>
                                 <td>
                                     <button onClick={() => handlDeleteProducts(product._id)} className='btn btn-sm'>Delete</button>
                                 </td>
                                 <td>
                                     {
-                                        product?.advertise ? <>
+                                        product?.advertise || product?.soldStatus === false ? <>
                                             <button onClick={() => handleAdvertiseProduct(product._id)} className='btn btn-primary btn-sm'>add advirtised</button>
                                         </> : <>
-                                            <button className='btn btn-sm btn-warning'>advirtised</button>
+                                            <button disabled className='btn btn-sm btn-warning'>advirtised</button>
                                         </>
                                     }
                                 </td>

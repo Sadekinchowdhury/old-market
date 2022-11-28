@@ -2,7 +2,7 @@ import React from 'react';
 import displayimg from '../../assets/displaymobile.webp'
 const Displaypic = () => {
     return (
-        <div className="hero px-14 bg-base-200">
+        <div className="hero px-14 mt-6 bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <img src={displayimg} className="max-w-sm rounded-lg shadow-2xl" alt='' />
                 <div className='h-1/2'>

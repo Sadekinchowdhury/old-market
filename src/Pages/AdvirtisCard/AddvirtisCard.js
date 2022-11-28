@@ -1,52 +1,77 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider';
 
 const AddvirtisCard = ({ product, setBooking }) => {
     const { name, price, location, description, originalprice, sellername, postedtime, brand, picture, usedtime, email } = product
+
+    const { user } = useContext(AuthContext)
     return (
-        <div className="card bg-base-100 border shadow-xl">
-            <figure><img className='w-full h-40 px-3 py-2' src={picture} alt="Shoes" /></figure>
-            <div className="card-body">
-                <h2 className="card-title">{name}</h2>
-                <p className='text-blue-700 font-semibold'>price: ${price}</p>
-                <p className='text-red-600 font-medium'>original price: ${originalprice}</p>
-                <p className='text-orange-900'>Used time: {usedtime}</p>
-                <p className=''>posted time: {postedtime}</p>
+        <section>
+            {product.advertise && !product.soldStatus &&
 
-                <div className="grid  grid-cols-1 lg:grid-cols-2 mx-auto gap-x-14  mt-3">
+                <div className="card bg-base-100 border shadow-xl">
+                    <figure><img className='w-full h-40 px-3 py-2' src={picture} alt="Shoes" /></figure>
+                    <div className="card-body">
+                        <h2 className="card-title">{name}</h2>
+                        <p className='text-blue-700 font-semibold'>price: ${price}</p>
+                        <p className='text-red-600 font-medium'>original price: ${originalprice}</p>
+                        <p className='text-orange-900'>Used time: {usedtime}</p>
+                        <p className=''>posted time: {postedtime}</p>
+
+                        <div className="grid  grid-cols-1 lg:grid-cols-2 mx-auto gap-x-14  mt-3">
 
 
-                    <div className="avatar">
-                        <div className="w-10 rounded-full">
-                            <img className='' src="https://placeimg.com/192/192/people" alt='' />
+                            <div className="avatar">
+                                <div className="w-10 rounded-full">
+                                    <img className='' src="https://placeimg.com/192/192/people" alt='' />
 
-                        </div>
-                        <p className='ml-3 text-sm font-bold'>
+                                </div>
+                                <p className='ml-3 text-sm font-bold'>
+                                    {sellername}
+                                    {/* {
+                    user?.verify ?
+                        <>
+                            <p className='text-blue-600'> verified</p>
+                        </> :
+                        <>
+                            {sellername}
+                        </>
 
-                            {/* {
-                                user?.verify ?
-                                    <>
-                                        <p className='text-blue-600'> verified</p>
+
+
+                } */}
+                                </p>
+                                <br />
+
+
+                            </div>
+
+                            <div>
+                                {
+                                    user?.email ? <>
+                                        <label onClick={() => setBooking(product)} htmlFor="booking-modal" className="btn btn-info btn-sm">Book now</label>
                                     </> :
-                                    <>
-                                        {sellername}
-                                    </>
+                                        <>
+                                            <Link to='/login'> <button className='btn btn-error btn-sm'>
+                                                book now
+                                            </button></Link>
+                                        </>
+
+                                }
 
 
 
-                            } */}
-                        </p>
-                        <br />
-
-
+                            </div>
+                        </div>
                     </div>
 
-                    <div>
-                        <label onClick={() => setBooking(product)} htmlFor="booking-modal" className="btn btn-info btn-sm">Book now</label>
-                    </div>
                 </div>
-            </div>
+            }
 
-        </div>
+
+
+        </section>
     );
 };
 

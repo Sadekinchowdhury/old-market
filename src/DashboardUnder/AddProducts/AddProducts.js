@@ -101,13 +101,13 @@ const AddProducts = () => {
 
         <div className=' flex justify-center items-center'>
             <div className='w-96 p-7'>
-                <h1 className='text-4xl text-green-700 font-bold text-center'>add products</h1>
+                <h1 className='text-4xl text-green-700 py-4 font-bold text-center'>add products</h1>
                 <form onSubmit={handleSubmit(handlAddProduct)}>
 
                     <div className="form-control w-full max-w-xs">
                         <select
                             type='text'{...register("brand")}
-                            className="select select-bordered w-full">
+                            className="select select-bordered mb-2 w-full">
                             <option selected disabled>Select Category</option>
                             {
                                 categorisBrand.map(categorybrand =>
@@ -117,7 +117,7 @@ const AddProducts = () => {
                     </div>
 
                     <div className="form-control w-full max-w-xs">
-                        <input type="text" {...register("name")} placeholder='name' className="input input-bordered w-full max-w-xs" />
+                        <input type="text" {...register("name")} placeholder='name' className="input mb-2 input-bordered w-full max-w-xs" />
                     </div>
                     {/* 
                     <div className="form-control w-full max-w-xs">
@@ -127,21 +127,21 @@ const AddProducts = () => {
                     </div> */}
 
                     <div className="form-control w-full max-w-xs">
-                        <input type="text" {...register("location")} placeholder='add location' className="input input-bordered w-full max-w-xs" />
+                        <input type="text" {...register("location")} placeholder='add location' className="input input-bordered w-full mb-2 max-w-xs" />
                     </div>
 
 
 
                     <div className="form-control w-full max-w-xs">
-                        <input type="text" {...register("usedtime")} placeholder='usedtime' className="input input-bordered w-full max-w-xs" />
+                        <input type="text" {...register("usedtime")} placeholder='usedtime' className="input input-bordered w-full mb-2 max-w-xs" />
                     </div>
 
                     <div className="form-control w-full max-w-xs">
-                        <input type="number" {...register("price")} placeholder='price' className="input input-bordered w-full max-w-xs" />
+                        <input type="number" {...register("price")} placeholder='price' className="input input-bordered w-full mb-2 max-w-xs" />
                     </div>
 
                     <div className="form-control w-full max-w-xs">
-                        <input type="number" {...register("originalprice")} placeholder='Orginal price' className="input input-bordered w-full max-w-xs" />
+                        <input type="number" {...register("originalprice")} placeholder='Orginal price' className="input input-bordered w-full mb-2 max-w-xs" />
                     </div>
 
                     {/* <div className="form-control w-full max-w-xs">
@@ -154,11 +154,11 @@ const AddProducts = () => {
                     <div className="form-control w-full max-w-xs">
                         <input type="file" {...register("img", {
                             // required: 'img is required'
-                        })} placeholder='img add' className="input input-bordered w-full max-w-xs" />
+                        })} placeholder='img add' className="input input-bordered mb-2 w-full max-w-xs" />
                     </div>
 
                     <div className="form-control w-full max-w-xs">
-                        <input type="text" {...register("description")} placeholder='add description' className="input input-bordered w-full max-w-xs" />
+                        <input type="text" {...register("description")} placeholder='add description' className="input input-bordered w-full mb-2 max-w-xs" />
                     </div>
 
 
