@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 function App() {
 
   return (
-    <div className="max-w-screen-lg mx-auto">
+    <div className="  bg-black mx-auto">
       <RouterProvider router={routes}></RouterProvider>
       <ToastContainer></ToastContainer>
     </div>

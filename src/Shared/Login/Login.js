@@ -41,15 +41,19 @@ const Login = () => {
 
 
     return (
-        <div className=' flex justify-center items-center'>
-            <div className='w-96 p-7'>
-                <h1 className='text-4xl text-green-700 font-bold text-center'>Login</h1>
+        <div className='grid grid-cols-1 lg:grid-cols-2 items-center mx-auto m-10'>
+
+            <div className='mx-auto'>
+                <img className='w-full' src="https://i.ibb.co/0cVJdBk/download-1-removebg-preview.png" alt="" />
+            </div>
+            <div className='mx-auto card p-10 bg-white mt-8 m-14 mb-10'>
+                <h1 className='text-4xl text-green-700 font-bold text-center '>Login</h1>
                 <form onSubmit={handleSubmit(handlogin)}>
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
 
-                            <span className="label-text">email</span></label>
+                            <span className="label-text text-2xl font-semibold">Email</span></label>
 
                         <input type="text" {...register("email", {
                             required: 'email is required'
@@ -62,7 +66,7 @@ const Login = () => {
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
-                            <span className="label-text">password</span></label>
+                            <span className="label-text text-2xl font-semibold">Password</span></label>
                         <input type="password" {...register("password", {
                             required: 'password is required',
                             minLength: { value: 6, message: 'at least 6 carecter' }

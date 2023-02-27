@@ -18,12 +18,13 @@ const Category = () => {
 
 
     return (
-        <div>
-            < div className='mt-9'>
+        <div className='w-2/3 mx-auto'>
+            < div className='mt-9 '>
 
-                <h1 className='text-2xl text-center font-bold text-orange-500 py-2'>Your favourite category</h1>
+                <h1 className='text-2xl text-center font-bold  text-white py-2'>Your favourite category</h1>
+                <hr />
             </div >
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 mt-10 px-28 mb-9'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 mt-10 px-16 mb-9'>
 
                 {
                     categoryProduct.length &&

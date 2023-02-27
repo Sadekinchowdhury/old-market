@@ -5,9 +5,9 @@ const CategoryCard = ({ category }) => {
     console.log(category)
     const { name, description, picture, _id } = category;
     return (
-        <div className="card bg-base-100 border shadow-xl">
-            <figure><img className='w-40px' src={picture} alt="Shoes" /></figure>
-            <div className="card-body">
+        <div className="card bg-base-100 shadow-xl">
+            <figure><img className='h-80' src={picture} alt="" /></figure>
+            <div className="card-body mt-2">
                 <h2 className="card-title">{name}</h2>
                 <p>{description}</p>
                 <div className="card-actions justify-end">

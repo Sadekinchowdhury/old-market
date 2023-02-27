@@ -7,9 +7,7 @@ import Authprovide from './Context/AuthProvider';
 import 'react-toastify/dist/ReactToastify.css';
 
 import {
-
-  QueryClient,
-  QueryClientProvider,
+   QueryClient,QueryClientProvider
 } from '@tanstack/react-query'
 
 const queryClient = new QueryClient()

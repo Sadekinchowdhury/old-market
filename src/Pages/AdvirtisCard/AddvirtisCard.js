@@ -23,10 +23,10 @@ const AddvirtisCard = ({ product, setBooking }) => {
 
     return (
         <section>
-            {product.advertise && !product.soldStatus &&
+            {product.advertise || !product.soldStatus ?
 
-                <div className="card bg-base-100 border shadow-xl">
-                    <figure><img className='w-full h-40 px-3 py-2' src={picture} alt="Shoes" /></figure>
+                <div className="card bg-base-100 border-2 shadow-xl">
+                    <figure><img className='w-full h-64 px-3 py-2' src={picture} alt="" /></figure>
                     <div className="card-body">
                         <h2 className="card-title">{name}</h2>
                         <p className='text-blue-700 font-semibold'>price: ${price}</p>
@@ -34,12 +34,12 @@ const AddvirtisCard = ({ product, setBooking }) => {
                         <p className='text-orange-900'>Used time: {usedtime}</p>
                         <p className=''>posted time: {postedtime}</p>
 
-                        <div className="grid  grid-cols-1 lg:grid-cols-2 mx-auto gap-x-14  mt-3">
+                        <div className="flex mt-4 justify-between">
 
 
                             <div className="avatar">
                                 <div className="w-10 rounded-full">
-                                    <img className='' src="https://placeimg.com/192/192/people" alt='' />
+                                    <img className='' src={user?.photoURL} alt='' />
 
                                 </div>
                                 <p className='ml-3 text-sm font-bold'>
@@ -64,11 +64,11 @@ const AddvirtisCard = ({ product, setBooking }) => {
                             <div>
                                 {
                                     user?.email ? <>
-                                        <label onClick={() => setBooking(product)} htmlFor="booking-modal" className="btn btn-info btn-sm">Book now</label>
+                                        <label onClick={() => setBooking(product)} htmlFor="booking-modal" className="btn btn-info btn-sm">Book</label>
                                     </> :
                                         <>
                                             <Link to='/login'> <button className='btn btn-error btn-sm'>
-                                                book now
+                                                Book
                                             </button></Link>
                                         </>
 
@@ -81,6 +81,7 @@ const AddvirtisCard = ({ product, setBooking }) => {
                     </div>
 
                 </div>
+                : <><h1>Nothing...</h1></>
             }
 
 

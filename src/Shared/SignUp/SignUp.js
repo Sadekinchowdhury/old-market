@@ -89,39 +89,43 @@ const SignUp = () => {
 
 
     return (
-        <div className=' flex justify-center items-center'>
-            <div className='w-96 p-7'>
+        <div className='grid grid-cols-1 lg:grid-cols-2 m-10 mx-auto'>
+            <div>
+                <img className='w-full' src="https://i.ibb.co/1RJmRzZ/download-2-removebg-preview-1.png" alt="" />
+            </div>
+
+            <div className='bg-white p-10 m-10 card '>
                 <h1 className='text-4xl text-green-700 text-center font-bold'>Signup</h1>
                 <form onSubmit={handleSubmit(handlsignup)}>
 
-                    <div className="form-control w-full max-w-xs">
+                    <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">name</span></label>
+                            <span className="label-text text-2xl font-semibold">Name</span></label>
                         <input type="text" name='name' {...register('name', {
                             required: 'name is requerd'
                         })}
-                            className="input input-bordered w-full max-w-xs" />
+                            className="input input-bordered w-full" />
                         {errors.name && <p className='text-red-600'>
 
                             {errors.name.message}
                         </p>}
                     </div>
-                    <div className="form-control w-full max-w-xs">
+                    <div className="form-control w-full">
                         <label className="label">
-                            <span className="label-text">email</span></label>
+                            <span className="label-text text-2xl font-semibold">Email</span></label>
                         <input type="text" {...register("email", {
                             required: 'email is required'
                         })}
-                            className="input input-bordered w-full max-w-xs" />
+                            className="input input-bordered w-full " />
                         {errors.email && <p className='text-red-600'>{errors.email?.message}</p>}
                     </div>
 
-                    <div className="form-control w-full max-w-xs">
+                    <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Condition</span></label>
+                            <span className="label-text text-2xl font-semibold">Condition</span></label>
                         <select
                             {...register('role')}
-                            className="select select-bordered w-full max-w-xs">
+                            className="select select-bordered w-full">
                             <option>buyer</option>
                             <option>seller</option>
                         </select>
@@ -131,15 +135,15 @@ const SignUp = () => {
 
 
 
-                    <div className="form-control w-full max-w-xs">
+                    <div className="form-control w-full">
                         <label className="label">
-                            <span className="label-text">password</span></label>
+                            <span className="label-text text-2xl font-semibold">password</span></label>
                         <input type="text" {...register("password", {
                             required: 'pass is required',
                             minLength: { value: 6, message: 'password must be 6 carrecters' },
                             pattern: { value: /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: 'password should be  an uppercase and nmbr' }
                         })}
-                            className="input input-bordered mb-6 w-full max-w-xs" />
+                            className="input input-bordered mb-6 w-full" />
                         {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
                     </div>
 

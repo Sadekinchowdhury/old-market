@@ -1,9 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../Context/AuthProvider';
 import AddvirtisCardModal from '../AddvirtisCardModal/AddvirtisCardModal';
 import AddvirtisCard from '../AdvirtisCard/AddvirtisCard';
 
 const Addvirtize = () => {
+
 
     const [booking, setBooking] = useState([]);
 
@@ -34,13 +36,14 @@ const Addvirtize = () => {
     // })
 
     return (
-        <section>
+        <section className='py-10'>
 
             <div>
 
-                <p className='text-6xl text-orange-500 font-bold text-center py-6'> Addvirtise </p>
+                <p className='text-4xl text-white font-bold text-center py-6'> Advertise </p>
+                <hr />
             </div>
-            <div className='grid gap-5 h-1/2  grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+            <div className='grid m-8 gap-7 h-1/2  grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
                 {
                     products.length &&
                     products?.map(product =>

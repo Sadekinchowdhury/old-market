@@ -15,19 +15,19 @@ const Navbar = () => {
 
     const menue = <>
 
-        <Link to='/'>Home</Link>
+        <Link className='font-bold text-1xl' to='/'>Home</Link>
 
-        <Link to=''>Contact us</Link>
-        <Link to=''>get</Link>
-        <Link to='/blog'>Blog</Link>
-        <Link to='/dashboard'>Dashbored</Link>
+        <Link className='font-bold text-1xl' to=''>Contact us</Link>
+        <Link className='font-bold text-1xl' to=''>get</Link>
+        <Link className='font-bold text-1xl' to='/blog'>Blog</Link>
+        <Link className='font-bold text-1xl' to='/dashboard'>Dashbored</Link>
         {user?.email ?
 
             <>
 
-                <button onClick={handlLogout} className=" px-5">SignOut</button>
+                <Link onClick={handlLogout} className=" px-5 btn font-bold text-1xl">SignOut</Link>
             </>
-            : <Link to='/login'>Login</Link>
+            : <Link className='font-bold text-1xl' to='/login'>Login</Link>
 
         }
 
@@ -35,7 +35,7 @@ const Navbar = () => {
 
 
     return (
-        <div className="navbar flex justify-between text-white bg-blue-600">
+        <div className="navbar flex justify-between bg-gradient-to-r from-purple-600 via-pink-600 text-white to-blue-600">
             <div className="navbar-start">
                 <div className="dropdown text-black">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">

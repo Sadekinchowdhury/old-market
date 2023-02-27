@@ -36,6 +36,7 @@ const AddProducts = () => {
     })
 
     const handlAddProduct = data => {
+
         console.log(data)
 
 
@@ -50,6 +51,7 @@ const AddProducts = () => {
 
 
         })
+
             .then(res => res.json())
             .then(imgData => {
                 console.log(imgData)
@@ -75,6 +77,7 @@ const AddProducts = () => {
 
 
                 }
+
                 fetch('https://old-server.vercel.app/products', {
                     method: 'POST',
                     headers: {
@@ -104,9 +107,9 @@ const AddProducts = () => {
 
     return (
 
-        <div className=' flex justify-center items-center'>
-            <div className='w-96 p-7'>
-                <h1 className='text-4xl text-green-700 py-4 font-bold text-center'>add products</h1>
+        <div className='flex justify-center mt-10 p-10 items-center'>
+            <div className='w-96 bg-white p-7'>
+                <h1 className='text-4xl py-4 font-bold text-center'>Add products</h1>
                 <form onSubmit={handleSubmit(handlAddProduct)}>
 
                     <div className="form-control w-full max-w-xs">
@@ -165,9 +168,6 @@ const AddProducts = () => {
                     <div className="form-control w-full max-w-xs">
                         <input type="text" {...register("description")} placeholder='add description' className="input input-bordered w-full mb-2 max-w-xs" />
                     </div>
-
-
-
 
                     <input className='btn btn-accent w-full' type="submit" />
 

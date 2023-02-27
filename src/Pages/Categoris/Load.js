@@ -26,16 +26,15 @@ const Load = ({ allcat, setBooking }) => {
                 }
             });
             const data = await res.json()
-
-            return data;
+            return data
         }
     })
 
 
     return (
 
-        <div className="card bg-base-100 border shadow-xl">
-            <figure><img className='w-full h-40 px-3 py-2' src={picture} alt="Shoes" /></figure>
+        <div className="card bg-base-100 border shadow-2xl">
+            <figure><img className='w-full h-48 px-3 py-2' src={picture} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{name}</h2>
                 <p className='text-blue-700 font-semibold'>price: ${price}</p>
