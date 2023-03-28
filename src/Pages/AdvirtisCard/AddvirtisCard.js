@@ -25,7 +25,7 @@ const AddvirtisCard = ({ product, setBooking }) => {
         <section>
             {product.advertise || !product.soldStatus ?
 
-                <div className="card bg-base-100 border-2 shadow-xl">
+                <div className=" bg-base-100 border-2 shadow-xl">
                     <figure><img className='w-full h-64 px-3 py-2' src={picture} alt="" /></figure>
                     <div className="card-body">
                         <h2 className="card-title">{name}</h2>

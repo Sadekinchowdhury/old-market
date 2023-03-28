@@ -20,7 +20,7 @@ const AllCategoris = () => {
     // const firstpostindex = lastpostindex - postperPage;
     // const currentpost = allcategory.slice(firstpostindex, lastpostindex)
     return (
-        <section className='w-11/12 m-3 mx-auto'>
+        <section className='lg:w-11/12  mx-auto'>
 
             <div>
                 <p className='text-4xl text-orange-500 font-bold text-center py-6'> Choose Your favourite Phone </p>

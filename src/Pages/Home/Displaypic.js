@@ -1,77 +1,197 @@
-import React from 'react';
-import displayimg from '../../assets/displaymobile.webp'
+
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+
+
+// import required modules
+import { Autoplay, Pagination, Navigation } from "swiper";
+
 const Displaypic = () => {
+
+
     return (
+        <div className="top-0">
+            <>
+                <Swiper
+                    spaceBetween={30}
+                    centeredSlides={true}
+                    autoplay={{
+                        delay: 2500,
+                        disableOnInteraction: false,
+                    }}
+                    pagination={{
+                        clickable: true,
+                    }}
+                    navigation={true}
+                    modules={[Autoplay, Pagination, Navigation]}
+                    className="mySwiper"
+                >
+                    <SwiperSlide>
+                        <div className="item-center  content-center lg:p-12  bg-white">
+                            <div className="grid grid-cols-1 p-3 lg:p-0 lg:grid-cols-2 m-4">
+                                <div className="lg:p-10 p-5">
+                                    <p className="text-2xl font-bold">Yahooo ! Just for you</p>
+                                    <p><strong className="mr-3">Discount:</strong>60%</p>
+                                    <p className="text-xl font-semibold">Book now favourite</p>
+
+                                    <p>30-50% discount soon</p>
+                                </div>
+                                <div className="">
+                                    <img className="" src="https://i.ibb.co/SwG7n2Q/images-8.jpg" alt="" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div className="item-center  content-center lg:p-12  bg-white">
+                            <div className="grid grid-cols-1 p-3 lg:p-0 lg:grid-cols-2 m-4">
+                                <div className="lg:p-10 p-5">
+                                    <p className="text-2xl font-bold">Yahooo ! Just for you</p>
+                                    <p><strong className="mr-3">Discount:</strong>60%</p>
+                                    <p className="text-xl font-semibold">Book now favourite</p>
+
+                                    <p>30-50% discount soon</p>
+                                </div>
+                                <div className="">
+                                    <img className="" src="https://i.ibb.co/jf8LVv1/images-7.jpg" alt="" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div className="item-center  content-center lg:p-12  bg-white">
+                            <div className="grid grid-cols-1 p-3 lg:p-0 lg:grid-cols-2 m-4">
+                                <div className="lg:p-10 p-5">
+                                    <p className="text-2xl font-bold">Yahooo ! Just for you</p>
+                                    <p><strong className="mr-3">Discount:</strong>60%</p>
+                                    <p className="text-xl font-semibold">Book now favourite</p>
+
+                                    <p>30-50% discount soon</p>
+                                </div>
+                                <div className="">
+                                    <img className="" src="https://i.ibb.co/SwG7n2Q/images-8.jpg" alt="" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div className="item-center  content-center lg:p-12  bg-white">
+                            <div className="grid grid-cols-1 p-3 lg:p-0 lg:grid-cols-2 m-4">
+                                <div className="lg:p-10 p-5">
+                                    <p className="text-2xl font-bold">Yahooo ! Just for you</p>
+                                    <p><strong className="mr-3">Discount:</strong>60%</p>
+                                    <p className="text-xl font-semibold">Book now favourite</p>
+
+                                    <p>30-50% discount soon</p>
+                                </div>
+                                <div className="">
+                                    <img className="" src="https://i.ibb.co/SwG7n2Q/images-8.jpg" alt="" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </SwiperSlide>
+
+                    {/* <SwiperSlide>
+
+                        <div className="item-center content-center  lg:p-12 bg-white">
+                            <div className="grid grid-cols-2 text-center justify-center">
+                                <div className="">
+                                    <p className="text-2xl font-bold">Yahooo ! Just for you</p>
+                                    <p><strong className="mr-3">Discount:</strong>60%</p>
+                                    <p className="text-xl font-semibold">Book now favourite</p>
+                                    <p>Why late? </p>
+                                </div>
+                                <div>
+                                    <img src="https://i.ibb.co/cQR4fgr/download-9.jpg" alt="" />
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </SwiperSlide>
+
+                    <SwiperSlide>
+                        <img src="https://i.ibb.co/jf8LVv1/images-7.jpg" alt="" /> </SwiperSlide>
+                    <SwiperSlide>
 
 
-        <div className='m-4 p-10'>
-            <div className='grid grid-cols-1 w-2/3 mx-auto lg:grid-cols-2 items-center'>
-                {/* <div className="p-10">
-                    <div className="">
-                        <img src={displayimg} className="w-2/5 rounded-lg shadow-2xl" alt='' />
-                        <div className=''>
-                            <h1 className=" text-5xl font-bold"> Choose Your favourite Brand </h1>
-                            <p className="py-6">
-                                You can buy less money but good products.
+                        Slide 4</SwiperSlide> */}
 
-                            </p>
-                            <button className="btn btn-primary">See more</button>
-                        </div>
-                    </div>
-                </div> */}
-                <div className='w-2/3'>
-                    <div className="carousel mx-auto rounded-3xl">
-                        <div id="slide1" className="carousel-item relative w-full">
-                            <img src="https://i.ibb.co/N6DLV4k/download-1.jpg" alt='' className="w-full" />
-                            <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                                <a href="#slide4" className="btn btn-circle">❮</a>
-                                <a href="#slide2" className="btn btn-circle">❯</a>
-                            </div>
-                        </div>
-                        <div id="slide2" className="carousel-item relative w-full">
-                            <img src="https://i.ibb.co/7bxTwr7/download-2.jpg" alt='' className="w-full" />
-                            <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                                <a href="#slide1" className="btn btn-circle">❮</a>
-                                <a href="#slide3" className="btn btn-circle">❯</a>
-                            </div>
-                        </div>
-                        <div id="slide3" className="carousel-item relative w-full">
-                            <img src="https://i.ibb.co/RT9Nxzh/download-3.jpg" alt='' className="w-full" />
-                            <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                                <a href="#slide2" className="btn btn-circle">❮</a>
-                                <a href="#slide4" className="btn btn-circle">❯</a>
-                            </div>
-                        </div>
-                        <div id="slide4" className="carousel-item relative w-full">
-                            <img src="https://i.ibb.co/CsgNYMd/download-4.jpg" alt='' className="w-full" />
-                            <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                                <a href="#slide3" className="btn btn-circle">❮</a>
-                                <a href="#slide1" className="btn btn-circle">❯</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {/* <div className='lg:w-96'>
-                    <div className="card bg-base-100 shadow-xl image-full">
-                        <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-                        <div className="card-body">
-                            <h2 className="card-title"></h2>
-                            <p>If a dog chews shoes whose shoes does he choose?</p>
-                            <div className="card-actions justify-end">
-                                <button className="btn btn-primary">Buy Now</button>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
-                <div>
-                    <img src="https://i.ibb.co/GWhGGmp/young-man-showing-his-brand-new-smart-phone-isolated-white-163897508-removebg-preview.png" alt="" />
-                </div>
-            </div>
+                </Swiper>
+            </>
         </div>
-
-
-
     );
-};
-
+}
 export default Displaypic;
+// #app {
+//   height: 100%;
+// }
+// html,
+// body {
+//   position: relative;
+//   height: 100%;
+// }
+
+// body {
+//   background: #eee;
+//   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+//   font-size: 14px;
+//   color: #000;
+//   margin: 0;
+//   padding: 0;
+// }
+
+// .swiper {
+//   width: 100%;
+//   height: 100%;
+// }
+
+// .swiper-slide {
+//   text-align: center;
+//   font-size: 18px;
+//   background: #fff;
+
+//   /* Center slide text vertically */
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+// .swiper-slide img {
+//   display: block;
+//   width: 100%;
+//   height: 100%;
+//   object-fit: cover;
+// }
+
+// .swiper {
+//   width: 100%;
+//   height: 300px;
+//   margin: 20px auto;
+// }
+// .append-buttons {
+//   text-align: center;
+//   margin-top: 20px;
+// }
+
+// .append-buttons button {
+//   display: inline-block;
+//   cursor: pointer;
+//   border: 1px solid #007aff;
+//   color: #007aff;
+//   text-decoration: none;
+//   padding: 4px 10px;
+//   border-radius: 4px;
+//   margin: 0 10px;
+//   font-size: 13px;
+// }
+// 

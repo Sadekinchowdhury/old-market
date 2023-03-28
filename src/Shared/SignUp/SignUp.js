@@ -94,7 +94,7 @@ const SignUp = () => {
                 <img className='w-full' src="https://i.ibb.co/1RJmRzZ/download-2-removebg-preview-1.png" alt="" />
             </div>
 
-            <div className='bg-white p-10 m-10 card '>
+            <div className='bg-white lg:w-96 p-10 m-10 card '>
                 <h1 className='text-4xl text-green-700 text-center font-bold'>Signup</h1>
                 <form onSubmit={handleSubmit(handlsignup)}>
 

@@ -9,7 +9,9 @@ const Home = () => {
     return (
         <div>
 
-            <Displaypic></Displaypic>
+            <div className=''>
+                <Displaypic></Displaypic>
+            </div>
             <Category></Category>
             <Addvirtize></Addvirtize>
 

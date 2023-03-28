@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 function App() {
 
   return (
-    <div className="  bg-black mx-auto">
+    <div className=" from-gray-900 to-gray-600 bg-gradient-to-r mx-auto">
       <RouterProvider router={routes}></RouterProvider>
       <ToastContainer></ToastContainer>
     </div>
