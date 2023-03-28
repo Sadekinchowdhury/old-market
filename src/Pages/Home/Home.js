@@ -1,4 +1,5 @@
 import React from 'react';
+import Shopings from '../../Shoping/Shopings';
 import Addvirtize from '../AdvirtiseItem/Addvirtize';
 import Category from './Category';
 import Displaypic from './Displaypic';
@@ -9,9 +10,9 @@ const Home = () => {
     return (
         <div>
 
-            <div className=''>
-                <Displaypic></Displaypic>
-            </div>
+
+            <Displaypic></Displaypic>
+            <Shopings></Shopings>
             <Category></Category>
             <Addvirtize></Addvirtize>
 
