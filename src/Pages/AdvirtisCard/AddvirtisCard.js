@@ -25,8 +25,8 @@ const AddvirtisCard = ({ product, setBooking }) => {
         <section>
             {product.advertise || !product.soldStatus ?
 
-                <div className=" bg-base-100 border-2 shadow-xl">
-                    <figure><img className='w-full h-64 px-3 py-2' src={picture} alt="" /></figure>
+                <div className="card rounded-none bg-base-100   shadow-2xl">
+                    <figure><img className='w-2/3 h-64 px-3  py-2' src={picture} alt="" /></figure>
                     <div className="card-body">
                         <h2 className="card-title">{name}</h2>
                         <p className='text-blue-700 font-semibold'>price: ${price}</p>
@@ -64,10 +64,10 @@ const AddvirtisCard = ({ product, setBooking }) => {
                             <div>
                                 {
                                     user?.email ? <>
-                                        <label onClick={() => setBooking(product)} htmlFor="booking-modal" className="btn btn-info btn-sm">Book</label>
+                                        <label onClick={() => setBooking(product)} htmlFor="booking-modal" className="bg-blue-500 hover:bg-blue-700 text-white text-center py-2 px-4 rounded">Book</label>
                                     </> :
                                         <>
-                                            <Link to='/login'> <button className='btn btn-error btn-sm'>
+                                            <Link to='/login'> <button className='bg-blue-500 hover:bg-blue-700 text-white text-center py-2 px-4 rounded'>
                                                 Book
                                             </button></Link>
                                         </>

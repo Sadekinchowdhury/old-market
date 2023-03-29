@@ -36,14 +36,14 @@ const Addvirtize = () => {
     // })
 
     return (
-        <section className='py-10'>
+        <section className='lg:py-10 lg:w-11/12 mx-auto'>
 
             <div>
 
-                <p className='text-4xl text-white font-bold text-center py-6'> Advertise </p>
-                <hr />
+                <p className='text-4xl text-white font-bold p-3 py-6'> Advertise </p>
+
             </div>
-            <div className='grid m-8 gap-7 h-1/2  grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
+            <div className='grid m-3 gap-7 h-1/2  grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
                 {
                     products.length &&
                     products?.map(product =>

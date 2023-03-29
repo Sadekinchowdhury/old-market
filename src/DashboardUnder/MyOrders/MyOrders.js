@@ -32,13 +32,13 @@ const MyOrders = () => {
 
     return (
         <div className=''>
-            <h1 className='mb-7 text-3xl text-orange-600 font-bold'>My Orders</h1>
-            <div className="overflow-x-auto">
+            {/* <h1 className='mb-7 text-3xl text-orange-600 font-bold'>My Orders</h1> */}
+            <div className="overflow-x-auto bg-gray-500 m-3">
                 <table className="table  w-full">
 
                     <thead>
                         <tr>
-                            <th></th>
+                            <th className=''>No</th>
                             <th>Name</th>
                             <th>ItemName</th>
 
@@ -65,7 +65,7 @@ const MyOrders = () => {
                                     </div>
                                 </td>
 
-                                <td>{book.itemname}</td>
+                                <td className=''>{book.itemname}</td>
 
                                 <td>{book.price}</td>
 

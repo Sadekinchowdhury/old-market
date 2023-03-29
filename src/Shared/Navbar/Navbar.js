@@ -1,9 +1,10 @@
 import { React, useContext, useState } from 'react';
 import { Link } from 'react-router-dom'
 import { motion } from "framer-motion"
-import { FaSearch } from 'react-icons/fa'
+import { FaSearch, FaUser } from 'react-icons/fa'
 
 import { AuthContext } from '../../Context/AuthProvider';
+import { useQuery } from '@tanstack/react-query';
 
 
 
@@ -14,7 +15,6 @@ const variants = {
 
 const Navbar = () => {
     const { user, LogOut } = useContext(AuthContext)
-    const [isOpen, setIsOpen] = useState(false)
 
     const handlLogout = () => {
         LogOut()
@@ -82,10 +82,10 @@ const Navbar = () => {
             <div className="dropdown dropdown-end lg:mr-7 items-center justify-center text-black">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                     <div className="w-10 rounded-full">
-                        <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" alt='' />
+                        <FaUser className='w-10 h-10 rounded-full border-b-gray-100  bg-white'></FaUser>
                     </div>
                 </label>
-                <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-32">
                     <li>
                         <a className="justify-between hover:btn-ghost">
                             Profile
@@ -99,9 +99,9 @@ const Navbar = () => {
 
                             <>
 
-                                <Link onClick={handlLogout} className="bg-white px-5 btn font-bold text-1xl lg:mr-7 lg:hover:bg-orange-200  ">SignOut</Link>
+                                <Link onClick={handlLogout} className="">SignOut</Link>
                             </>
-                            : <Link className='font-bold text-1xl lg:mr-7 lg:hover:bg-orange-300 lg:rounded-xl' to='/login'>Login</Link>
+                            : <Link className='' to='/login'>Login</Link>
 
                         }
                     </li>

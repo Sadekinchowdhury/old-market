@@ -14,10 +14,7 @@ const Allusers = () => {
                 }
             })
             const data = await res.json()
-
-
             return data;
-
         }
     })
 

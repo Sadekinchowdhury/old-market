@@ -21,7 +21,7 @@ const DashBoard = () => {
 
             <div className="drawer drawer-mobile">
                 <input id="das-drawer" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content">
+                <div className="drawer-content bg-slate-400">
                     <Outlet></Outlet>
                     {/* <!-- Page content here --> */}
 
