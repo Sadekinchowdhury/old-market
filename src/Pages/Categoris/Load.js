@@ -47,7 +47,7 @@ const Load = ({ allcat, setBooking }) => {
 
                     <div className="avatar">
                         <div className="w-10 rounded-full">
-                            <img className='' src="https://placeimg.com/192/192/people" alt='' />
+                            <img className='' src={user?.photoURL} alt='' />
 
                         </div>
                         <p className='ml-3 text-sm font-bold'>
@@ -74,7 +74,8 @@ const Load = ({ allcat, setBooking }) => {
                     </div>
 
                     <div>
-                        {!allcat?.soldStatus ? <>  <label onClick={() => setBooking(allcat)} htmlFor="booking-modal" className="btn btn-info btn-sm">Book now</label>
+                        {!allcat?.soldStatus ? <>  <label onClick={() => setBooking(allcat)} htmlFor="booking-modal" className="btn btn-outline btn-primary">Book</label>
+
                         </> :
                             <>
                                 <button className=' btn btn-disabled btn-warning'>SoldOut</button>
