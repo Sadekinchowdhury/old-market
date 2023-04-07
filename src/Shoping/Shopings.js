@@ -5,11 +5,11 @@ import { BiRefresh } from 'react-icons/bi'
 
 const Shopings = () => {
     return (
-        <div className='m-4  items-center justify-center'>
+        <div className='m-4 pt-4 items-center justify-center'>
             <div className='grid lg:w-2/3 mx-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-4 m-4 gap-3 '>
 
                 <div className="card rounded-none text-center justify-center items-center  p-5 bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 shadow-xl">
-                    <figure>  <FaShoppingCart className='w-14 h-14 mb-2'></FaShoppingCart></figure>
+                    <figure><FaShoppingCart className='w-14 h-14 mb-2'></FaShoppingCart></figure>
                     <div className="">
                         <h2 className="card-title text-center">Free Shopping</h2>
                     </div>

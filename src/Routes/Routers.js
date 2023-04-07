@@ -4,31 +4,23 @@ import AddProducts from '../DashboardUnder/AddProducts/AddProducts';
 import AllBuyers from '../DashboardUnder/Allbuyer/Allbuyers';
 import AllSellers from '../DashboardUnder/Allsellers/Allsellers';
 import Allsellers from '../DashboardUnder/Allsellers/Allsellers';
-
 import Allusers from '../DashboardUnder/Alluser/Allusers';
 import MyOrders from '../DashboardUnder/MyOrders/MyOrders';
 import Payment from '../DashboardUnder/MyOrders/Payment';
-
 import MyProducts from '../DashboardUnder/MyProducts/MyProducts';
 import DashBoard from '../Laout/Dahboard';
-
 import Main from '../Laout/Main';
 import AddvirtisCardModal from '../Pages/AddvirtisCardModal/AddvirtisCardModal';
 import Addvirtize from '../Pages/AdvirtiseItem/Addvirtize';
 import BadRoutes from '../Pages/BadRoute/BadRoutes';
 import Blog from '../Pages/Blog/Blog';
 import AllCategoris from '../Pages/Categoris/Categoris';
-
 import Load from '../Pages/Categoris/Load';
-
-
-
 import Home from '../Pages/Home/Home';
 import Login from '../Shared/Login/Login';
 import SignUp from '../Shared/SignUp/SignUp';
 import AdminRoutes from './AdminRoutes';
 import BuyerRoute from './BuyerRoute/BuyerRoute';
-
 import PrivetRoute from './PrivetRoutes';
 import SellerRoutes from './SelleRoute/SellerRoutes';
 

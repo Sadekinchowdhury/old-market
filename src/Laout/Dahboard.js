@@ -29,7 +29,7 @@ const DashBoard = () => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="das-drawer" className="drawer-overlay"></label>
-                    <ul className="menu p-4 bg-base-100 text-base-content">
+                    <ul className="menu p-4 flex bg-base-100 text-base-content">
                         {/* <!-- Sidebar content here --> */}
 
 
