@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Authprovide from './Context/AuthProvider';
 import 'react-toastify/dist/ReactToastify.css';
-import ScrollAnimation from './ScrollAnimation/ScrollAnimation';
+
 
 import {
   QueryClient, QueryClientProvider
@@ -21,7 +21,7 @@ root.render(
     <QueryClientProvider client={queryClient}>
       <Authprovide>
         <App />
-        <ScrollAnimation></ScrollAnimation>
+
       </Authprovide>
     </QueryClientProvider>
 

@@ -23,6 +23,7 @@ import AdminRoutes from './AdminRoutes';
 import BuyerRoute from './BuyerRoute/BuyerRoute';
 import PrivetRoute from './PrivetRoutes';
 import SellerRoutes from './SelleRoute/SellerRoutes';
+import ProfileEdit from '../Pages/Profile/Profile';
 
 const routes = createBrowserRouter([
 
@@ -33,6 +34,10 @@ const routes = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>
+            },
+            {
+                path: '/profile',
+                element: <ProfileEdit />
             },
             {
                 path: '/signup',
