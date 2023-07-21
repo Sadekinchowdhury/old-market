@@ -36,17 +36,18 @@ const Addvirtize = () => {
     // })
 
     return (
-        <section className='lg:py-10 lg:w-11/12 mx-auto'>
+        <section className=' lg:w-11/12 mx-auto'>
 
-            <div>
+            <div className='py-5'>
 
-                <p className='text-4xl text-white font-bold p-3 py-6'> Advertise </p>
+                <p className='text-2xl text-black font-bold p-3 '> Recent Product </p>
+                <hr className='border border-black w-2/5 ' />
 
             </div>
             <div className='grid m-3 gap-7 h-1/2  grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
                 {
                     products.length &&
-                    products?.map(product =>
+                    products?.slice(0, 8).map(product =>
 
                         <AddvirtisCard
                             key={product._id}

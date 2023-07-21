@@ -13,8 +13,8 @@ const Home = () => {
 
             <div className='flex  flex-col lg:flex-row w-11/12 gap-5 h-auto lg:h-[400px] items-center  my-4 mx-auto'>
 
-                <div className='w-full  h-full justify-center items-center flex  bg-white rounded-md shadow-2xl lg:w-8/12'>
-                    <Displaypic></Displaypic>
+                <div className='w-full  h-full   bg-white rounded-md shadow-2xl lg:w-8/12'>
+                    <Displaypic />
                 </div>
                 <div className='w-full h-full lg:w-4/12'>
                     <SideBanner />
@@ -32,9 +32,11 @@ const Home = () => {
                     <Product className='w-full lg:w-6/12' />
                 </div>
             </div>
+            <div>
+                <Category></Category>
+            </div>
 
 
-            <Category></Category>
             <Addvirtize></Addvirtize>
             <Exptra></Exptra>
 

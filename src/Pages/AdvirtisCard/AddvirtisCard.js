@@ -25,8 +25,8 @@ const AddvirtisCard = ({ product, setBooking }) => {
         <section>
             {product.advertise || !product.soldStatus ?
 
-                <div className="card rounded-none bg-base-100   shadow-2xl">
-                    <figure><img className='w-2/3 h-64 px-3  py-2' src={picture} alt="" /></figure>
+                <div className="card rounded-none border border-gray-300 bg-base-300   shadow-2xl">
+                    <figure><img className='w-2/3 h-40 px-3  py-2' src={picture} alt="" /></figure>
                     <div className="card-body">
                         <h2 className="card-title">{name}</h2>
                         <p className='text-blue-700 font-semibold'>price: ${price}</p>
@@ -34,11 +34,11 @@ const AddvirtisCard = ({ product, setBooking }) => {
                         <p className='text-orange-900'>Used time: {usedtime}</p>
                         <p className=''>posted time: {postedtime}</p>
 
-                        <div className="flex mt-4 justify-between">
+                        <div className="flex pt-2  gap-3 justify-between">
 
 
                             <div className="avatar">
-                                <div className="w-10 rounded-full">
+                                <div className="w-8 h-8 rounded-full">
                                     <img className='' src={user?.photoURL} alt='' />
 
                                 </div>
