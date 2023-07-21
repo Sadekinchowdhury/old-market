@@ -6,6 +6,8 @@ import { AuthContext } from '../../Context/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
 import { loadStripe } from '@stripe/stripe-js';
 import { FiMenu, FiX } from 'react-icons/fi';
+import { RiArrowDropDownLine, RiHomeLine, RiUserLine, RiSettingsLine, RiArrowLeftCircleFill } from 'react-icons/ri';
+import { SearchOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/icons';
 
 
 
@@ -133,6 +135,32 @@ const Navbar = () => {
                         <li>
                             <Link className='hover:bg-gray-200 transition duration-400  py-2 px-3 hover:rounded-sm text-[15px] font-semibold' to='/blog'>Blog</Link>
                         </li>
+
+                        <div className="dropdown relative items-center  justify-center text-black">
+                            <label onClick={() => setDrop(!drop)} tabIndex={0} className="cursor-pointer ">
+                                <div className="flex items-center justify-between  text-[15px]">
+
+                                    <h1 className='text-[15px] font-semibold'>
+                                        Shop
+                                    </h1>
+                                    <div>
+                                        <RiArrowDropDownLine size={20} className={`h-5 w-5 ${drop ? 'transform rotate-180' : ''}`} />
+                                    </div>
+
+                                </div>
+                            </label>
+                            {
+                                drop && <ul tabIndex={0} className="menu absolute  border border-gray-200 top-7 gap-2 right-0 menu-compact dropdown-content mt-3 shadow bg-base-100 rounded-[4px] py-1  w-[100px]">
+
+
+
+                                    <li>Xiami</li>
+                                    <li>Xiami</li>
+                                    <li>Xiami</li>
+
+                                </ul>
+                            }
+                        </div>
                         <li>
                             {
                                 user && <Link className='hover:bg-gray-200 transition duration-400  py-2 px-3 hover:rounded-sm text-[15px] font-semibold' to='/dashboard'>Dashbored</Link>
@@ -157,13 +185,15 @@ const Navbar = () => {
                             &#128269;
                         </span> */}
 
-                        <FaSearch onClick={handleSearchIconClick} size={25} color='black' />
+                        {/* <FaSearch  size={25} color='black' /> */}
+                        <SearchOutlined onClick={handleSearchIconClick} className='text-2xl cursor-pointer' />
                     </div>
                     {/* <FaUser size={28} color='black' className='cursor-pointer' /> */}
                     <div className="dropdown relative items-center justify-center text-black">
                         <label onClick={() => setDrop(!drop)} tabIndex={0} className="cursor-pointer">
                             <div className="">
-                                <FaUser size={25} className=''></FaUser>
+                                {/* <FaUser size={25} className=''></FaUser> */}
+                                <UserOutlined className='text-2xl' />
                             </div>
                         </label>
                         {
@@ -181,7 +211,7 @@ const Navbar = () => {
                                 <hr className='border border-black mb-2' />
                                 <li className=''>
                                     <div className='flex'>
-                                        <FaUser size={20} color='black' />
+                                        <UserOutlined className='text-xl' />
                                         <div>
                                             <Link to='/profile'>My Account</Link>
                                         </div>
@@ -189,8 +219,9 @@ const Navbar = () => {
                                 </li>
                                 <li className=''>
                                     <div className='flex'>
-                                        <MdShoppingCart size={20} color='black' />
-                                        <Link>My Order</Link>
+                                        {/* <MdShoppingCart size={20} color='black' /> */}
+                                        <ShoppingCartOutlined className='text-xl' />
+                                        <Link to='/dashboard/myorders'>My Order</Link>
                                     </div>
                                 </li>
                                 <li>
@@ -214,17 +245,17 @@ const Navbar = () => {
                     </div>
 
 
-                    <div>
-                        <div className='relative'>
-                            <FaShoppingCart size={25} color='black' className='cursor-pointer  ' />
 
-                            <p className='text-red-700 absolute -top-4 left-6  text-xl font-bold'>
-                                1
-                            </p>
-
-                        </div>
+                    <div className='relative'>
+                        {/* <FaShoppingCart size={25} color='black' className='cursor-pointer  ' /> */}
+                        <ShoppingCartOutlined className='text-2xl cursor-pointer' />
+                        <p className='text-red-700 absolute -top-1 left-6   font-bold'>
+                            1
+                        </p>
 
                     </div>
+
+
                 </div>
 
             </div>
@@ -291,7 +322,7 @@ const Navbar = () => {
                                 <div className='flex hover:bg-slate-200'>
                                     <FaUser size={20} color='black' />
                                     <div>
-                                        <Link>My Account</Link>
+                                        <Link to='/dashboard/myorders'>My Account</Link>
                                     </div>
                                 </div>
                             </li>
