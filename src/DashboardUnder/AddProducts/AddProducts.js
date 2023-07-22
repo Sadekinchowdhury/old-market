@@ -13,13 +13,10 @@ const AddProducts = () => {
     const navigate = useNavigate()
     const { register, formState: { errors }, handleSubmit } = useForm()
 
-
-
     const date = new Date().toLocaleDateString('en-us', { year: "numeric", month: "short", day: "numeric" });
 
 
     const imageHostkeyk = process.env.REACT_APP_IMG_KEY
-
     const { data: categorisBrand = [], refetch } = useQuery({
         queryKey: ['categorisBrand'],
         queryFn: async () => {
@@ -30,31 +27,22 @@ const AddProducts = () => {
                 }
             })
             const data = await res.json()
-
             return data;
         }
     })
 
     const handlAddProduct = data => {
-
-        console.log(data)
-
-
         const image = data.img[0]
-
         const formData = new FormData()
         formData.append('image', image)
         const url = `https://api.imgbb.com/1/upload?key=${imageHostkeyk}`
         fetch(url, {
             method: 'POST',
             body: formData
-
-
         })
-
             .then(res => res.json())
             .then(imgData => {
-                console.log(imgData)
+
                 if (imgData.success) {
                     console.log(imgData.data.url)
                 }
@@ -73,9 +61,7 @@ const AddProducts = () => {
                     postedtime: date,
                     sellername: user?.displayName,
                     originalprice: data.originalprice,
-                    description: data.description,
-
-
+                    description: data.description
                 }
 
                 fetch('https://old-server.vercel.app/products', {
@@ -107,16 +93,50 @@ const AddProducts = () => {
 
     return (
 
-        <div className='flex justify-center mt-10 p-10 items-center'>
-            <div className='w-96 bg-white p-7'>
-                <h1 className='text-4xl py-4 font-bold text-center'>Add products</h1>
-                <form onSubmit={handleSubmit(handlAddProduct)}>
+        <div className='lg:p-10 p-3'>
 
-                    <div className="form-control w-full max-w-xs">
+            <h1 className='text-2xl py-4 font-bold text-left'>Add products</h1>
+            <form onSubmit={handleSubmit(handlAddProduct)}>
+
+                <div className='grid grid-cols-1 md:grid-cols-3 gap-4 py-3'>
+                    <div className="form-control w-full ">
+                        <input type="text" {...register("name")} placeholder='Product Name' className="py-2 p-1 rounded-md border border-gray-400 mb-2 w-full " />
+                    </div>
+
+                    <div className="form-control w-full ">
+                        <input type="text" {...register("usedtime")} placeholder='Usedtime/New' className="py-2 p-1 border border-gray-400 rounded-md  w-full mb-2 " />
+                    </div>
+                    <div className="form-control w-full ">
+                        <input type="text" {...register("location")} placeholder='Add location' className="py-2 p-1 border border-gray-400 rounded-md  w-full mb-2 " />
+                    </div>
+                </div>
+
+
+                <div className='grid grid-cols-1 md:grid-cols-3 gap-3 py-3'>
+                    <div className="form-control w-full ">
+                        <input type="file" {...register("img", {
+                            // required: 'img is required'
+                        })} placeholder='Add Image' className="py-2 p-1 border border-gray-400 rounded-md  mb-2 w-full " />
+                    </div>
+
+
+                    <div className="form-control w-full ">
+                        <input type="number" {...register("price")} placeholder='Price' className="py-2 p-1 border border-gray-400 rounded-md  w-full mb-2 " />
+                    </div>
+
+                    <div className="form-control w-full ">
+                        <input type="Phone Number" {...register("originalprice")} placeholder='Orginal price' className="py-2 p-1 border border-gray-400 rounded-md  w-full mb-2 " />
+                    </div>
+                </div>
+
+                <div className='flex flex-col gap-6 lg:flex-row'>
+
+
+                    <div className="form-control w-full lg:w-4/12 ">
                         <select
                             type='text'{...register("brand")}
-                            className="select select-bordered mb-2 w-full">
-                            <option selected disabled>Select Category</option>
+                            className="border border-gray-400 py-2 rounded-md mb-2 w-full lg:w-1/2">
+                            <option selected hidden>Select Category</option>
                             {
                                 categorisBrand.map(categorybrand =>
                                     <option value={categorybrand._id}>{categorybrand.brand}</option>
@@ -124,57 +144,20 @@ const AddProducts = () => {
                             }</select>
                     </div>
 
-                    <div className="form-control w-full max-w-xs">
-                        <input type="text" {...register("name")} placeholder='name' className="input mb-2 input-bordered w-full max-w-xs" />
+                    <div className="form-control  w-full lg:w-8/12 ">
+                        <input type="text" {...register("description")} placeholder='Add description' className="h-40 p-1 border border-gray-400 rounded-md   w-full mb-2 " />
                     </div>
-                    {/* 
-                    <div className="form-control w-full max-w-xs">
-                        <input type="text" {...register('sellername')}
-                            defaultValue={user?.displayName}
-                            placeholder='sellername' className="input input-bordered w-full max-w-xs" />
-                    </div> */}
+                </div>
 
-                    <div className="form-control w-full max-w-xs">
-                        <input type="text" {...register("location")} placeholder='add location' className="input input-bordered w-full mb-2 max-w-xs" />
-                    </div>
+                <div className='flex py-3 items-center justify-center'>
+                    <input className='btn btn-accent ' type="submit" />
+                </div>
 
 
 
-                    <div className="form-control w-full max-w-xs">
-                        <input type="text" {...register("usedtime")} placeholder='usedtime' className="input input-bordered w-full mb-2 max-w-xs" />
-                    </div>
-
-                    <div className="form-control w-full max-w-xs">
-                        <input type="number" {...register("price")} placeholder='price' className="input input-bordered w-full mb-2 max-w-xs" />
-                    </div>
-
-                    <div className="form-control w-full max-w-xs">
-                        <input type="number" {...register("originalprice")} placeholder='Orginal price' className="input input-bordered w-full mb-2 max-w-xs" />
-                    </div>
-
-                    {/* <div className="form-control w-full max-w-xs">
-                        <input type="email" {...register("email")}
-                            defaultValue={user?.email}
-                            className="input input-bordered w-full max-w-xs" />
-                    </div> */}
+            </form>
 
 
-                    <div className="form-control w-full max-w-xs">
-                        <input type="file" {...register("img", {
-                            // required: 'img is required'
-                        })} placeholder='img add' className="input input-bordered mb-2 w-full max-w-xs" />
-                    </div>
-
-                    <div className="form-control w-full max-w-xs">
-                        <input type="text" {...register("description")} placeholder='add description' className="input input-bordered w-full mb-2 max-w-xs" />
-                    </div>
-
-                    <input className='btn btn-accent w-full' type="submit" />
-
-                </form>
-
-
-            </div >
         </div >
     );
 };

@@ -114,7 +114,7 @@ const Navbar = () => {
 
         //     </div>
         <div className='bg-white py-4  shadow-2xl '>
-            <div className='hidden lg:flex  flex-col w-11/12 mx-auto lg:flex-row items-center '>
+            <div className='hidden lg:flex z-50 flex-col w-11/12 mx-auto lg:flex-row items-center '>
                 <div className='basis-2/12 flex justify-center items-center'>
                     <div>
                         <img className='w-10 cursor-pointer lg:flex hidden bg-white rounded-full h-10' src="https://i.ibb.co/pLZCHbJ/download-removebg-preview.png" alt="" />
@@ -168,7 +168,7 @@ const Navbar = () => {
                         </li>
                     </ul>
                 </div>
-                <div className={`${expanded && 'basis-4/12'}  gap-4 flex items-center justify-center`}>
+                <div className={`${expanded && 'basis-4/12'} z-50  gap-4 flex items-center justify-center`}>
                     <div
                         className={`search-container ${expanded ? 'w-[250px] z-50 border' : 'w-10'
                             } transition-all duration-300  rounded-lg overflow-hidden flex items-center`}
@@ -260,7 +260,7 @@ const Navbar = () => {
 
             </div>
 
-            <nav className="flex items-center md:hidden  justify-between py-3 px-4 w-full text-white">
+            <nav className="flex items-center md:hidden  justify-between   px-4 w-full text-white">
 
 
                 {/* Mobile Menu */}
@@ -275,7 +275,7 @@ const Navbar = () => {
 
                 {/* Mobile Menu Links */}
                 {isOpen && (
-                    <div className="md:hidden absolute top-0 left-0 w-full flex justify-between transition duration-1000 h-auto z-50 bg-gray-800 p-4">
+                    <div className="md:hidden  absolute top-0 left-0 w-full flex justify-between transition duration-1000 z-10 bg-gray-800 p-4">
 
                         <ul className=''>
                             <li className='my-4'>

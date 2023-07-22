@@ -68,69 +68,73 @@ const MyProducts = () => {
     }
 
     return (
-        <div>
-            <h1 className='mb-7 text-3xl text-orange-600 font-bold'>MY products </h1>
-            <div className="overflow-x-auto">
-                <table className="table w-full">
+        <div className='w-11/12 mx-auto py-10'>
+            <h1 className='text-2xl font-bold py-2'>MY products </h1>
+            {
+                products?.length ? <div className="overflow-x-auto ">
+                    <table className="table w-full">
 
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>price</th>
-                            <th>date</th>
-                            <th>sale status</th>
-                            <th>Delete Product</th>
-                            <th>add advirtised </th>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Name</th>
+                                <th>price</th>
+                                <th>date</th>
+                                <th>sale status</th>
+                                <th>Delete Product</th>
+                                <th>add advirtised </th>
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {products?.length &&
-                            products?.map((product, i) => <tr>
-                                <th>{i + 1}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {products?.length &&
+                                products?.map((product, i) => <tr>
+                                    <th>{i + 1}</th>
 
 
-                                <td>{product.name}</td>
-                                <td> ${product.price}</td>
-                                <td>{product.postedtime}</td>
-                                <td> {
-                                    product?.soldStatus ? <> <p>sold</p>
-                                    </> :
-                                        <>
-                                            <p>unsold</p>
-                                        </>
-
-                                } </td>
-                                <td>
-                                    <button onClick={() => handlDeleteProducts(product._id)} className='btn btn-sm'>Delete</button>
-                                </td>
-                                <td>
-                                    {
-                                        product?.advertise && !product?.soldStatus ? <>
-                                            <button onClick={() => handleAdvertiseProduct(product._id)} className='btn btn-primary btn-sm'>add advirtised</button>
+                                    <td>{product.name}</td>
+                                    <td> ${product.price}</td>
+                                    <td>{product.postedtime}</td>
+                                    <td> {
+                                        product?.soldStatus ? <> <p>sold</p>
                                         </> :
-
                                             <>
-                                                <button onClick={() => handleAdvertiseProduct(product._id)}
-
-                                                    className='btn btn-primary 
-                                                
-                                                btn-sm'>add advirtised</button>
+                                                <p>unsold</p>
                                             </>
 
+                                    } </td>
+                                    <td>
+                                        <button onClick={() => handlDeleteProducts(product._id)} className='btn btn-sm'>Delete</button>
+                                    </td>
+                                    <td>
+                                        {
+                                            product?.advertise && !product?.soldStatus ? <>
+                                                <button onClick={() => handleAdvertiseProduct(product._id)} className='btn btn-primary btn-sm'>add advirtised</button>
+                                            </> :
+
+                                                <>
+                                                    <button onClick={() => handleAdvertiseProduct(product._id)}
+
+                                                        className='btn btn-primary 
+                                                
+                                                btn-sm'>add advirtised</button>
+                                                </>
 
 
-                                    }
+
+                                        }
 
 
-                                </td>
+                                    </td>
 
-                            </tr>)
-                        }
-                    </tbody>
-                </table>
-            </div>
+                                </tr>)
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                    : <img className='w-full h-full' src="https://img.freepik.com/free-vector/no-data-concept-illustration_114360-536.jpg?w=2000" alt="" />
+            }
+
         </div>
     );
 };

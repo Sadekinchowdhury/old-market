@@ -40,8 +40,8 @@ const Addvirtize = () => {
 
             <div className='py-5'>
 
-                <p className='text-2xl text-black font-bold p-3 '> Recent Product </p>
-                <hr className='border border-black w-2/5 ' />
+                <p className='text-2xl text-center text-black font-bold p-3 '> Recent Product </p>
+                <hr className='border mx-auto pl-4 border-black w-2/5 ' />
 
             </div>
             <div className='grid m-3 gap-7 h-1/2  grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>

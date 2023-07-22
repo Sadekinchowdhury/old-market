@@ -24,6 +24,7 @@ import BuyerRoute from './BuyerRoute/BuyerRoute';
 import PrivetRoute from './PrivetRoutes';
 import SellerRoutes from './SelleRoute/SellerRoutes';
 import ProfileEdit from '../Pages/Profile/Profile';
+import Dashboard from '../DashboardUnder/Dashboard/Dashboard';
 
 const routes = createBrowserRouter([
 
@@ -75,6 +76,10 @@ const routes = createBrowserRouter([
         path: '/dashboard',
         element: <PrivetRoute><DashBoard></DashBoard></PrivetRoute>,
         children: [
+            {
+                path: '/dashboard',
+                element: <Dashboard />
+            },
             {
                 path: '/dashboard/myorders',
                 element: <BuyerRoute><MyOrders></MyOrders></BuyerRoute>
