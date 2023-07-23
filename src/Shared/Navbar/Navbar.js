@@ -1,4 +1,4 @@
-import { React, useContext, useState } from 'react';
+import { React, useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import { FaSearch, FaShoppingCart, FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa'
 import { MdShoppingCart } from 'react-icons/md';
@@ -8,6 +8,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { RiArrowDropDownLine, RiHomeLine, RiUserLine, RiSettingsLine, RiArrowLeftCircleFill } from 'react-icons/ri';
 import { SearchOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/icons';
+import { motion } from 'framer-motion';
 
 
 
@@ -29,21 +30,32 @@ const Navbar = () => {
     const handleSearchIconClick = () => {
         setExpanded(!expanded);
     };
-    const menue = <>
 
-
-        <Link className='font-bold lg:mr-7 lg:hover:bg-gray-400 lg:rounded-xl' to='/'>Home</Link>
-        <Link className='font-bold text-1xl lg:mr-7 lg:hover:bg-gray-400 lg:rounded-xl' to=''>Contact us</Link>
-        <Link className='font-bold text-1xl lg:mr-7 lg:hover:bg-gray-400 lg:rounded-xl' to=''>get</Link>
-        <Link className='font-bold text-1xl lg:mr-7 lg:hover:bg-gray-400 lg:rounded-xl' to='/blog'>Blog</Link>
-        <Link className='font-bold text-1xl lg:mr-7 lg:hover:bg-gray-400 lg:rounded-xl' to='/dashboard'>Dashbored</Link>
-
-
-    </>
     const [drop, setDrop] = useState(false)
 
+
+
+    const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light")
+    useEffect(() => {
+        localStorage.setItem("theme", theme)
+        const localTheme = localStorage.getItem("theme")
+        document.querySelector("html").setAttribute("data-theme", localTheme)
+    }, [theme])
+
+    const handleToggle = (e) => {
+        if (e.target.checked) {
+            setTheme("dark")
+        }
+        else {
+            setTheme("light")
+        }
+
+    }
+
+
+
     return (
-        //     <div className="navbar flex flex-wrap
+        //     <motion.div className="navbar flex flex-wrap
         //     items-center
         //     justify-between
         //     w-full
@@ -55,9 +67,9 @@ const Navbar = () => {
 
 
         //     >
-        //         <div className=" ">
+        //         <motion.div className=" ">
 
-        //             <div className="dropdown text-black">
+        //             <motion.div className="dropdown text-black">
         //                 <label tabIndex={0} className="btn btn-ghost lg:hidden">
 
         //                     <svg className="h-5 bg-white w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
@@ -65,29 +77,29 @@ const Navbar = () => {
         //                 <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
         //                     <li>{menue}</li>
         //                 </ul>
-        //             </div>
+        //             </motion.div>
 
         //             <img className='w-16 lg:flex hidden bg-white rounded-full h-16' src="https://i.ibb.co/pLZCHbJ/download-removebg-preview.png" alt="" /> <Link to='/' className="btn btn-ghost lg:flex hidden  normal-case text-2xl text-white">  Mobile Bazar  </Link>
 
 
 
-        //         </div>
-        //         <div className='lg:flex hidden'>
+        //         </motion.div>
+        //         <motion.div className='lg:flex hidden'>
         //             <ul className='flex'> <li>  <input type="text" className='input rounded-lg w-96' placeholder='Find by product name'></input>   </li>  </ul>
         //             <FaSearch className='w-10 h-10 ml-2'></FaSearch>
-        //         </div>
-        //         <div className="hidden lg:flex">
+        //         </motion.div>
+        //         <motion.div className="hidden lg:flex">
         //             <ul className="menu menu-horizontal p-0">
 
         //                 <li>{menue}</li>
         //             </ul>
-        //         </div>
+        //         </motion.div>
 
-        //         <div className="dropdown dropdown-end lg:mr-7 items-center justify-center text-black">
+        //         <motion.div className="dropdown dropdown-end lg:mr-7 items-center justify-center text-black">
         //             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-        //                 <div className="w-10 rounded-full">
+        //                 <motion.div className="w-10 rounded-full">
         //                     <FaUser className='w-10 h-10 rounded-full border-b-gray-100  bg-white'></FaUser>
-        //                 </div>
+        //                 </motion.div>
         //             </label>
         //             <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-32">
         //                 <li>
@@ -110,21 +122,48 @@ const Navbar = () => {
         //                     }
         //                 </li>
         //             </ul>
-        //         </div>
+        //         </motion.div>
 
-        //     </div>
-        <div className='bg-white py-4  shadow-2xl '>
-            <div className='hidden lg:flex z-50 flex-col w-11/12 mx-auto lg:flex-row items-center '>
-                <div className='basis-2/12 flex justify-center items-center'>
-                    <div>
+        //     </motion.div>
+        <motion.div className=' py-4  shadow-2xl '>
+            <motion.div className='hidden lg:flex z-50 flex-col w-11/12 mx-auto lg:flex-row items-center '>
+                <motion.div
+                    initial={{ opacity: 0, x: -100 }}
+                    animate={{ opacity: 1, x: 0, transition: { duration: 2 } }}
+                    exit={{ opacity: 0, y: 50, transition: { duration: 2 } }}
+
+
+                    className='basis-2/12 flex justify-center items-center'>
+                    <motion.div
+
+                        animate={{
+                            rotate: [0, 360], // Rotate from 0 degrees to 360 degrees
+                            // Change background color
+                            // Add a slight shadow
+                        }}
+                        transition={{
+                            duration: 6, // Increase the duration for a slower rotation
+                            repeat: Infinity,
+                            repeatType: 'reverse', // Reverse the animation on each repeat
+                            ease: 'linear', // Use a linear easing function for smooth rotation
+                        }}
+
+                    >
                         <img className='w-10 cursor-pointer lg:flex hidden bg-white rounded-full h-10' src="https://i.ibb.co/pLZCHbJ/download-removebg-preview.png" alt="" />
 
-                    </div>
-                    <div>
+                    </motion.div>
+                    <motion.div>
                         <Link to='/' className="text-[20px] font-semibold">  Mobile Bazar  </Link>
-                    </div>
-                </div>
-                <div className='basis-8/12 flex  items-center justify-center text-center'>
+                    </motion.div>
+                </motion.div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: -100 }}
+                    animate={{ opacity: 1, y: 0, transition: { duration: 2 } }}
+                    exit={{ opacity: 0, y: 50, transition: { duration: 2 } }}
+
+
+                    className='basis-8/12 flex  items-center justify-center text-center'>
                     <ul className='flex-col lg:flex-row flex gap-3 '>
                         <li>
                             <Link className='hover:bg-gray-200 transition duration-400  py-2 px-3 hover:rounded-sm text-[15px] font-semibold' to='/'>Home</Link>
@@ -136,40 +175,47 @@ const Navbar = () => {
                             <Link className='hover:bg-gray-200 transition duration-400  py-2 px-3 hover:rounded-sm text-[15px] font-semibold' to='/blog'>Blog</Link>
                         </li>
 
-                        <div className="dropdown relative items-center  justify-center text-black">
+                        <motion.div className="dropdown relative items-center  justify-center text-black">
                             <label onClick={() => setDrop(!drop)} tabIndex={0} className="cursor-pointer ">
-                                <div className="flex items-center justify-between  text-[15px]">
+                                <motion.div className="flex items-center justify-between  text-[15px]">
 
                                     <h1 className='text-[15px] font-semibold'>
                                         Shop
                                     </h1>
-                                    <div>
+                                    {/* <motion.div>
                                         <RiArrowDropDownLine size={20} className={`h-5 w-5 ${drop ? 'transform rotate-180' : ''}`} />
-                                    </div>
+                                    </motion.div> */}
 
-                                </div>
+                                </motion.div>
                             </label>
-                            {
-                                drop && <ul tabIndex={0} className="menu absolute  border border-gray-200 top-7 gap-2 right-0 menu-compact dropdown-content mt-3 shadow bg-base-100 rounded-[4px] py-1  w-[100px]">
+                            {/* {
+                                drop && <ul tabIndex={0} className="menu absolute px-2  border border-gray-200 top-7 gap-2 right-0 menu-compact dropdown-content mt-3 shadow bg-base-100 rounded-[4px] py-1  w-[100px]">
+
+                                    <Link  className='py-1 px-2 hover:bg-gray-200 hover:border hover:text-orange-700 font-semibold'>Xiami</Link>
+                                    <Link className='py-1 px-2 hover:bg-gray-200 hover:border hover:text-orange-700 font-semibold'>Redmi</Link>
+                                    <Link className='py-1 px-2 hover:bg-gray-200 hover:border hover:text-orange-700 font-semibold'>Sumsung</Link>
 
 
-
-                                    <li>Xiami</li>
-                                    <li>Xiami</li>
-                                    <li>Xiami</li>
 
                                 </ul>
-                            }
-                        </div>
+                            } */}
+                        </motion.div>
                         <li>
                             {
                                 user && <Link className='hover:bg-gray-200 transition duration-400  py-2 px-3 hover:rounded-sm text-[15px] font-semibold' to='/dashboard'>Dashbored</Link>
                             }
                         </li>
                     </ul>
-                </div>
-                <div className={`${expanded && 'basis-4/12'} z-50  gap-4 flex items-center justify-center`}>
-                    <div
+                </motion.div>
+
+                <motion.div
+                    initial={{ opacity: 0, x: 100 }}
+                    animate={{ opacity: 1, x: 0, transition: { duration: 2 } }}
+                    exit={{ opacity: 0, y: 50, transition: { duration: 2 } }}
+
+
+                    className={`${expanded && 'basis-4/12'} z-50  gap-4 flex items-center justify-center`}>
+                    <motion.div
                         className={`search-container ${expanded ? 'w-[250px] z-50 border' : 'w-10'
                             } transition-all duration-300  rounded-lg overflow-hidden flex items-center`}
                     >
@@ -178,104 +224,119 @@ const Navbar = () => {
                             className={`search-bar flex-1 py-2 px-3 outline-none bg-transparent ${!expanded && 'hidden'}`}
                             placeholder="Search..."
                         />
-                        {/* <span
-                            className="search-icon w-10 h-10 cursor-pointer p-2 text-gray-600"
 
-                        >
-                            &#128269;
-                        </span> */}
-
-                        {/* <FaSearch  size={25} color='black' /> */}
                         <SearchOutlined onClick={handleSearchIconClick} className='text-2xl cursor-pointer' />
-                    </div>
+                    </motion.div>
                     {/* <FaUser size={28} color='black' className='cursor-pointer' /> */}
-                    <div className="dropdown relative items-center justify-center text-black">
+                    <motion.div className="dropdown relative items-center justify-center text-black">
                         <label onClick={() => setDrop(!drop)} tabIndex={0} className="cursor-pointer">
-                            <div className="">
+                            <motion.div className="">
                                 {/* <FaUser size={25} className=''></FaUser> */}
                                 <UserOutlined className='text-2xl' />
-                            </div>
+                            </motion.div>
                         </label>
                         {
                             drop && <ul tabIndex={0} className="menu absolute  border border-gray-200 top-7 gap-2 right-0 menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-xl py-3  w-[250px]">
 
-                                <div className=''>
-                                    <div className='flex items-center gap-2 pl-3  mb-3'>
+                                <motion.div className=''>
+                                    <motion.div className='flex items-center gap-2 pl-3  mb-3'>
                                         <img src="" className='w-8 h-8 rounded-full' alt="" />
-                                        <div>
+                                        <motion.div>
                                             <h1 className='text-left font-semibold'>Sadekin Chow</h1>
                                             <p className='text-[12px]'>Chiksha,Bangladesh</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                        </motion.div>
+                                    </motion.div>
+                                </motion.div>
                                 <hr className='border border-black mb-2' />
                                 <li className=''>
-                                    <div className='flex'>
+                                    <motion.div className='flex'>
                                         <UserOutlined className='text-xl' />
-                                        <div>
+                                        <motion.div>
                                             <Link to='/profile'>My Account</Link>
-                                        </div>
-                                    </div>
+                                        </motion.div>
+                                    </motion.div>
                                 </li>
                                 <li className=''>
-                                    <div className='flex'>
+                                    <motion.div className='flex'>
                                         {/* <MdShoppingCart size={20} color='black' /> */}
                                         <ShoppingCartOutlined className='text-xl' />
                                         <Link to='/dashboard/myorders'>My Order</Link>
-                                    </div>
+                                    </motion.div>
                                 </li>
                                 <li>
 
                                     {user?.email ?
 
                                         <>
-                                            <div className='flex'>
+                                            <motion.div className='flex'>
                                                 <FaSignOutAlt size={20} color='black' />
                                                 <Link onClick={handlLogout} className="">SignOut</Link>
-                                            </div>
+                                            </motion.div>
                                         </>
-                                        : <div className='flex'>
+                                        : <motion.div className='flex'>
                                             <FaSignInAlt />  <Link className='' to='/login'>Login</Link>
-                                        </div>
+                                        </motion.div>
 
                                     }
                                 </li>
+                                <li>
+                                    <motion.div className=''>
+                                        <label className="swap justify-center items-center w-8 h-8 swap-rotate">
+
+                                            {/* this hidden checkbox controls the state */}
+                                            <input onChange={handleToggle} type="checkbox" />
+
+                                            {/* sun icon */}
+                                            <svg className="swap-on fill-current w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z" /></svg>
+
+                                            {/* moon icon */}
+                                            <svg className="swap-off fill-current w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" /></svg>
+
+                                        </label>
+
+                                    </motion.div>
+                                </li>
                             </ul>
                         }
-                    </div>
+                    </motion.div>
 
 
 
-                    <div className='relative'>
+                    <motion.div className='relative'>
                         {/* <FaShoppingCart size={25} color='black' className='cursor-pointer  ' /> */}
                         <ShoppingCartOutlined className='text-2xl cursor-pointer' />
                         <p className='text-red-700 absolute -top-1 left-6   font-bold'>
                             1
                         </p>
 
-                    </div>
+                    </motion.div>
 
 
-                </div>
 
-            </div>
+
+                </motion.div>
+
+
+
+
+            </motion.div>
 
             <nav className="flex items-center md:hidden  justify-between   px-4 w-full text-white">
 
 
                 {/* Mobile Menu */}
-                <div className="md:hidden">
+                <motion.div className="md:hidden">
                     {isOpen ? (
                         <FiX color='black' onClick={toggleMenu} className="text-2xl cursor-pointer" />
                     ) : (
                         <FiMenu color='black' onClick={toggleMenu} className="text-2xl cursor-pointer" />
                     )}
-                </div>
+                </motion.div>
 
 
                 {/* Mobile Menu Links */}
                 {isOpen && (
-                    <div className="md:hidden  absolute top-0 left-0 w-full flex justify-between transition duration-1000 z-10 bg-gray-800 p-4">
+                    <motion.div className="md:hidden  absolute top-0 left-0 w-full flex justify-between transition duration-1000 z-10 bg-gray-800 p-4">
 
                         <ul className=''>
                             <li className='my-4'>
@@ -293,67 +354,69 @@ const Navbar = () => {
                                 }
                             </li>
                         </ul>
-                        <div>
+                        <motion.div>
                             <FiX color='white' onClick={toggleMenu} className="text-2xl  cursor-pointer" />
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
                 )}
 
-                <div className="dropdown relative items-center justify-center text-black">
+                <motion.div className="dropdown relative items-center justify-center text-black">
                     <label onClick={() => setDrop(!drop)} tabIndex={0} className="cursor-pointer">
-                        <div className="">
+                        <motion.div className="">
                             <FaUser size={25} className=''></FaUser>
-                        </div>
+                        </motion.div>
                     </label>
                     {
                         drop && <ul tabIndex={0} className="menu absolute  border border-gray-200 top-11 gap-2 menu-compact dropdown-content right-4 mt-3 p-2 shadow bg-base-100 rounded-xl py-3  w-[250px]">
 
 
-                            <div className='flex items-center gap-2 pl-3  mb-3'>
+                            <motion.div className='flex items-center gap-2 pl-3  mb-3'>
                                 <img src="" className='w-8 h-8 rounded-full' alt="" />
-                                <div>
+                                <motion.div>
                                     <h1 className='text-left font-semibold'>Sadekin Chow</h1>
                                     <p className='text-[12px]'>Chiksha,Bangladesh</p>
-                                </div>
-                            </div>
+                                </motion.div>
+                            </motion.div>
 
                             <hr className='border border-black mb-2' />
                             <li className=''>
-                                <div className='flex hover:bg-slate-200'>
+                                <motion.div className='flex hover:bg-slate-200'>
                                     <FaUser size={20} color='black' />
-                                    <div>
+                                    <motion.div>
                                         <Link to='/dashboard/myorders'>My Account</Link>
-                                    </div>
-                                </div>
+                                    </motion.div>
+                                </motion.div>
                             </li>
                             <li className=''>
-                                <div className='flex'>
+                                <motion.div className='flex'>
                                     <MdShoppingCart size={20} color='black' />
                                     <Link>My Order</Link>
-                                </div>
+                                </motion.div>
                             </li>
+
                             <li>
 
                                 {user?.email ?
 
                                     <>
-                                        <div className='flex'>
+                                        <motion.div className='flex'>
                                             <FaSignOutAlt size={20} color='black' />
                                             <Link onClick={handlLogout} className="">SignOut</Link>
-                                        </div>
+                                        </motion.div>
                                     </>
-                                    : <div className='flex'>
+                                    : <motion.div className='flex'>
                                         <FaSignInAlt />  <Link className='' to='/login'>Login</Link>
-                                    </div>
+                                    </motion.div>
 
                                 }
                             </li>
+
                         </ul>
                     }
-                </div>
+                </motion.div>
             </nav>
 
-        </div >
+        </motion.div >
     );
 };
 

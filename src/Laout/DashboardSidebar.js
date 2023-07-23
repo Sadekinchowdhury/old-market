@@ -35,7 +35,7 @@ const Sidebar = () => {
     const [open, setOpen] = useState(false)
     return (
         <div className="flex justify-center  items-center py-3">
-            <div className="flex lg:h-full h-1/2 flex-col  bg-gray-900 text-white">
+            <div className="flex h-auto  flex-col  bg-gray-900 text-white">
                 <div className="
                 w-10/12 mx-auto">
                     <div className="flex mt-10  text-center items-center justify-center mb-8">
@@ -107,7 +107,7 @@ const Sidebar = () => {
                 <hr color='black' className='text-blue-600 ' />
 
                 <div className="flex items-center w-[95%] mx-auto justify-center my-8 ">
-                    <button className='text-xl font-semibold bg-white text-black px-4 hover:border-[2px] hover:border-blue-700 transition duration-700 hover:bg-slate-800 hover:text-white py-1 rounded'>
+                    <button className='text-xl font-semibold bg-white text-black px-3 hover:border-[2px] hover:border-blue-700 transition duration-700 hover:bg-slate-800 hover:text-white py-1 rounded'>
 
                         <AiOutlineLogout className='inline-block mr-2' />
                         Logout</button>

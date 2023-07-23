@@ -6,42 +6,52 @@ import Displaypic from './Displaypic';
 import Exptra from './Exptra/Exptra';
 import SideBanner from './SideBanner';
 import Product from './Product';
+import { motion } from 'framer-motion';
 
 const Home = () => {
     return (
-        <div>
+        <motion.div>
 
-            <div className='flex  flex-col lg:flex-row w-11/12 gap-5 h-auto lg:h-[400px] items-center  my-4 mx-auto'>
+            <motion.div className='flex  flex-col lg:flex-row w-11/12 gap-5 h-auto lg:h-[400px] items-center  my-4 mx-auto'>
 
-                <div className='w-full  h-full   bg-white rounded-md shadow-2xl lg:w-8/12'>
+                <motion.div
+                    initial={{ opacity: 0, x: -100 }}
+                    animate={{ opacity: 1, x: 0, transition: { duration: 3 } }}
+                    exit={{ opacity: 0, y: 50, transition: { duration: 3 } }}
+                    className='w-full  h-full  rounded-md shadow-2xl lg:w-8/12'>
                     <Displaypic />
-                </div>
-                <div className='w-full h-full lg:w-4/12'>
+                </motion.div>
+
+                <motion.div className='w-full h-full lg:w-4/12'>
                     <SideBanner />
-                </div>
-            </div>
-            <div className='py-10 w-11/12 mx-auto  gap-4 '>
-                <div className='py-6'>
+                </motion.div>
+
+            </motion.div>
+            <motion.div className='py-10 w-11/12 mx-auto  gap-4 '>
+                <motion.div className='py-6'>
                     <h1 className='text-xl font-bold'>Feature Product</h1>
                     <hr className='bg-black border-[1px] my-2 w-2/3 lg:w-1/5 border-black' />
-                </div>
-                <div className='flex gap-5 flex-col lg:flex-row'>
-                    <div className='w-full lg:w-6/12  '>
+                </motion.div>
+                <motion.div className='flex gap-5 flex-col lg:flex-row'>
+                    <motion.div className='w-full lg:w-6/12  '>
                         <Shopings></Shopings>
-                    </div>
+                    </motion.div>
                     <Product className='w-full lg:w-6/12' />
-                </div>
-            </div>
-            <div>
+                </motion.div>
+            </motion.div>
+
+
+
+            <motion.div>
                 <Category></Category>
-            </div>
+            </motion.div>
 
 
             <Addvirtize></Addvirtize>
             <Exptra></Exptra>
 
 
-        </div>
+        </motion.div>
     );
 };
 

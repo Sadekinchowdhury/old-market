@@ -2,6 +2,7 @@ import { HeartOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 
 const Product = () => {
@@ -26,29 +27,35 @@ const Product = () => {
     }
     return (
 
-        <div className=''>
+        <motion.div className=''>
 
-            <div className='grid grid-cols-1 lg:grid-cols-4 gap-4  '>
+            <motion.div
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0, transition: { duration: 3 } }}
+                exit={{ opacity: 0, y: 50, transition: { duration: 3 } }}
+
+
+                className='grid grid-cols-1 lg:grid-cols-4 gap-4  '>
                 {
-                    data.slice(0, 8).map(product => <div className='p-3 relative border hover:scale-105 hover:bg-gray-200 transition hover:opacity-80 duration-500 hover:shadow-2xl hover:border-b-blue-700 hover:border-r-red-800 border-gray-300 rounded-md bg-white ease-in-out' >
+                    data.slice(0, 8).map(product => <motion.div className='p-3 relative border hover:scale-105 hover:bg-gray-200 transition hover:opacity-80 duration-500 hover:shadow-2xl hover:border-b-blue-700 hover:border-r-red-800 border-gray-300 rounded-md bg-white ease-in-out' >
 
                         <HeartOutlined className='absolute top-2 text-yellow-600 right-2' />
                         <img className='h-[100px] w-1/2 mx-auto py-6' src={product.image} alt="" />
-                        <div className='pt-7 '>
+                        <motion.div className='pt-7 '>
                             <span className='text-[12px]  pl-3'>{product.category}</span>
-                            <div className='flex flex-col 
+                            <motion.div className='flex flex-col 
                             items-center text-center'>
                                 <h className='font-semibold '>{product.title}</h>
-                                <div className='flex gap-2'>
+                                <motion.div className='flex gap-2'>
                                     <p className='text-xl line-through font-semibold'>${product.price}</p>
                                     <p className='text-xl  font-semibold'>${product.price}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>)
+                                </motion.div>
+                            </motion.div>
+                        </motion.div>
+                    </motion.div>)
                 }
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
 
     );
 };
