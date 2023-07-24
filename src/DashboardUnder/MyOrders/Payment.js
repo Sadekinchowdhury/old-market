@@ -10,8 +10,8 @@ const Payment = () => {
     const book = useLoaderData()
     console.log(book)
     return (
-        <div>
-            <div className='w-96 my-11'>
+        <div className='flex items-center justify-center content-center '>
+            <div className='w-full lg:w-7/12 mx-auto p-6 border border-black rounded-md bg-slate-800 my-11'>
                 <Elements stripe={stripePromise}>
                     <CheckoutForm
                         key={book._id}

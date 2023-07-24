@@ -144,14 +144,14 @@ const CheckoutForm = ({ book }) => {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className=''>
 
                 <CardElement
                     options={{
                         style: {
                             base: {
                                 fontSize: '16px',
-                                color: '#424770',
+                                color: '#ffffff',
                                 '::placeholder': {
                                     color: '#aab7c4',
                                 },
@@ -169,7 +169,7 @@ const CheckoutForm = ({ book }) => {
                     Pay
                 </button>
             </form>
-            <p className='text-3xl text-orange-400'>{cardError} </p>
+            <p className='text-2xl text-red-700 py-6'>{cardError} </p>
 
             {
                 success && <div>
