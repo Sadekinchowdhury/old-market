@@ -1,6 +1,6 @@
 
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
@@ -8,15 +8,18 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const AddProducts = () => {
-    const { user } = useContext(AuthContext)
 
+    const [selectedImages, setSelectedImages] = useState([]);
+
+
+    const { user } = useContext(AuthContext)
     const navigate = useNavigate()
     const { register, formState: { errors }, handleSubmit } = useForm()
-
     const date = new Date().toLocaleDateString('en-us', { year: "numeric", month: "short", day: "numeric" });
 
 
     const imageHostkeyk = process.env.REACT_APP_IMG_KEY
+
     const { data: categorisBrand = [], refetch } = useQuery({
         queryKey: ['categorisBrand'],
         queryFn: async () => {
@@ -35,6 +38,14 @@ const AddProducts = () => {
         const image = data.img[0]
         const formData = new FormData()
         formData.append('image', image)
+
+        // const formData = new FormData();
+        // for (let i = 0; i < selectedImages.length; i++) {
+        //     formData.append('image', image[i]);
+        // }
+
+
+
         const url = `https://api.imgbb.com/1/upload?key=${imageHostkeyk}`
         fetch(url, {
             method: 'POST',

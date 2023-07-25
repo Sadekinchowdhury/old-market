@@ -4,6 +4,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 
 import { AuthContext } from '../Context/AuthProvider';
 import UseAdmin from '../UseAdmin/UseAdmin';
+import { Spin } from 'antd';
 
 
 const AdminRoutes = ({ children }) => {
@@ -13,7 +14,7 @@ const AdminRoutes = ({ children }) => {
     const [isAdmin, isLoading] = UseAdmin(user?.email)
 
     if (isLoading) {
-        return <p>looding...</p>
+        return <div className='flex items-center h-screen justify-center text-center'><Spin /></div>
     }
 
     if (user && isAdmin) {

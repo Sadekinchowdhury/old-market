@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
-import { FaCheckCircle } from 'react-icons/fa';
+import React, { useContext, useState } from 'react';
+import { FaCheckCircle, FaShoppingCart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
@@ -19,30 +19,47 @@ const AddvirtisCard = ({ product, setBooking }) => {
             return data;
         }
     })
-    console.log(users)
+    const [open, setOpen] = useState(false)
+
+    const hovemouse = () => {
+        setOpen(!open)
+    }
 
     return (
-        <section>
+        <section onMouseEnter={hovemouse}
+            onMouseLeave={hovemouse}
+            className={`bg-white shadow-2xl ${open && 'border border-red-500 transition duration-500 ease-in-out'}`}
+        >
             {product.advertise || !product.soldStatus ?
 
-                <div className="card rounded-none border border-gray-300 bg-base-300   shadow-2xl">
-                    <div className='flex justify-center items-center pt-3'>
-                        <img className='w-2/3  h-32' src={picture} alt="" />
+                <div className={`card rounded-md  border   shadow-[40px] `}>
+                    <div className='flex pt-2 justify-center items-center '>
+                        <img className='w-11/12 mx-auto  h-48' src={picture} alt="" />
                     </div>
 
-                    <div className="card-body">
-                        <h2 className="card-title">{name}</h2>
-                        <p className='text-blue-700 font-semibold'>price: ${price}</p>
-                        <p className='text-red-600 font-medium'>original price: ${originalprice}</p>
-                        <p className='text-orange-900'>Used time: {usedtime}</p>
-                        <p className=''>posted time: {postedtime}</p>
+                    <div className={`pt-3 px-3 pb-2  ${open ? 'block' : 'hidden'}`}>
+                        <h2 className="card-title uppercase">{name}</h2>
+                        <div className='flex  items-center justify-between gap-3 py-3'>
+                            <div>
 
-                        <div className="flex pt-2  gap-3 justify-between">
+                                <p className='text-[13px] font-bold'>Old price: ${price}</p>
+
+                                <p className='text-[13px] font-bold'>Used time: {usedtime}</p>
+                                <p className='text-[13px] font-bold'>posted time: {postedtime}</p>
+                            </div>
+                            <div>
+
+                                <p className='text-xl font-semibold line-through'>${price}</p>
+                                <p className='text-xl font-semibold'>${originalprice}</p>
+                            </div>
+                        </div>
+
+                        <div className="flex pt-2  gap-2 justify-between">
 
 
                             <div className="avatar">
-                                <div className="w-8 h-8 rounded-full relative">
-                                    <img className='' src={user?.photoURL} alt='' />
+                                <div className="w-8 h-8 rounded-full  relative">
+                                    <img className='border-black border-[1px]' src={user?.photoURL} alt='' />
                                     {
                                         users?.role === 'seller' && users?.verify ? <FaCheckCircle color='green' className='absolute top-0 right-1' /> : <></>
                                     }
@@ -60,12 +77,13 @@ const AddvirtisCard = ({ product, setBooking }) => {
                             <div>
                                 {
                                     user?.email ? <>
-                                        <label onClick={() => setBooking(product)} htmlFor="booking-modal" className="bg-blue-500 hover:bg-blue-700 text-white text-center py-2 px-4 rounded">Book</label>
+                                        <label onClick={() => setBooking(product)} htmlFor="booking-modal" className="flex gap-2 items-center px-2 py-1 border border-gray-300 cursor-pointer font-semibold hover:border-blue-700 hover:border-2 hover:bg-black hover:text-white transition duration-200 hover:scale-105"><FaShoppingCart /> Add cart</label>
                                     </> :
                                         <>
-                                            <Link to='/login'> <button className='bg-blue-500 hover:bg-blue-700 text-white text-center py-2 px-4 rounded'>
-                                                Book
-                                            </button></Link>
+                                            <Link className='flex gap-2 items-center px-2 py-1 border border-gray-300 cursor-pointer' to='/login'>
+                                                <FaShoppingCart />
+                                                Add cart
+                                            </Link>
                                         </>
 
                                 }

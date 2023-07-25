@@ -11,7 +11,9 @@ const Category = () => {
         queryFn: async () => {
             const res = await fetch('https://old-server.vercel.app/categoris')
             const data = await res.json()
+            console.log(data)
             return data;
+
         }
     })
 

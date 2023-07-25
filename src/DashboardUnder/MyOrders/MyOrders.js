@@ -3,6 +3,7 @@ import { React, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/AuthProvider';
+import { motion } from 'framer-motion';
 
 const MyOrders = () => {
     const { user } = useContext(AuthContext)
@@ -31,7 +32,12 @@ const MyOrders = () => {
 
 
     return (
-        <div className=''>
+        <motion.div
+            initial={{ opacity: 0, y: -100 }}
+            animate={{ opacity: 1, y: 0, transition: { duration: 2 } }}
+            exit={{ opacity: 0, x: 50, transition: { duration: 2 } }}
+
+            className=''>
             <h1 className='text-2xl pt-5 lg:pl-6 lg:text-left text-center font-bold'>My Orders</h1>
             {
                 booking?.length ? <div className="overflow-x-auto  m-3">
@@ -40,8 +46,9 @@ const MyOrders = () => {
                         <thead>
                             <tr>
                                 <th className=''>No</th>
-                                <th>Name</th>
-                                <th>ItemName</th>
+                                <th>User Name</th>
+                                <th>Product Name</th>
+                                <th>Total</th>
 
                                 <th>price</th>
                                 <th>Payment</th>
@@ -67,8 +74,10 @@ const MyOrders = () => {
                                     </td>
 
                                     <td className=''>{book.itemname}</td>
-
-                                    <td>{book.price}</td>
+                                    <td>
+                                        {book.total}
+                                    </td>
+                                    <td>${book.price}</td>
 
                                     <td>
                                         {
@@ -91,7 +100,7 @@ const MyOrders = () => {
                     : <img className='w-full h-full' src="https://img.freepik.com/free-vector/no-data-concept-illustration_114360-536.jpg?w=2000" alt="" />
             }
 
-        </div>
+        </motion.div>
     );
 };
 

@@ -174,14 +174,17 @@ const Navbar = () => {
                         <li>
                             <Link className='hover:bg-gray-200 transition duration-400  py-2 px-3 hover:rounded-sm text-[15px] font-semibold' to='/blog'>Blog</Link>
                         </li>
+                        <li>
+                            <Link className='hover:bg-gray-200 transition duration-400  py-2 px-3 hover:rounded-sm text-[15px] font-semibold' to='/products'>Shop</Link>
+                        </li>
 
                         <motion.div className="dropdown relative items-center  justify-center text-black">
                             <label onClick={() => setDrop(!drop)} tabIndex={0} className="cursor-pointer ">
                                 <motion.div className="flex items-center justify-between  text-[15px]">
 
-                                    <h1 className='text-[15px] font-semibold'>
+                                    {/* <h1 className='text-[15px] font-semibold'>
                                         Shop
-                                    </h1>
+                                    </h1> */}
                                     {/* <motion.div>
                                         <RiArrowDropDownLine size={20} className={`h-5 w-5 ${drop ? 'transform rotate-180' : ''}`} />
                                     </motion.div> */}
@@ -258,7 +261,7 @@ const Navbar = () => {
                                 </li>
                                 <li className=''>
                                     <motion.div className='flex'>
-                                        {/* <MdShoppingCart size={20} color='black' /> */}
+
                                         <ShoppingCartOutlined className='text-xl' />
                                         <Link to='/dashboard/myorders'>My Order</Link>
                                     </motion.div>
@@ -302,14 +305,16 @@ const Navbar = () => {
 
 
 
-                    <motion.div className='relative'>
-                        {/* <FaShoppingCart size={25} color='black' className='cursor-pointer  ' /> */}
-                        <ShoppingCartOutlined className='text-2xl cursor-pointer' />
-                        <p className='text-red-700 absolute -top-1 left-6   font-bold'>
-                            1
-                        </p>
+                    <Link to='/shoppingcart' className='relative'>
 
-                    </motion.div>
+                        <ShoppingCartOutlined className='text-2xl cursor-pointer' />
+                        <div className='w-5 h-5 absolute -top-1 left-5 flex justify-center  rounded-full bg-orange-500'>
+                            <p className=' text-white  font-bold'>
+                                1
+                            </p>
+                        </div>
+
+                    </Link>
 
 
 

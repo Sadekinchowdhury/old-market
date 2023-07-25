@@ -4,6 +4,7 @@ import { FaCheckCircle } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/AuthProvider';
 import UseSeller from '../../UseSeller/UseSeller';
+import { Link } from 'react-router-dom';
 
 const Load = ({ allcat, setBooking }) => {
 
@@ -11,7 +12,7 @@ const Load = ({ allcat, setBooking }) => {
 
     // const [verifyseller, setVerifyseller] = useState({})
 
-    const { name, price, location, description, originalprice, sellername, postedtime, brand, picture, usedtime, email } = allcat
+    const { name, price, _id, location, description, originalprice, sellername, postedtime, brand, picture, usedtime, email } = allcat
 
 
 
@@ -33,7 +34,7 @@ const Load = ({ allcat, setBooking }) => {
 
     return (
 
-        <div className="card m-3 bg-base-100 border shadow-2xl">
+        <Link to={`/card_details/${_id}`} className="card m-3 bg-base-100 border shadow-2xl">
             <figure><img className='w-full h-48 lg:px-3 py-2' src={picture} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{name}</h2>
@@ -88,7 +89,7 @@ const Load = ({ allcat, setBooking }) => {
                 </div>
             </div>
 
-        </div>
+        </Link>
 
     );
 };

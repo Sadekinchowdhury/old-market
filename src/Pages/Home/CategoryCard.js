@@ -10,7 +10,6 @@ const CategoryCard = ({ category }) => {
             <div className="">
                 <img className='h-40 w-full' src={picture} alt="" />
                 <h2 className=" text-black text-2xl font-semibold text-center py-5 ">{name}</h2>
-
             </div>
 
         </Link>

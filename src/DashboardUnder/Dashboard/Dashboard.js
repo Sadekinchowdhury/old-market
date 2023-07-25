@@ -10,9 +10,7 @@ import { FaShoppingBasket } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 const Dashboard = () => {
     return (
-        <div
-
-            className='lg:p-5 p-2 w-full'>
+        <div className='lg:p-5 p-2 w-full'>
 
             <motion.div
                 initial={{ opacity: 0, y: -50 }}

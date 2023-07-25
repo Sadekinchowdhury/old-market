@@ -118,7 +118,7 @@ const DashBoard = () => {
                     initial={{ opacity: 0, x: 100 }}
                     animate={{ opacity: 1, x: 0, transition: { duration: 2 } }}
                     exit={{ opacity: 0, x: 50, transition: { duration: 2 } }}
-                    className="bg-slate-300 absolute  top-[60px]  lg:static w-full mx-auto lg:w-10/12 lg:m-3 m-0 lg:rounded-xl rounded-none flex-grow ">
+                    className="bg-slate-300 absolute  top-[60px]  lg:static w-full mx-auto lg:w-10/12 lg:m-3 m-0 lg:rounded-xl rounded-none flex-grow p-2">
 
                     <Outlet></Outlet>
                 </motion.div>

@@ -36,8 +36,8 @@ const Allusers = () => {
     }
 
     return (
-        <div>
-            <h1 className='mb-7 text-3xl text-orange-600 font-bold'>All users </h1>
+        <div className='w-11/12 mx-auto'>
+            <h1 className='pt-6 pb-3 text-2xl font-bold'>All users </h1>
             <div className="overflow-x-auto">
                 <table className="table w-full">
 

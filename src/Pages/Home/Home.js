@@ -7,10 +7,12 @@ import Exptra from './Exptra/Exptra';
 import SideBanner from './SideBanner';
 import Product from './Product';
 import { motion } from 'framer-motion';
+import CategoryCard from './CategoryCard';
+import FeaturProducts from '../FeaturProducts/FeaturProducts';
 
 const Home = () => {
     return (
-        <motion.div>
+        <motion.div className='bg-[#FFFFFF]'>
 
             <motion.div className='flex  flex-col lg:flex-row w-11/12 gap-5 h-auto lg:h-[400px] items-center  my-4 mx-auto'>
 
@@ -27,23 +29,25 @@ const Home = () => {
                 </motion.div>
 
             </motion.div>
-            <motion.div className='py-10 w-11/12 mx-auto  gap-4 '>
+
+            <motion.div className='py-10 w-10/12 mx-auto  gap-4 '>
                 <motion.div className='py-6'>
                     <h1 className='text-xl font-bold'>Feature Product</h1>
                     <hr className='bg-black border-[1px] my-2 w-2/3 lg:w-1/5 border-black' />
                 </motion.div>
-                <motion.div className='flex gap-5 flex-col lg:flex-row'>
-                    <motion.div className='w-full lg:w-6/12  '>
+
+                {/* <motion.div className='w-full lg:w-6/12  '>
                         <Shopings></Shopings>
-                    </motion.div>
-                    <Product className='w-full lg:w-6/12' />
-                </motion.div>
+                    </motion.div> */}
+                <Product className='w-full' />
+
             </motion.div>
 
 
 
             <motion.div>
                 <Category></Category>
+                {/* <FeaturProducts /> */}
             </motion.div>
 
 

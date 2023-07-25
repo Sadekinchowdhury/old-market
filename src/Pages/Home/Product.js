@@ -1,33 +1,32 @@
 import { HeartOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { FaHeart } from 'react-icons/fa';
+import { FaHeart, FaShoppingCart } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 
 const Product = () => {
-    const [data, setData] = useState([]);
+
+
+    const [products, setProducts] = useState([])
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get('https://fakestoreapi.com/products');
-                setData(response.data);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
+        fetch('http://localhost:5000/products')
+            .then(res => res.json())
+            .then(data => setProducts(data))
+    }, [])
 
-        fetchData();
-    }, []);
-    console.log(data)
-    const [whitlist, setWhitlist] = useState(false)
-    const handlHover = () => {
-        setWhitlist(!whitlist)
+
+    const [open, setOpen] = useState(false)
+
+    const hovemouse = () => {
+        setOpen(!open)
     }
+
     return (
 
-        <motion.div className=''>
+        <motion.div>
 
             <motion.div
                 initial={{ opacity: 0, x: 100 }}
@@ -35,24 +34,31 @@ const Product = () => {
                 exit={{ opacity: 0, y: 50, transition: { duration: 3 } }}
 
 
-                className='grid grid-cols-1 lg:grid-cols-4 gap-4  '>
+                className='grid grid-cols-1 lg:grid-cols-4 gap-12  '
+
+            >
                 {
-                    data.slice(0, 8).map(product => <motion.div className='p-3 relative border hover:scale-105 hover:bg-gray-200 transition hover:opacity-80 duration-500 hover:shadow-2xl hover:border-b-blue-700 hover:border-r-red-800 border-gray-300 rounded-md bg-white ease-in-out' >
+                    products.slice(0, 8).map(product => <Link to={`/card_details/${product._id}`} className='relative   hover:scale-105   transition hover:opacity-80 duration-500 hover:shadow-2xl hover:border-b-blue-700 hover:border-r-red-800   rounded-md  ease-in-out'
+
+                    >
 
                         <HeartOutlined className='absolute top-2 text-yellow-600 right-2' />
-                        <img className='h-[100px] w-1/2 mx-auto py-6' src={product.image} alt="" />
-                        <motion.div className='pt-7 '>
+                        <div className='py-20 bg-[#F3F3F3]'>
+                            <img className='h-[120px]  w-1/2 mx-auto ' src={product.picture} alt="" />
+                        </div>
+
+                        <motion.div className=''>
                             <span className='text-[12px]  pl-3'>{product.category}</span>
                             <motion.div className='flex flex-col 
-                            items-center text-center'>
-                                <h className='font-semibold '>{product.title}</h>
+                            items-center text-center py-4'>
+                                <h className='font-semibold text-[18px]'>{product.name}</h>
                                 <motion.div className='flex gap-2'>
                                     <p className='text-xl line-through font-semibold'>${product.price}</p>
                                     <p className='text-xl  font-semibold'>${product.price}</p>
                                 </motion.div>
                             </motion.div>
                         </motion.div>
-                    </motion.div>)
+                    </Link>)
                 }
             </motion.div>
         </motion.div>

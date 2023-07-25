@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
+import { Spin } from 'antd';
 
 
 const PrivetRoute = ({ children }) => {
@@ -8,7 +9,7 @@ const PrivetRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext)
 
     if (loading) {
-        return
+        return <div className='flex items-center justify-center text-center'><Spin /></div>
     }
     if (!user) {
         return <Navigate to='/login' state={{ from: location }} replace ></Navigate>

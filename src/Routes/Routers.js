@@ -25,6 +25,9 @@ import PrivetRoute from './PrivetRoutes';
 import SellerRoutes from './SelleRoute/SellerRoutes';
 import ProfileEdit from '../Pages/Profile/Profile';
 import Dashboard from '../DashboardUnder/Dashboard/Dashboard';
+import MobileDetails from '../Pages/MobileDetails/MobileDetails';
+import AllProducts from '../Pages/AllProducts/AllProducts';
+import ShopingCart from '../Pages/ShopingCart/ShopingCart';
 
 const routes = createBrowserRouter([
 
@@ -56,10 +59,25 @@ const routes = createBrowserRouter([
                 element: <Blog></Blog>
             },
             {
+                path: '/products',
+                element: <AllProducts />
+            },
+            {
+                path: '/shoppingcart',
+                element: <ShopingCart />
+            },
+            {
+                path: '/card_details/:id',
+                element: <PrivetRoute> <MobileDetails /></PrivetRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/card_details/${params.id}`)
+            },
+            {
                 path: '/category/:id',
                 element: <PrivetRoute> <AllCategoris></AllCategoris></PrivetRoute>,
                 loader: ({ params }) => fetch(`https://old-server.vercel.app/categoris/${params.id}`)
-            }, {
+            },
+
+            {
                 path: '/loadcat',
                 element: <Load></Load>
             },
@@ -93,7 +111,7 @@ const routes = createBrowserRouter([
                 element: <SellerRoutes> <MyProducts></MyProducts></SellerRoutes>
             },
             {
-                path: '/dashboard',
+                path: '/dashboard/users',
                 element: <AdminRoutes><Allusers></Allusers></AdminRoutes>
             },
             {

@@ -2,23 +2,13 @@ import React, { useContext, useState } from "react";
 import { IconContext } from "react-icons";
 import {
     AiOutlineDashboard,
-    AiOutlineForm,
-    AiOutlineMail,
-    AiOutlineHistory,
-    AiOutlineSetting,
     AiOutlineUser,
     AiOutlineLogout,
+    AiOutlineMan,
 } from "react-icons/ai";
-import { FaExclamationCircle, FaShoppingBag, FaShoppingBasket, FaShoppingCart } from "react-icons/fa";
-import {
-    AiOutlineCalendar,
-    AiOutlinePlayCircle,
-    AiOutlineMonitor,
-} from "react-icons/ai";
+import { FaHouseUser, FaSellcast, FaShoppingBag, FaShoppingBasket, FaShoppingCart, FaUserAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-
-import Navbar from '../Shared/Navbar/Navbar';
 import UseAdmin from '../UseAdmin/UseAdmin';
 import UseBuyer from '../UseBuyer/UseBuyer';
 
@@ -44,7 +34,7 @@ const Sidebar = () => {
                             className="w-20 border-[6px] border-blue-500 h-20 rounded-full mr-4" />
                     </div>
                     <div className='text-center mb-8'>
-                        <h2 className="text-xl font-bold">Showkat Ali</h2>
+                        <h2 className="text-xl font-bold">Sadekin</h2>
                         <p className="text-sm">
                             rumel36@gmail.com
                         </p>
@@ -71,12 +61,17 @@ const Sidebar = () => {
 
                         {
                             isAdmin && <>
-                                <Link className="p-4 mt-4 hover:rounded-lg  hover:border-blue-700 hover:border-[0.5px] transition duration-300 hover:scale-110 items-center hover:bg-gray-800" to='/dashboard'>
-                                    <AiOutlineUser size={20} />
-                                    All user</Link>
-                                <Link className="p-4 mt-4 hover:rounded-lg  hover:border-blue-700 hover:border-[0.5px] transition duration-300 hover:scale-110 items-center hover:bg-gray-800" to='/dashboard/seller'>All Sellers</Link>
+                                <Link className="p-4 mt-4 hover:rounded-lg  hover:border-blue-700 hover:border-[0.5px] transition duration-300 hover:scale-110 items-center hover:bg-gray-800 flex gap-2" to='/dashboard/users'>
 
-                                <Link className="p-4 mt-4 hover:rounded-lg  hover:border-blue-700 hover:border-[0.5px] transition duration-300 items-center hover:scale-110 hover:bg-gray-800" to='/dashboard/buyer'>All buyers</Link>
+                                    <FaUserAlt size={20} />
+                                    All user</Link>
+                                <Link className="p-4 mt-4 hover:rounded-lg  hover:border-blue-700 hover:border-[0.5px] transition duration-300 hover:scale-110 items-center hover:bg-gray-800 flex gap-2" to='/dashboard/seller'>
+                                    <FaUserAlt size={20} />
+                                    All Sellers</Link>
+
+                                <Link className="p-4 mt-4 hover:rounded-lg  hover:border-blue-700 hover:border-[0.5px] transition duration-300 items-center hover:scale-110 hover:bg-gray-800 flex gap-2" to='/dashboard/buyer'>
+                                    <FaHouseUser size={20} />
+                                    All buyers</Link>
 
                             </>
 
