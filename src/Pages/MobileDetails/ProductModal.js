@@ -4,6 +4,8 @@ import { React, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/AuthProvider';
+import TextArea from 'antd/es/input/TextArea';
+import { Input } from 'antd';
 
 
 
@@ -25,13 +27,13 @@ const Modal = ({ details, cart }) => {
 
 
     const handSubmit = event => {
-
+        console.log(event)
         event.preventDefault()
         const form = event.target
         const user_location = form.location.value;
         const user_phone = form.phone.value;
 
-
+        console.log(form)
         const booking = {
             userName: user?.displayName,
             email: user?.email,
@@ -88,30 +90,55 @@ const Modal = ({ details, cart }) => {
             <div className="modal">
                 <div className="modal-box relative">
                     <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    <h3 className="text-2xl font-bold text-center">Book {name}cheap price </h3>
+                    <h3 className="text-xl pb-3 font-bold text-center">Book {name} </h3>
 
 
-                    <form onSubmit={handSubmit}>
+                    <form onSubmit={handSubmit} className='p-0 lg:p-8'>
 
-                        <input type="text" name='name' defaultValue={user?.displayName} readOnly placeholder="name" className="input w-full mt-10   input-bordered " />
+                        {/* <input type="text" name='name' defaultValue={user?.displayName} readOnly placeholder="name" className="input w-full mt-10   input-bordered " /> */}
 
-                        <input type="text" name='itemname' readOnly defaultValue={name} placeholder="name" className="input w-full mt-10   input-bordered " />
+                        <p className='text-[14px] font-medium '>Buyer Name- {user.displayName}</p>
+                        <p className='text-[14px] font-medium'>Product Name- {name}</p>
+                        <p className='text-[14px] font-medium'>Email- {user?.email}</p>
+                        <p className='text-[14px] font-medium'>Price- {totalPrice}</p>
 
-                        <input type="email" name='email' defaultValue={user?.email} readOnly disabled placeholder="email" className="input w-full mt-10   input-bordered " />
+                        {/* <input type="text" name='itemname' readOnly defaultValue={name} placeholder="name" className="input w-full mt-10   input-bordered " /> */}
 
-                        <input type="number" name='total'
+                        {/* <input type="email" name='email' defaultValue={user?.email} readOnly disabled placeholder="email" className="input w-full mt-10   input-bordered " /> */}
+
+                        {/* <input type="number" name='total'
                             value={totalPrice}
-                            placeholder="price" className="input w-full mt-10  input-bordered " />
+                            placeholder="price" className="input w-full mt-10  input-bordered " /> */}
 
 
+                        <div className='py-4 gap-3'>
 
-                        <input type="text" name='phone' placeholder="your phone number" className="input w-full mt-10   input-bordered " />
+                            <div className='flex items-center gap-5 py-3'>
+                                <div>
+                                    <label htmlFor="">Phone Number</label>
+                                    <Input type="text" name='phone' placeholder="your phone number" className="w-full py-2" />
+                                </div>
 
-                        <input type="text" name='location' placeholder="your location " className="input w-full mt-10   input-bordered " />
+                                <div>  <label htmlFor="">Adress 1</label>
+                                    <Input type="text" name='adress' placeholder="Adress" className="w-full py-2" /></div>
+                            </div>
 
+                            <div className='w-full py-2'>
+                                <label htmlFor="">Adress 2</label>
+                                <Input type="text" name='adress2' placeholder="your location " className="w-full py-2" />
 
+                            </div>
+                            <div className='w-full py-2'>
+                                <label htmlFor="">Description</label>
 
-                        <input className='w-full  btn-primary rounded mt-10' type="submit" value="submit" />
+                                <TextArea type="text" name='location' placeholder="your location" className="w-full " />
+
+                            </div>
+                        </div>
+                        <div className='flex justify-center items-center'>
+                            <input className='py-3 px-6 rounded-md border border-gray-300 text-white bg-black shadow-2xl hover:bg-gray-700 cursor-pointer' type="submit" value="submit" />
+                        </div>
+
                     </form>
                 </div>
             </div></>
