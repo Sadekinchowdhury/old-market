@@ -1,20 +1,16 @@
-import { React, useContext, useState } from 'react';
+import { React, useContext, useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom'
-import { AuthContext } from '../Context/AuthProvider';
 import Footer from '../Shared/Footer/Footer';
-
 import Navbar from '../Shared/Navbar/Navbar';
 import UseAdmin from '../UseAdmin/UseAdmin';
 import UseBuyer from '../UseBuyer/UseBuyer';
-
 import UseSeller from '../UseSeller/UseSeller';
 
 
-
-
-import { AiFillLeftCircle, AiFillRightCircle, AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineLogout } from 'react-icons/ai';
+import { AiFillLeftCircle, AiFillRightCircle } from 'react-icons/ai';
 import Sidebar from './DashboardSidebar';
 import { motion } from 'framer-motion';
+import { AuthContext } from '../Context/AuthProvider';
 
 const DashBoard = () => {
     const { user } = useContext(AuthContext)
@@ -23,6 +19,21 @@ const DashBoard = () => {
     const [isSeller] = UseSeller(user?.email)
     const [isBuyer] = UseBuyer(user?.email)
     const [open, setOpen] = useState(false)
+
+
+    const [users, setUsers] = useState({})
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/user?email=${user?.email}`)
+            .then(res => res.json())
+            .then(data => setUsers(data))
+    }, [user?.email])
+
+
+
+
+
+
     return (
         // <div>
         //     <Navbar></Navbar>
@@ -87,7 +98,7 @@ const DashBoard = () => {
                     className={`bg-gray-900 z-50 h-auto shadow-2xl w-1/2 px-4 lg:hidden block relative m-0 my-0  mx-0    py-6 transform duration-1000 ${!open ? 'w-1/12 ml-1 rounded-l-full transform duration-1000 z-50' : 'w-2/3'} `}>
                     {
                         open &&
-                        <Sidebar />
+                        <Sidebar users={users} key={users._id} />
 
                     }
                     <div className='-right-4  bg-gray-900 rounded-r-full top-0 w-10 h-[46px] flex justify-center items-center absolute lg:static lg:hidden transform duration-1000'>
@@ -105,7 +116,7 @@ const DashBoard = () => {
                 <div className={`bg-gray-900 text-white z-50  shadow-2xl w-1/2 lg:w-2/12 px-4 lg:block hidden lg:m-2 m-0 lg:my-2 my-0 lg:mx-2 top-0 mx-0 lg:rounded-xl rounded-b-lg py-6`}>
                     <div className=''>
 
-                        <Sidebar />
+                        <Sidebar users={users} key={users._id} />
 
                     </div>
 

@@ -32,13 +32,18 @@ const Modal = ({ details, cart }) => {
         const form = event.target
         const user_location = form.location.value;
         const user_phone = form.phone.value;
+        const adress1 = form.adress.value;
+        const adress2 = form.adress2.value;
+        const description = form.description.value;
 
-        console.log(form)
+        console.log(adress1, adress2, description)
         const booking = {
             userName: user?.displayName,
             email: user?.email,
             price: totalPrice,
             user_location,
+            adress1, adress2,
+            description,
             total: cart,
             user_phone,
             itemname: name,
@@ -120,7 +125,7 @@ const Modal = ({ details, cart }) => {
                                 </div>
 
                                 <div>  <label htmlFor="">Adress 1</label>
-                                    <Input type="text" name='adress' placeholder="Adress" className="w-full py-2" /></div>
+                                    <Input type="text" name='adress1' placeholder="adress1" className="w-full py-2" /></div>
                             </div>
 
                             <div className='w-full py-2'>
@@ -131,7 +136,7 @@ const Modal = ({ details, cart }) => {
                             <div className='w-full py-2'>
                                 <label htmlFor="">Description</label>
 
-                                <TextArea type="text" name='location' placeholder="your location" className="w-full " />
+                                <TextArea type="text" name='description' placeholder="your location" className="w-full " />
 
                             </div>
                         </div>

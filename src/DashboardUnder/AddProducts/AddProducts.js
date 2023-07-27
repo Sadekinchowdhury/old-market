@@ -9,9 +9,6 @@ import { AuthContext } from '../../Context/AuthProvider';
 
 const AddProducts = () => {
 
-    const [selectedImages, setSelectedImages] = useState([]);
-
-
     const { user } = useContext(AuthContext)
     const navigate = useNavigate()
     const { register, formState: { errors }, handleSubmit } = useForm()
@@ -35,17 +32,12 @@ const AddProducts = () => {
     })
 
     const handlAddProduct = data => {
+        console.log("data", data)
         const image = data.img[0]
+        console.log("image", image)
         const formData = new FormData()
+        console.log("formddat", formData)
         formData.append('image', image)
-
-        // const formData = new FormData();
-        // for (let i = 0; i < selectedImages.length; i++) {
-        //     formData.append('image', image[i]);
-        // }
-
-
-
         const url = `https://api.imgbb.com/1/upload?key=${imageHostkeyk}`
         fetch(url, {
             method: 'POST',

@@ -15,8 +15,8 @@ import UseBuyer from '../UseBuyer/UseBuyer';
 import UseSeller from '../UseSeller/UseSeller';
 import { AuthContext } from "../Context/AuthProvider";
 
-const Sidebar = () => {
-
+const Sidebar = ({ users }) => {
+    console.log(users)
     const { user } = useContext(AuthContext)
     const [isAdmin] = UseAdmin(user?.email)
 
@@ -27,16 +27,16 @@ const Sidebar = () => {
         <div className="flex justify-center  items-center py-3">
             <div className="flex h-auto  flex-col  bg-gray-900 text-white">
                 <div className="
-                w-10/12 mx-auto">
+                w-11/12 mx-auto">
                     <div className="flex mt-10  text-center items-center justify-center mb-8">
-                        <img src=''
+                        <img src={users?.image}
                             alt=""
                             className="w-20 border-[6px] border-blue-500 h-20 rounded-full mr-4" />
                     </div>
-                    <div className='text-center mb-8'>
-                        <h2 className="text-xl font-bold">Sadekin</h2>
-                        <p className="text-sm">
-                            rumel36@gmail.com
+                    <div className='text-center mb-8 '>
+                        <h2 className="text-xl font-bold text-white "> {users?.name} </h2>
+                        <p className="text-sm text-white">
+                            {users?.email}
                         </p>
                     </div>
                 </div>
