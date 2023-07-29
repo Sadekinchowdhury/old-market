@@ -26,20 +26,19 @@ const Sidebar = ({ users }) => {
     return (
         <div className="flex justify-center  items-center py-3">
             <div className="flex h-auto  flex-col  bg-gray-900 text-white">
-                <div className="
-                w-11/12 mx-auto">
-                    <div className="flex mt-10  text-center items-center justify-center mb-8">
-                        <img src={users?.image}
-                            alt=""
-                            className="w-20 border-[6px] border-blue-500 h-20 rounded-full mr-4" />
-                    </div>
-                    <div className='text-center mb-8 '>
-                        <h2 className="text-xl font-bold text-white "> {users?.name} </h2>
-                        <p className="text-sm text-white">
-                            {users?.email}
-                        </p>
-                    </div>
+
+                <div className="flex mt-10  text-center items-center justify-center mb-8">
+                    <img src={users?.image}
+                        alt=""
+                        className="w-20 border-[3px] border-blue-500 h-20 rounded-full mr-4" />
                 </div>
+                <div className='text-center mb-8 '>
+                    <h2 className="text-xl font-bold text-white "> {users?.name} </h2>
+                    <p className="text-sm  text-white">
+                        {users?.email}
+                    </p>
+                </div>
+
                 <hr className='border-t-2  border-blue-400"' />
                 <nav className="flex-grow">
                     <ul className="flex flex-col">

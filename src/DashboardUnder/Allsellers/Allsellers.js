@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { Fa } from 'react-icons/fa';
 import { HiCheck } from "react-icons/hi";
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const AllSellers = () => {
 
@@ -71,22 +72,25 @@ const AllSellers = () => {
     }
 
     return (
-        <div>
+        <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0, transition: { duration: 2 } }}
+            exit={{ opacity: 0, x: 50, transition: { duration: 2 } }}>
             <h1 className='mb-7 text-3xl text-orange-600 font-bold'>All sellers </h1>
             <div className="overflow-x-auto">
                 <table className="table w-full">
 
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>email</th>
-                            <th>verify seller</th>
-                            <th>Delete user</th>
+                    <thead className='text-center'>
 
-                        </tr>
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>email</th>
+                        <th>verify seller</th>
+                        <th>Delete user</th>
+
+
                     </thead>
-                    <tbody>
+                    <tbody className='text-center'>
                         {datatype?.length &&
                             datatype?.map((data, i) => <tr>
                                 <th>{i + 1}</th>
@@ -139,7 +143,7 @@ const AllSellers = () => {
                     </tbody>
                 </table>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

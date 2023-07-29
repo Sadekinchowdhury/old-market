@@ -110,7 +110,7 @@ const CheckoutForm = ({ book }) => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
+
                     if (data.insertedId) {
 
                         setSuccess('Congratulations dear you payment successfully')
@@ -124,7 +124,7 @@ const CheckoutForm = ({ book }) => {
             setProccessing(false)
 
         }
-        console.log('baki', paymentIntent)
+
     }
 
     const handleSoldStatus = id => {
@@ -133,7 +133,7 @@ const CheckoutForm = ({ book }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+
 
                 if (data.modifiedCount > 0) {
                     toast.success('Product Sold Successful.')

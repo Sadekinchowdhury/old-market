@@ -2,6 +2,7 @@ import { assert } from '@firebase/util';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { toast } from 'react-toastify';
+import { motion } from 'framer-motion';
 
 const AllBuyers = () => {
 
@@ -11,12 +12,13 @@ const AllBuyers = () => {
             const res = await fetch('https://old-server.vercel.app/users/buyer')
 
             const data = await res.json()
-            console.log(data)
+
             return data;
         },
 
 
     })
+
     const handlDeleteBuyers = id => {
 
         console.log('delete')
@@ -42,40 +44,48 @@ const AllBuyers = () => {
 
 
     return (
-        <div>
-            <h1 className='mb-7 text-3xl text-orange-600 font-bold text-center'>All  Buyers </h1>
-            <div className="overflow-x-auto">
-                <table className="table w-full">
+        <motion.div
+            initial={{ opacity: 0, y: -100 }}
+            animate={{ opacity: 1, y: 0, transition: { duration: 2 } }}
+            exit={{ opacity: 0, x: 50, transition: { duration: 2 } }}>
+            {
+                BuyersData.length ? <div>
+                    <h1 className='mb-7 text-3xl text-orange-600 font-bold text-center'>All  Buyers </h1>
+                    <div className="overflow-x-auto">
+                        <table className="table w-full">
 
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>email</th>
-                            <th>Delete user</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {BuyersData?.length &&
-                            BuyersData?.map((data, i) => <tr>
-                                <th>{i + 1}</th>
+                            <thead className='text-center'>
+                                <th>No</th>
+                                <th>Name</th>
+                                <th>email</th>
+                                <th>Delete user</th>
 
 
-                                <td>{data.name}</td>
-                                <td>{data.email}</td>
+                            </thead>
+                            <tbody className='text-center'>
+                                {BuyersData?.length &&
+                                    BuyersData?.map((data, i) => <tr>
+                                        <td>{i + 1}</td>
 
 
-                                <td>
-                                    <button onClick={() => handlDeleteBuyers(data._id)} className='btn btn-sm'>Delete</button>
-                                </td>
+                                        <td>{data?.name}</td>
+                                        <td>{data?.email}</td>
 
-                            </tr>)
-                        }
-                    </tbody>
-                </table>
-            </div>
-        </div>
+
+                                        <td>
+                                            <button onClick={() => handlDeleteBuyers(data._id)} className='btn btn-sm'>Delete</button>
+                                        </td>
+
+                                    </tr>)
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                    : <img className='w-full h-full' src="https://img.freepik.com/free-vector/no-data-concept-illustration_114360-536.jpg?w=2000" alt="" />
+            }
+        </motion.div>
     );
 };
 

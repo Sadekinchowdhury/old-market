@@ -26,8 +26,9 @@ const AllCategoris = () => {
     return (
         <section className='lg:w-11/12  mx-auto'>
 
-            <div>
-                <p className='text-4xl text-orange-500 font-bold text-center py-6'> Choose Your favourite Phone </p>
+            <div className='py-6'>
+                <p className='text-3xl   font-bold pl-2 py-3'>Best For you</p>
+                <hr />
             </div>
             <div className='grid gap-5 h-1/2  grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
                 {

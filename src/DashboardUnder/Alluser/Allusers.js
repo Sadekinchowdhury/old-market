@@ -41,18 +41,19 @@ const Allusers = () => {
             <div className="overflow-x-auto">
                 <table className="table w-full">
 
-                    <thead>
+                    <thead className='text-center'>
                         <tr>
-                            <th></th>
+                            <th>No</th>
                             <th>Name</th>
                             <th>email</th>
+                            <th>Current Position</th>
                             <th>
                                 make admin
                             </th>
                             <th>Delete</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className='text-center'>
                         {users?.length &&
                             users?.map((user, i) => <tr>
                                 <th>{i + 1}</th>
@@ -60,8 +61,13 @@ const Allusers = () => {
 
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
+                                <td>{user.role}</td>
 
-                                <td>{user?.role !== 'admin' && <button onClick={() => haNdlAdminId(user._id)} className='btn btn-xs btn-primary'>make admin</button>} </td>
+                                <td>{user?.role !== 'admin' ? <button onClick={() => haNdlAdminId(user._id)} className='btn btn-xs btn-primary'>make admin</button>
+                                    : "Admin"
+                                }
+
+                                </td>
 
                                 <td>
                                     <button className='btn btn-sm'>Delete</button>

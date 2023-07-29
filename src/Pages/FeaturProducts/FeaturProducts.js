@@ -4,11 +4,11 @@ const FeaturProducts = () => {
     const [products, setProducts] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://old-server.vercel.app/products')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
-    console.log(products)
+
     return (
         <div className='grid grid-cols-4'>
             {

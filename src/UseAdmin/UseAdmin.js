@@ -11,7 +11,7 @@ const UseAdmin = email => {
             fetch(`https://old-server.vercel.app/users/admin/${email}`)
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
+
                     setisAdmin(data.isAdmin)
                     setIsLoading(false)
                 })

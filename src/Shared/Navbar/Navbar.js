@@ -14,7 +14,7 @@ import { motion } from 'framer-motion';
 
 
 const Navbar = () => {
-    const { user, LogOut } = useContext(AuthContext)
+    const { user, LogOut, notiNumber, setNotiNumber } = useContext(AuthContext)
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -52,7 +52,9 @@ const Navbar = () => {
 
     }
 
-
+    const clearNotification = () => {
+        setNotiNumber(0)
+    }
 
     return (
         //     <motion.div className="navbar flex flex-wrap
@@ -125,7 +127,7 @@ const Navbar = () => {
         //         </motion.div>
 
         //     </motion.div>
-        <motion.div className=' py-4  shadow-2xl '>
+        <motion.div className=' py-5 '>
             <motion.div className='hidden lg:flex z-50 flex-col w-11/12 mx-auto lg:flex-row items-center '>
                 <motion.div
                     initial={{ opacity: 0, x: -100 }}
@@ -305,14 +307,16 @@ const Navbar = () => {
 
 
 
-                    <Link to='/shoppingcart' className='relative'>
+                    <Link onClick={clearNotification} to='/shoppingcart' className='relative'>
 
                         <ShoppingCartOutlined className='text-2xl cursor-pointer' />
-                        <div className='w-5 h-5 absolute -top-1 left-5 flex justify-center  rounded-full bg-orange-500'>
-                            <p className=' text-white  font-bold'>
-                                1
-                            </p>
-                        </div>
+                        {
+                            notiNumber !== 0 && <div className='w-5 h-5 absolute -top-1 left-5 flex justify-center  rounded-full bg-orange-500'>
+                                <p className=' text-white  font-bold'>
+                                    {notiNumber}
+                                </p>
+                            </div>
+                        }
 
                     </Link>
 

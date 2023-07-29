@@ -10,10 +10,15 @@ const auth = getAuth(app)
 
 const Authprovide = ({ children }) => {
     const [user, setUser] = useState(null)
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
 
 
-
+    // React.useEffect(() => {
+    //     const timer = setTimeout(() => {
+    //         setLoading(false);
+    //     }, 2000);
+    //     return () => clearTimeout(timer);
+    // }, []);
 
     // signup
     const creatUsers = (email, password) => {
@@ -36,7 +41,7 @@ const Authprovide = ({ children }) => {
     // signin
 
     const LogIn = (email, password) => {
-        setLoading(true)
+        setLoading(false)
         return signInWithEmailAndPassword(auth, email, password)
     }
     // update profile
@@ -51,7 +56,7 @@ const Authprovide = ({ children }) => {
     useEffect(() => {
 
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
-            console.log('observ')
+
             setUser(currentUser)
             setLoading(false)
         });
@@ -62,7 +67,24 @@ const Authprovide = ({ children }) => {
 
     // details
 
+    // notification
+    const [notiNumber, setNotiNumber] = useState(0)
 
+    const notiFications = () => {
+        setNotiNumber(notiFications + 1)
+    }
+
+
+
+
+
+    const [users, setUsers] = useState({})
+
+    useEffect(() => {
+        fetch(`https://old-server.vercel.app/user?email=${user?.email}`)
+            .then(res => res.json())
+            .then(data => setUsers(data))
+    }, [user?.email])
 
     const authInfo = {
         updatePro,
@@ -72,6 +94,10 @@ const Authprovide = ({ children }) => {
         LogOut,
         loading,
         GoogleLogin,
+        notiNumber,
+        setNotiNumber,
+        users
+
 
 
 

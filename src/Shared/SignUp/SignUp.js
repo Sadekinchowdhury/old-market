@@ -30,7 +30,7 @@ const SignUp = () => {
 
     const navigate = useNavigate()
     if (token) {
-        console.log(token)
+
         navigate('/')
     }
 
@@ -54,7 +54,7 @@ const SignUp = () => {
                 saveUser(data.email, data.name, data.role)
 
                     .catch(error => console.log(error))
-                console.log(user)
+
             })
             .catch(errors => {
 
@@ -76,7 +76,7 @@ const SignUp = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log("signupdat", data)
+
                     setCreatemail(email)
 
                 })

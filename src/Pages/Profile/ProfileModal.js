@@ -25,7 +25,7 @@
 //         fieldName1: '',
 //         fieldName2: '',
 //     });
-//     console.log(formData)
+//   
 
 //     const [loading, setLoading] = useState(false);
 //     const [imageUrl, setImageUrl] = useState();
@@ -311,7 +311,7 @@ const ProfileModal = ({ users }) => {
     const handleFileChange = (event) => {
         setSelectedFile(event.target.files[0]);
     };
-    console.log("slected file", selectedFile)
+
 
     const date = new Date().toLocaleDateString('en-us', { year: "numeric", month: "short", day: "numeric" });
 
@@ -371,7 +371,7 @@ const ProfileModal = ({ users }) => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data)
+
                         if (data.modifiedCount > 0) {
                             toast.success('User Information Updated')
                         }

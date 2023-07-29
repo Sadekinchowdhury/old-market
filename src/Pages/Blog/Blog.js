@@ -17,7 +17,7 @@ const Blog = () => {
             Email: data?.email
         }
 
-        fetch("http://localhost:5000/questions", {
+        fetch("https://old-server.vercel.app/questions", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -27,7 +27,7 @@ const Blog = () => {
             .then((res) => res.json())
             .then((data) => {
 
-                console.log(data);
+
             });
 
     }

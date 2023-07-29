@@ -12,18 +12,18 @@ const Modal = ({ booking, setBooking }) => {
 
     const { name, price, _id } = booking
     const date = new Date().toLocaleDateString('en-us', { year: "numeric", month: "short", day: "numeric" });
-    console.log(booking)
+
 
     const { user } = useContext(AuthContext)
 
 
     const handSubmit = event => {
-        console.log(event)
+
         event.preventDefault()
         const form = event.target
         const user_location = form.location.value;
         const user_phone = form.phone.value;
-        console.log(user_location, user_phone)
+
 
         const booking = {
             userName: user?.displayName,
@@ -36,7 +36,7 @@ const Modal = ({ booking, setBooking }) => {
             productId: _id
 
         }
-        console.log(booking)
+
 
         fetch('https://old-server.vercel.app/booking', {
             method: 'POST',
@@ -65,7 +65,7 @@ const Modal = ({ booking, setBooking }) => {
                     toast.error(data.message)
                 }
 
-                console.log(data)
+
             })
 
 

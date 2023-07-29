@@ -1,6 +1,6 @@
 
 
-import { React, useContext } from 'react';
+import { React, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/AuthProvider';
@@ -18,35 +18,47 @@ const Modal = ({ details, cart }) => {
 
 
     let totalPrice = price * cart
-    console.log(totalPrice)
+
 
     const date = new Date().toLocaleDateString('en-us', { year: "numeric", month: "short", day: "numeric" });
-    console.log(details)
+
 
     const { user } = useContext(AuthContext)
 
 
+
+
+    const [users, setUsers] = useState({})
+
+    useEffect(() => {
+        fetch(`https://old-server.vercel.app/user?email=${user?.email}`)
+            .then(res => res.json())
+            .then(data => setUsers(data))
+    }, [user?.email])
+
+
     const handSubmit = event => {
-        console.log(event)
+
         event.preventDefault()
         const form = event.target
-        const user_location = form.location.value;
-        const user_phone = form.phone.value;
-        const adress1 = form.adress.value;
-        const adress2 = form.adress2.value;
-        const description = form.description.value;
 
-        console.log(adress1, adress2, description)
+        // const user_phone = form.phone.value;
+        // const adress1 = form.adress1.value;
+        // const adress2 = form.adress2.value;
+        // const description = form.description.value;
+
+
         const booking = {
-            userName: user?.displayName,
+            userName: users?.name,
             email: user?.email,
             price: totalPrice,
-            user_location,
-            adress1, adress2,
-            description,
-            total: cart,
-            user_phone,
-            itemname: name,
+
+
+            adress1: users?.adress1, adress2: users?.adress2,
+
+            quantity: cart,
+            user_phone: users?.phone,
+            productName: name,
             date,
             productId: _id
 
@@ -70,19 +82,13 @@ const Modal = ({ details, cart }) => {
                     toast.success('congratulations you are successfully booking ')
                     navigate('/dashboard/myorders')
 
-
-
-
-
                 }
                 else {
                     toast.error(data.message)
                 }
 
-                console.log(data)
+
             })
-
-
 
     }
 
@@ -102,10 +108,12 @@ const Modal = ({ details, cart }) => {
 
                         {/* <input type="text" name='name' defaultValue={user?.displayName} readOnly placeholder="name" className="input w-full mt-10   input-bordered " /> */}
 
-                        <p className='text-[14px] font-medium '>Buyer Name- {user.displayName}</p>
-                        <p className='text-[14px] font-medium'>Product Name- {name}</p>
-                        <p className='text-[14px] font-medium'>Email- {user?.email}</p>
+                        <p className='text-[14px] font-medium '>Buyer Name- {users?.name}</p>
+                        <p className='text-[14px] font-medium'>Product Name- {details?.name}</p>
+                        <p className='text-[14px] font-medium'>Email- {users?.email}</p>
                         <p className='text-[14px] font-medium'>Price- {totalPrice}</p>
+                        <p>Adress- {users?.adress1}</p>
+                        <p>Zip-{users?.zip}</p>
 
                         {/* <input type="text" name='itemname' readOnly defaultValue={name} placeholder="name" className="input w-full mt-10   input-bordered " /> */}
 
@@ -116,7 +124,7 @@ const Modal = ({ details, cart }) => {
                             placeholder="price" className="input w-full mt-10  input-bordered " /> */}
 
 
-                        <div className='py-4 gap-3'>
+                        {/* <div className='py-4 gap-3'>
 
                             <div className='flex items-center gap-5 py-3'>
                                 <div>
@@ -139,7 +147,8 @@ const Modal = ({ details, cart }) => {
                                 <TextArea type="text" name='description' placeholder="your location" className="w-full " />
 
                             </div>
-                        </div>
+                        </div> */}
+
                         <div className='flex justify-center items-center'>
                             <input className='py-3 px-6 rounded-md border border-gray-300 text-white bg-black shadow-2xl hover:bg-gray-700 cursor-pointer' type="submit" value="submit" />
                         </div>

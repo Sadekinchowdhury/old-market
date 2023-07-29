@@ -18,7 +18,7 @@ const UseSeller = email => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
+
                     setisSeller(data.isSeller)
 
                     setIsLoading(false)
