@@ -22,11 +22,23 @@ const Login = () => {
 
     const from = location.state?.from?.pathname || '/'
 
+    // const [emailData, setEamilData] = useState('')
+    // const handlChange = (event) => {
+    //     event.preventDefault()
+    //     const form = event.target;
+    //     const email = form.email.value;
+    //     setEamilData(email)
+    // }
+    // console.log(emailData)
 
-    const handlogin = data => {
+    const handlogin = event => {
+        event.preventDefault()
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
 
-
-        LogIn(data.email, data.password)
+        console.log(email, password)
+        LogIn(email, password)
             .then(result => {
                 const user = result.user
                 console.log(user)
@@ -51,14 +63,14 @@ const Login = () => {
                     </div>
                     <div className='w-full lg:w-2/3 mx-auto'>
 
-                        <form className='' onSubmit={handleSubmit(handlogin)}>
+                        <form className='' onSubmit={handlogin}>
 
                             <div className="form-control py-2 w-full">
                                 <label className="label  ">
                                     Email
                                 </label>
                                 <Input type="text" {...register("email", {
-                                    required: 'email is required'
+
                                 })} className="py-2" />
 
                                 {errors.email && <p className='text-red-600'>{errors.email?.message}</p>}
@@ -72,7 +84,7 @@ const Login = () => {
                                     Password</label>
 
                                 <Input type="password" {...register("password", {
-                                    required: 'password is required',
+
                                     minLength: { value: 6, message: 'at least 6 carecter' }
                                 })} className="py-2" />
 
@@ -86,7 +98,7 @@ const Login = () => {
                             </div>
 
 
-                            <button className='w-full bg-slate-800 cursor-pointer  transition duration-300 hover:scale-105 hover:border-[2px] hover:border-blue-800 py-2 rounded-md text-white'   >
+                            <button type='submit' className='w-full bg-slate-800 cursor-pointer  transition duration-300 hover:scale-105 hover:border-[2px] hover:border-blue-800 py-2 rounded-md text-white'   >
                                 Sign In
 
                             </button>

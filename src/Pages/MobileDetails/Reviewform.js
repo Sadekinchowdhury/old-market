@@ -78,31 +78,15 @@ const Reviewform = ({ MobileDetails, refetch }) => {
     return (
         <div className='w-full lg:w-5/12'>
             <div>
-                <p className='text-[16px]'>Ratting</p>
+                <p className='text-[30px] font-bold'>Ratting & Review</p>
 
 
             </div>
-            <div>
-                {/* <div className='flex'>
 
-                    {/* Displaying stars for user selection */}
-                {/* {[1, 2, 3, 4, 5].map((star) => (
-                    <span
-                        key={star}
-                        className="text-4xl cursor-pointer "
-                        onClick={() => handleStarClick(star)}
-                    >
-                        {star <= rating ? <FaStar color='yellow' /> : <FaStar />}
-                    </span>
-                ))} */}
-                {/* </div>  */}
-
-            </div>
             <form onSubmit={handlReview} action="">
                 <div className="form-control  gap-5 py-4">
                     <div>
-                        <label className='text-[16px]'>Review</label>
-
+                        <label >Review</label>
                         <Input.TextArea name={inputvalue} className='h-32 ' placeholder="Review" allowClear onChange={handleTextareaChange} />
 
                     </div>

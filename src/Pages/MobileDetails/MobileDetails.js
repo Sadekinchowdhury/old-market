@@ -1,22 +1,20 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import { FaShoppingBasket, FaShoppingCart, FaStar } from 'react-icons/fa';
+import { FaCheck, FaShoppingBasket, FaShoppingCart, FaStar } from 'react-icons/fa';
 import { motion, } from 'framer-motion';
-
 import { AiOutlineMinus, AiOutlinePlus, } from 'react-icons/ai';
-import { Input, Rate } from 'antd';
-
 import ProductModal from './ProductModal';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/AuthProvider';
 import Review from './Review';
 import { useQuery } from '@tanstack/react-query';
-import Spinner from '../ShopingCart/Spinner';
 import Reviewform from './Reviewform';
 
 
 const MobileDetails = () => {
+
     const { user, users, notiNumber, setNotiNumber, } = useContext(AuthContext)
+    console.log(users)
 
     const [booking, setBooking] = useState(null)
 
@@ -110,7 +108,7 @@ const MobileDetails = () => {
 
 
 
-    const date = new Date()
+
     const [loading, setLoading] = React.useState(true);
 
 
@@ -147,7 +145,8 @@ const MobileDetails = () => {
         }
     })
 
-    console.log(MobileDetails)
+
+
 
     return (
         <motion.div className=''>
@@ -163,6 +162,10 @@ const MobileDetails = () => {
                     <div className='flex pb-6 gap-3 items-center'>
                         <img className='w-16 h-16 rounded-full border border-gray-300' src={MobileDetails?.sellerImage} alt="" />
                         <p className='text-xl font-semibold'>{MobileDetails.sellername}</p>
+                        {/* {
+                            allUsers?.role === "seller" && allUsers?.verify ? <FaCheck size={20} color='black' /> : <></>
+                        } */}
+
                     </div>
 
 
@@ -185,7 +188,7 @@ const MobileDetails = () => {
                         <p className='text-[17px]'>{location}</p>
                         <p className='text-[17px]'>{postedtime}</p>
                         <p className='pb-3 text-[17px]'>{description}</p>
-                        <p className=' text-[16px]'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur magni provident quae tenetur modi deleniti ipsum dignissimos repudiandae vero aliquid. Vero cupiditate temporibus incidunt. Illum excepturi dolor eius provident molestiae!</p>
+                        <p className=' text-[16px] font-poppins'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur magni provident quae tenetur modi deleniti ipsum dignissimos repudiandae vero aliquid. Vero cupiditate temporibus incidunt. Illum excepturi dolor eius provident molestiae!</p>
 
                     </div>
 
@@ -218,54 +221,6 @@ const MobileDetails = () => {
 
                 <Reviewform refetch={refetch} MobileDetails={MobileDetails} />
 
-                {/* <div className='w-full lg:w-5/12'>
-                        <div>
-                            <p className='text-[16px]'>Ratting</p>
-
-
-                        </div>
-                        <div>
-                            <div className='flex'>
-
-                                {/* Displaying stars for user selection */}
-                {/* {[1, 2, 3, 4, 5].map((star) => (
-                                    <span
-                                        key={star}
-                                        className="text-4xl cursor-pointer "
-                                        onClick={() => handleStarClick(star)}
-                                    >
-                                        {star <= rating ? <FaStar color='yellow' /> : <FaStar />}
-                                    </span>
-                                ))}
-                            </div>
-
-                        </div>
-                        <form onSubmit={handlReview} action="">
-                            <div className="form-control  gap-5 py-4">
-                                <div>
-                                    <label className='text-[16px]'>Review</label>
-
-                                    <Input.TextArea name={inputvalue} className='h-32 ' placeholder="Review" allowClear onChange={handleTextareaChange} />
-
-                                </div>
-                                <div >
-                                    <label className='text-[16px]' htmlFor="">Name</label>
-                                    <Input name='name' placeholder="Name" className='py-2' allowClear onChange={onchange} />
-                                </div>
-                                <div>
-                                    <label className='text-[16px]' htmlFor="">Email</label>
-                                    <Input name='email' className='py-2' placeholder="Email" allowClear onChange={onchange} />
-                                </div>
-
-
-                            </div>
-                            <div className='py-5'>
-
-                                <input className='px-5 py-3 bg-black text-white font-semibold hover:text-black hover:bg-gray-300 ease-in-out  transition-colors duration-200 shadow-2xl hover:border-[1px] hover:border-gray-500 rounded-sm  gap-2' type="submit" />
-                            </div>
-                        </form>
-
-                    // </div> */}
 
 
                 {

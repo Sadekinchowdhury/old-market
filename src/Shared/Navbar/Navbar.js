@@ -237,7 +237,7 @@ const Navbar = () => {
                         <label onClick={() => setDrop(!drop)} tabIndex={0} className="cursor-pointer">
                             <motion.div className="">
                                 {/* <FaUser size={25} className=''></FaUser> */}
-                                <UserOutlined className='text-2xl' />
+                                <UserOutlined className='text-2xl hover:text-orange-500' />
                             </motion.div>
                         </label>
                         {
@@ -309,7 +309,7 @@ const Navbar = () => {
 
                     <Link onClick={clearNotification} to='/shoppingcart' className='relative'>
 
-                        <ShoppingCartOutlined className='text-2xl cursor-pointer' />
+                        <ShoppingCartOutlined className='text-2xl cursor-pointer text-orange-500' />
                         {
                             notiNumber !== 0 && <div className='w-5 h-5 absolute -top-1 left-5 flex justify-center  rounded-full bg-orange-500'>
                                 <p className=' text-white  font-bold'>

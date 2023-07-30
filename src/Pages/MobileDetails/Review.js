@@ -57,25 +57,27 @@ const Review = ({ review, refetch }) => {
     return (
         <>
             {
-                loading && <div className='flex justify-between py-4 p-2 w-full   lg:w-10/12 mx-auto'>
+                loading && <div className='flex justify-between py-4 p-2 w-full s  lg:w-10/12 mx-auto'>
                     <div className='w-2/12'>
                         <img className='w-10 h-10 rounded-full' src={review?.image} alt="" />
                     </div>
 
-                    <div className='flex w-10/12 justify-between'>
-                        <div>
-                            <p className='text-[16px] font-semibold mb-3'>{name}</p>
-                            <p>{comment}</p>
+                    <div className='w-10/12'>
+                        <div className='flex items-center justify-between'>
+                            <div>
+                                <p className='text-[16px] font-semibold mb-3'>{name}</p>
 
-                        </div>
-                        <div className=''>
+                            </div>
+
                             <div className='flex cursor-pointer items-center gap-1'>
                                 <h1 className='flex items-center'>{timeDifferenceMessage} ago </h1> <AiFillDelete onClick={() => handlDelete(review?._id, user?.email)} size={20} /> <FaEllipsisV />
                             </div>
 
+
+
+
                         </div>
-
-
+                        <p className='px-3'>{comment}</p>
                     </div>
                 </div>
             }
