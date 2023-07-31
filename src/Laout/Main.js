@@ -8,8 +8,8 @@ import Spinner from '../Pages/ShopingCart/Spinner';
 const Main = () => {
     const { loading } = useContext(AuthContext)
     return (
-        <div className=''>
-            <Navbar></Navbar>
+        <div className='min-h-screen'>
+            <Navbar className=''></Navbar>
             {
                 loading ? <Spinner /> : <Outlet className="min-h-screen" ></Outlet>
             }

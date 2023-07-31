@@ -8,6 +8,10 @@ import SideBanner from './SideBanner';
 import Product from './Product';
 import { motion } from 'framer-motion';
 import ImageBanner from './HomeBanner';
+import NewCategory from './NewCategory/NewCategory';
+import CategorySlide from './CategorySlide';
+import HeroBanner from './HeroBanner/HeroBanner';
+import CompanyLogo from './CompanyLogo/CompanyLogo';
 
 
 const Home = () => {
@@ -30,28 +34,23 @@ const Home = () => {
 
             </motion.div>
 
-            <motion.div className='py-10 w-10/12 mx-auto  gap-4 '>
-                <motion.div className='w-full pt-6 pb-8 lg:w-8/12 mx-auto '>
-                    <Shopings></Shopings>
-                </motion.div>
-
-                <motion.div className='py-6'>
-                    <h1 className='text-xl font-bold'>Feature Product</h1>
-                    <hr className='bg-black border-[1px] my-2 w-2/3 lg:w-1/5 border-black' />
-                </motion.div>
-
-
-                <Product className='w-full' />
-
+            <motion.div className='w-full py-12   lg:w-8/12 mx-auto'>
+                <Shopings></Shopings>
             </motion.div>
 
+            <div className='w-11/12 mx-auto'>
+                <Product />
+            </div>
 
-
-            <motion.div>
-                <Category></Category>
-                {/* <FeaturProducts /> */}
-            </motion.div>
-
+            <div>
+                <CategorySlide />
+            </div>
+            <div>
+                <HeroBanner />
+            </div>
+            <div className='w-full'>
+                <CompanyLogo />
+            </div>
 
             <Addvirtize></Addvirtize>
             <Exptra></Exptra>

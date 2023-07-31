@@ -12,7 +12,7 @@ const Addvirtize = () => {
     const [products, setProducts] = useState([])
 
     useEffect(() => {
-        fetch('https://old-server.vercel.app/advertise/product')
+        fetch('http://localhost:5000/advertise/product')
             .then(res => res.json())
             .then(data => {
                 setProducts(data)
@@ -34,7 +34,7 @@ const Addvirtize = () => {
     //         return data;
     //     }
     // })
-
+    console.log(products)
     return (
         <section className=' lg:w-11/12 mx-auto'>
 

@@ -2,12 +2,64 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
 import { FaCheckCircle, FaShoppingCart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const AddvirtisCard = ({ product, setBooking }) => {
     const { name, price, location, description, originalprice, sellername, postedtime, brand, picture, usedtime, email } = product
 
-    const { user } = useContext(AuthContext)
+    const { user, setNotiNumber, notiNumber } = useContext(AuthContext)
+
+
+    const [cart, setCart] = useState()
+
+    const [cartAdd, setCartAdd] = useState(false)
+
+    const update = {
+        cart, cartAdd,
+        bookingEmail: user?.email,
+        MobileDetails: product
+    }
+    const handlAddCart = () => {
+
+        setCart(1)
+        setNotiNumber(notiNumber + 1)
+        setCartAdd(true)
+
+
+
+        fetch('https://old-server.vercel.app/booking', {
+            method: 'POST',
+
+            headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(update)
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+
+                    toast.success('congratulations you are successfully cart add ')
+
+
+                }
+                else {
+                    toast.error(data.message)
+                }
+
+
+            })
+
+    }
+
+
+
+
+
 
     const { data: users = {}, refetch } = useQuery({
         queryKey: ['user', email],
@@ -28,40 +80,31 @@ const AddvirtisCard = ({ product, setBooking }) => {
     return (
         <section onMouseEnter={hovemouse}
             onMouseLeave={hovemouse}
-            className={`bg-white shadow-2xl ${open && 'border border-red-500 transition duration-500 ease-in-out'}`}
+            className={``}
         >
             {product.advertise || !product.soldStatus ?
 
-                <div className={`card rounded-md  border   shadow-[40px] `}>
-                    <div className='flex pt-2 justify-center items-center '>
-                        <img className='w-11/12 mx-auto  h-48' src={picture} alt="" />
-                    </div>
-
-                    <div className={`pt-3 px-3 pb-2  ${open ? 'block' : 'hidden'}`}>
-                        <h2 className="card-title uppercase">{name}</h2>
-                        <div className='flex  items-center justify-between gap-3 py-3'>
-                            <div>
-
-                                <p className='text-[13px] font-bold'>Old price: ${price}</p>
-
-                                <p className='text-[13px] font-bold'>Used time: {usedtime}</p>
-                                <p className='text-[13px] font-bold'>posted time: {postedtime}</p>
-                            </div>
-                            <div>
-
-                                <p className='text-xl font-semibold line-through'>${price}</p>
-                                <p className='text-xl font-semibold'>${originalprice}</p>
-                            </div>
+                <div className={`card ${open ? 'border shadow-xl' : 'border-none'} rounded-md`}>
+                    <Link to={`/card_details/${product?._id}`}>
+                        <div className='flex pt-2 justify-center items-center '>
+                            <img className='w-11/12 mx-auto  h-48' src={picture} alt="" />
                         </div>
+                        <h2 className="card-title flex items-center text-center justify-center uppercase py-2">{name}</h2>
+                        <div className='flex py-3  gap-4 justify-center items-center text-center'>
+
+                            <p className='text-xl font-semibold line-through'>${price}</p>
+                            <p className='text-xl font-semibold'>${originalprice}</p>
+                        </div></Link>
+                    <div className={`pt-3 px-3 pb-2  ${open ? 'block' : 'hidden'}`}>
 
                         <div className="flex pt-2  gap-2 justify-between">
 
 
-                            <div className="avatar">
-                                <div className="w-8 h-8 rounded-full  relative">
-                                    <img className='border-black border-[1px]' src={user?.photoURL} alt='' />
+                            <div className="flex items-center">
+                                <div className="relative">
+                                    <img className={`border-black border-[1px] w-10 h-10 rounded-full  transition duration-300 ease-in-out ${open && 'hover:scale-105'}`} src={users?.image} alt='' />
                                     {
-                                        users?.role === 'seller' && users?.verify ? <FaCheckCircle color='green' className='absolute top-0 right-1' /> : <></>
+                                        users?.role === 'seller' && users?.verify ? <FaCheckCircle color='green' className='absolute -top-1 -right-3' /> : <></>
                                     }
 
                                 </div>
@@ -77,7 +120,9 @@ const AddvirtisCard = ({ product, setBooking }) => {
                             <div>
                                 {
                                     user?.email ? <>
-                                        <label onClick={() => setBooking(product)} htmlFor="booking-modal" className="flex gap-2 items-center px-2 py-1 border border-gray-300 cursor-pointer font-semibold hover:border-blue-700 hover:border-2 hover:bg-black hover:text-white transition duration-200 hover:scale-105"><FaShoppingCart /> Add cart</label>
+                                        <label
+                                            onClick={handlAddCart}
+                                            className="flex gap-2 items-center px-2 py-1 border border-gray-300 cursor-pointer font-semibold hover:border-blue-700 hover:border-2 hover:bg-black hover:text-white transition duration-200 hover:scale-105"><FaShoppingCart /> Add cart</label>
                                     </> :
                                         <>
                                             <Link className='flex gap-2 items-center px-2 py-1 border border-gray-300 cursor-pointer' to='/login'>

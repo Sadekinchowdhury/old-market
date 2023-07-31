@@ -7,6 +7,7 @@ import GoogleLogin from '../Google/GoogleLogin';
 import { getAuth } from 'firebase/auth';
 import { AuthContext } from '../../Context/AuthProvider';
 import { Input, Checkbox } from 'antd';
+import { motion } from 'framer-motion';
 
 
 const Login = () => {
@@ -56,7 +57,10 @@ const Login = () => {
     return (
         <div className='min-h-screen flex items-center justify-center'>
             <div className='flex flex-col lg:flex-row w-11/12 mx-auto'>
-                <div className='w-full lg:w-1/2'>
+                <motion.div
+                    initial={{ opacity: 0, x: -100 }}
+                    animate={{ opacity: 1, x: 0, transition: { duration: 2 } }}
+                    exit={{ opacity: 0, x: 50, transition: { duration: 2 } }} className='w-full lg:w-1/2'>
                     <div className='py-6'>
                         <h1 className='text-center text-[25px] font-semibold '>Welcome Back</h1>
                         <p className='text-[13px] font-bold text-center text-sky-600'>Please enter your details</p>
@@ -116,11 +120,13 @@ const Login = () => {
 
 
                     </div>
-                </div>
+                </motion.div>
 
-                <div className='w-full lg:w-1/2'>
+                <motion.div initial={{ opacity: 0, x: 100 }}
+                    animate={{ opacity: 1, x: 0, transition: { duration: 2 } }}
+                    exit={{ opacity: 0, x: 50, transition: { duration: 2 } }} className='w-full lg:w-1/2'>
                     <img className='w-full' src="https://img.freepik.com/free-vector/sign-up-concept-illustration_114360-7885.jpg?w=740&t=st=1690643188~exp=1690643788~hmac=bc61214700a55325dc9846d5dde69437965f77f95d75f2dd800112294cbfb74e" alt="" />
-                </div>
+                </motion.div>
 
             </div>
         </div>

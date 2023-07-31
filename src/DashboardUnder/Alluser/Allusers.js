@@ -30,13 +30,13 @@ const Allusers = () => {
                 if (data.modifiedCount > 0) {
                     toast.success('Admin make successfully')
                 }
-                console.log(data)
+
                 refetch()
             })
     }
 
     return (
-        <div className='w-11/12 mx-auto'>
+        <div className='w-full mx-auto'>
             <h1 className='pt-6 pb-3 text-2xl font-bold'>All users </h1>
             <div className="overflow-x-auto">
                 <table className="table w-full">

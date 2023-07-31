@@ -1,0 +1,32 @@
+[
+    {
+        "id": "5",
+        "description": "this phone is verry good .it is made in china phone",
+        "name": "Laptop",
+        "brand": "Laptop",
+        "category": "Laptop",
+        "picture": "https://th.bing.com/th/id/R.07bbcbcdd8ad451246c6ad4c4a907741?rik=Oleq%2fbsYfaZT9Q&pid=ImgRaw&r=0"
+    },
+    {
+        "id": "6",
+        "description": "this phone is verry good .it is made in china phone",
+        "name": "SmartPhone",
+        "brand": "SmartPhone",
+        "category": "SmartPhone",
+        "picture": "https://fdn2.gsmarena.com/vv/pics/realme/realme-8-1.jpg"
+    },
+    {
+        "id": "8",
+        "name": "Medicine",
+        "brand": "Medicine",
+        "category": "Medicine",
+        "picture": "https://w7.pngwing.com/pngs/385/987/png-transparent-physical-pharmacy-drugs-drug-capsule-pharmacy-thumbnail.png"
+    },
+    {
+        "id": "9",
+        "name": "Home",
+        "brand": "Home",
+        "category": "Home",
+        "picture": "https://img.freepik.com/free-photo/eco-friendly-cleaning-products-set-basket-with-soaps-brushes_23-2148818497.jpg?w=740&t=st=1690714060~exp=1690714660~hmac=cd56df1016bdb2d5dab1651646bd10592eb4e875293fa2b8f14645e4faa401f0"
+    }
+]

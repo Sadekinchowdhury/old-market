@@ -11,7 +11,7 @@ const Category = () => {
         queryFn: async () => {
             const res = await fetch('https://old-server.vercel.app/categoris')
             const data = await res.json()
-            console.log(data)
+
             return data;
 
         }
@@ -30,7 +30,7 @@ const Category = () => {
                 <hr className='border w-4/12 mx-auto  border-gray-200' />
             </div>
 
-            <div className='grid grid-cols-1  w-full lg:w-8/12  mx-auto md:grid-cols-2 lg:grid-cols-3 gap-3 py-6 '>
+            <div className='grid grid-cols-6 gap-10 '>
 
                 {
                     categoryProduct.length &&
@@ -49,3 +49,4 @@ const Category = () => {
 };
 
 export default Category;
+

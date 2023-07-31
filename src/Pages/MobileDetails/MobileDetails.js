@@ -119,7 +119,7 @@ const MobileDetails = () => {
 
 
     // useEffect(() => {
-    //     fetch(`http://localhost:5000/review/${_id}`)
+    //     fetch(`https://old-server.vercel.app/review/${_id}`)
     //         .then(res => res.json())
     //         .then(data => {
     //             setUserReview(data)
@@ -133,7 +133,7 @@ const MobileDetails = () => {
     const { data: userreview = [], refetch } = useQuery({
         queryKey: ['review'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/review/${_id}`, {
+            const res = await fetch(`https://old-server.vercel.app/review/${_id}`, {
                 headers: {
                     'content-type': 'application/json',
 

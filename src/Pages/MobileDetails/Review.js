@@ -32,7 +32,7 @@ const Review = ({ review, refetch }) => {
     const [loading, setLoading] = React.useState(true);
     const handlDelete = (reviewId, userEmail) => {
 
-        fetch(`http://localhost:5000/review/${reviewId}/${userEmail}`, {
+        fetch(`https://old-server.vercel.app/review/${reviewId}/${userEmail}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
@@ -77,7 +77,7 @@ const Review = ({ review, refetch }) => {
 
 
                         </div>
-                        <p className='px-3'>{comment}</p>
+                        <p className='pr-3'>{comment}</p>
                     </div>
                 </div>
             }

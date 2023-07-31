@@ -18,7 +18,7 @@ const ShopingCart = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/booking?${user?.email}`)
+        fetch(`https://old-server.vercel.app/booking?${user?.email}`)
             .then(res => res.json())
             .then(data => setBooking(data))
 

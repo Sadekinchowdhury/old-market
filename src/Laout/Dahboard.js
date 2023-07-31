@@ -95,7 +95,7 @@ const DashBoard = () => {
                     initial={{ opacity: 0, x: -100 }}
                     animate={{ opacity: 1, x: -0, transition: { duration: 3 } }}
                     exit={{ opacity: 0, x: 50, transition: { duration: 3 } }}
-                    className={`bg-gray-900 z-50 h-auto shadow-2xl w-1/2 px-4 lg:hidden block relative m-0 my-0  mx-0    py-6 transform duration-1000 ${!open ? 'w-1/12 ml-1 rounded-l-full transform duration-1000 z-50' : 'w-2/3'} `}>
+                    className={`bg-gray-900 lg:z-10 z-50 h-auto shadow-2xl w-1/2 px-4 lg:hidden block relative m-0 my-0  mx-0    py-6 transform duration-1000 ${!open ? 'w-1/12 ml-1 rounded-l-full transform duration-1000 z-50' : 'w-2/3'} `}>
                     {
                         open &&
                         <Sidebar users={users} key={users._id} />
@@ -113,17 +113,17 @@ const DashBoard = () => {
                 </motion.div>
 
                 {/* {desktop} */}
-                <div className={`bg-gray-900 text-white z-50  shadow-2xl w-1/2 lg:w-2/12 px-4 lg:block hidden lg:m-2 m-0 lg:my-2 my-0 lg:mx-2 top-0 mx-0 lg:rounded-xl rounded-b-lg py-6`}>
-                    <div className=''>
-
-                        <Sidebar users={users} key={users._id} />
-
-                    </div>
-
-                    <div className='-right-4  bg-gray-900 rounded-r-full top-8 w-14 h-[50px] flex justify-center items-center absolute lg:static lg:hidden'>
+                <div className={`bg-gray-900 text-white   shadow-2xl   w-3/12  lg:block hidden   top-0 mx-0 lg:rounded-xl rounded-b-lg py-6 `}>
 
 
-                    </div>
+                    <Sidebar users={users} key={users._id} />
+
+
+
+                    {/* <div className='-right-4  bg-gray-900 rounded-r-full top-8 w-14 h-[50px] flex justify-center items-center absolute lg:static lg:hidden'>
+
+
+                    </div> */}
                 </div>
                 <motion.div
                     initial={{ opacity: 0, x: 100 }}

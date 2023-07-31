@@ -7,7 +7,7 @@ import UseSeller from '../../UseSeller/UseSeller';
 import { Link } from 'react-router-dom';
 
 const Load = ({ allcat, setBooking }) => {
-
+    const { users } = useContext(AuthContext)
     // const [isSeller] = UseSeller(user?.email)
 
     // const [verifyseller, setVerifyseller] = useState({})
@@ -58,7 +58,7 @@ const Load = ({ allcat, setBooking }) => {
 
                         <div className="flex">
 
-                            <img className='w-10 h-10 rounded-full' src={user?.photoURL} alt='' />
+                            <img className='w-10 h-10 rounded-full' src={users?.image} alt='' />
 
 
                             <p className='ml-3 text-sm font-bold'>

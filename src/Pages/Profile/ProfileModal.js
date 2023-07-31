@@ -362,7 +362,7 @@ const ProfileModal = ({ users }) => {
                 }
 
 
-                fetch(`http://localhost:5000/user/${users._id}`, {
+                fetch(`https://old-server.vercel.app/user/${users._id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'

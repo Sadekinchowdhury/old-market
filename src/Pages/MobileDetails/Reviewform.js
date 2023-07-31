@@ -53,7 +53,7 @@ const Reviewform = ({ MobileDetails, refetch }) => {
 
 
 
-        fetch('http://localhost:5000/review', {
+        fetch('https://old-server.vercel.app/review', {
             method: "POST",
             headers: {
                 'content-type': 'application/json',

@@ -13,6 +13,7 @@ import { Checkbox, Input } from 'antd';
 
 
 // import UseToken from '../../Ussetoken/UseToken';
+import { motion } from 'framer-motion';
 
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm()
@@ -97,11 +98,18 @@ const SignUp = () => {
 
     return (
         <div className='min-h-screen flex flex-col w-11/12 mx-auto lg:flex-row gap-20 justify-center py-10 items-center'>
-            <div className='w-full lg:w-1/2 mx-auto'>
+            <motion.div initial={{ opacity: 0, x: -100 }}
+                animate={{ opacity: 1, x: 0, transition: { duration: 2 } }}
+                exit={{ opacity: 0, x: 50, transition: { duration: 2 } }} className='w-full lg:w-1/2 mx-auto'>
                 <img className='w-full' src="https://img.freepik.com/premium-vector/customizable-flat-illustration-mobile-login_9206-2872.jpg?w=740" alt="" />
-            </div>
+            </motion.div>
 
-            <div className='w-full lg:w-1/2 mx-auto px-4'>
+            <motion.div
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0, transition: { duration: 2 } }}
+                exit={{ opacity: 0, x: 50, transition: { duration: 2 } }}
+
+                className='w-full lg:w-1/2 mx-auto px-4'>
                 <div className='py-6'>
                     <h1 className='text-center text-[25px] font-semibold '>Lets Create Your Account</h1>
                     <p className='text-[13px] font-bold text-center text-sky-600'>Please enter your details</p>
@@ -168,13 +176,15 @@ const SignUp = () => {
                     <div>
                         {signuperror && <p className='text-red-600'>{signuperror}</p>}
                     </div>
+                    <div className='py-4 text-center'>
+                        <p>Dont have an account? <Link className='text-green-600 text-[16px] font-bold cursor-pointer' to='/login'> Sign In</Link> </p>
+                        <div className="divider">OR</div>
+                        <GoogleLogin></GoogleLogin>
+                    </div>
 
-
-                    <div className="divider">OR</div>
-                    <GoogleLogin></GoogleLogin>
                 </div>
 
-            </div>
+            </motion.div>
 
             {/* <div className='w-full lg:w-1/2'>
                 <div className='py-6'>

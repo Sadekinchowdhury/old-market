@@ -26,7 +26,7 @@ const ShopingCartDetails = ({ handleDecrease, handleIncrease, book, cart }) => {
 
 
     const handlDelete = () => {
-        fetch(`http://localhost:5000/booking/${book?._id}`, {
+        fetch(`https://old-server.vercel.app/booking/${book?._id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',

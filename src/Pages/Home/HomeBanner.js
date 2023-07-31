@@ -37,14 +37,20 @@ const ImageBanner = () => {
     ];
 
     return (
-        <div>
+        <div className='relative'>
             <Slider {...settings}>
                 {images.map((image, index) => (
-                    <div key={index}>
-                        <img className='w-full h-[250px] lg:h-[400px]' src={image} alt={`Slide ${index + 1}`} />
+                    <div key={index} className=''>
+                        <img className='w-full bg-cover  h-[250px] lg:h-[400px]' src={image} alt={`Slide ${index + 1}`} />
                     </div>
                 ))}
             </Slider>
+
+            <div className='absolute top-1/2 left-[16%]'>
+                {/* <h1 className='text-4xl font-semibold text-black font-poppins'>Welcome Easy Shop</h1> */}
+
+                <button className='btn bg-white text-black mt-3 hover:border-[2px] hover:border-blue-600 hover:text-fuchsia-50 hover:transition-opacity duration-300 ease-in-out px-6  '>Shop now</button>  </div>
+
         </div>
     );
 };

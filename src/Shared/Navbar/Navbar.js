@@ -14,7 +14,7 @@ import { motion } from 'framer-motion';
 
 
 const Navbar = () => {
-    const { user, LogOut, notiNumber, setNotiNumber } = useContext(AuthContext)
+    const { user, users, LogOut, notiNumber, setNotiNumber } = useContext(AuthContext)
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -57,78 +57,9 @@ const Navbar = () => {
     }
 
     return (
-        //     <motion.div className="navbar flex flex-wrap
-        //     items-center
-        //     justify-between
-        //     w-full
-        //     py-4
-        //     md:py-0
-        //     px-4
-        //     text-lg 
-        //    text-white    lg:p-5 "
 
-
-        //     >
-        //         <motion.div className=" ">
-
-        //             <motion.div className="dropdown text-black">
-        //                 <label tabIndex={0} className="btn btn-ghost lg:hidden">
-
-        //                     <svg className="h-5 bg-white w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-        //                 </label>
-        //                 <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-        //                     <li>{menue}</li>
-        //                 </ul>
-        //             </motion.div>
-
-        //             <img className='w-16 lg:flex hidden bg-white rounded-full h-16' src="https://i.ibb.co/pLZCHbJ/download-removebg-preview.png" alt="" /> <Link to='/' className="btn btn-ghost lg:flex hidden  normal-case text-2xl text-white">  Mobile Bazar  </Link>
-
-
-
-        //         </motion.div>
-        //         <motion.div className='lg:flex hidden'>
-        //             <ul className='flex'> <li>  <input type="text" className='input rounded-lg w-96' placeholder='Find by product name'></input>   </li>  </ul>
-        //             <FaSearch className='w-10 h-10 ml-2'></FaSearch>
-        //         </motion.div>
-        //         <motion.div className="hidden lg:flex">
-        //             <ul className="menu menu-horizontal p-0">
-
-        //                 <li>{menue}</li>
-        //             </ul>
-        //         </motion.div>
-
-        //         <motion.div className="dropdown dropdown-end lg:mr-7 items-center justify-center text-black">
-        //             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-        //                 <motion.div className="w-10 rounded-full">
-        //                     <FaUser className='w-10 h-10 rounded-full border-b-gray-100  bg-white'></FaUser>
-        //                 </motion.div>
-        //             </label>
-        //             <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-32">
-        //                 <li>
-        //                     <a className="justify-between hover:btn-ghost">
-        //                         Profile
-
-        //                     </a>
-        //                 </li>
-        //                 <li><a>Settings</a></li>
-        //                 <li>
-
-        //                     {user?.email ?
-
-        //                         <>
-
-        //                             <Link onClick={handlLogout} className="">SignOut</Link>
-        //                         </>
-        //                         : <Link className='' to='/login'>Login</Link>
-
-        //                     }
-        //                 </li>
-        //             </ul>
-        //         </motion.div>
-
-        //     </motion.div>
-        <motion.div className=' py-5 '>
-            <motion.div className='hidden lg:flex z-50 flex-col w-11/12 mx-auto lg:flex-row items-center '>
+        <motion.div className='lg:py-10'>
+            <motion.div className='hidden  bg-white py-6  p-4 fixed  top-0 left-0 z-50 lg:flex  flex-col w-full mx-auto lg:flex-row items-center '>
                 <motion.div
                     initial={{ opacity: 0, x: -100 }}
                     animate={{ opacity: 1, x: 0, transition: { duration: 2 } }}
@@ -168,23 +99,23 @@ const Navbar = () => {
                     className='basis-8/12 flex  items-center justify-center text-center'>
                     <ul className='flex-col lg:flex-row flex gap-3 '>
                         <li>
-                            <Link className='hover:bg-gray-200 transition duration-400  py-2 px-3 hover:rounded-sm text-[15px] font-semibold' to='/'>Home</Link>
+                            <Link className='hover:bg-gray-200 transition duration-400  py-2 px-3 hover:rounded-sm text-[16px] font-semibold' to='/'>Home</Link>
                         </li>
                         <li>
-                            <Link className='hover:bg-gray-200 transition duration-400  py-2 px-3 hover:rounded-sm text-[15px] font-semibold' to=''>Contact us</Link>
+                            <Link className='hover:bg-gray-200 transition duration-400  py-2 px-3 hover:rounded-sm text-[16px] font-semibold' to=''>Contact us</Link>
                         </li>
                         <li>
-                            <Link className='hover:bg-gray-200 transition duration-400  py-2 px-3 hover:rounded-sm text-[15px] font-semibold' to='/blog'>Blog</Link>
+                            <Link className='hover:bg-gray-200 transition duration-400  py-2 px-3 hover:rounded-sm text-[16px] font-semibold' to='/blog'>Blog</Link>
                         </li>
                         <li>
-                            <Link className='hover:bg-gray-200 transition duration-400  py-2 px-3 hover:rounded-sm text-[15px] font-semibold' to='/products'>Shop</Link>
+                            <Link className='hover:bg-gray-200 transition duration-400  py-2 px-3 hover:rounded-sm text-[16px] font-semibold' to='/products'>Shop</Link>
                         </li>
 
                         <motion.div className="dropdown relative items-center  justify-center text-black">
                             <label onClick={() => setDrop(!drop)} tabIndex={0} className="cursor-pointer ">
-                                <motion.div className="flex items-center justify-between  text-[15px]">
+                                <motion.div className="flex items-center justify-between  text-[16px]">
 
-                                    {/* <h1 className='text-[15px] font-semibold'>
+                                    {/* <h1 className='text-[16px] font-semibold'>
                                         Shop
                                     </h1> */}
                                     {/* <motion.div>
@@ -207,7 +138,7 @@ const Navbar = () => {
                         </motion.div>
                         <li>
                             {
-                                user && <Link className='hover:bg-gray-200 transition duration-400  py-2 px-3 hover:rounded-sm text-[15px] font-semibold' to='/dashboard'>Dashbored</Link>
+                                user && <Link className='hover:bg-gray-200 transition duration-400  py-2 px-3 hover:rounded-sm text-[16px] font-semibold' to='/dashboard'>Dashbored</Link>
                             }
                         </li>
                     </ul>
@@ -245,22 +176,26 @@ const Navbar = () => {
 
                                 <motion.div className=''>
                                     <motion.div className='flex items-center gap-2 pl-3  mb-3'>
-                                        <img src="" className='w-8 h-8 rounded-full' alt="" />
+                                        <img src={users?.image} className='w-8 h-8 rounded-full' alt="" />
                                         <motion.div>
-                                            <h1 className='text-left font-semibold'>Sadekin Chow</h1>
-                                            <p className='text-[12px]'>Chiksha,Bangladesh</p>
+                                            {
+                                                user ? <div>  <h1 className='text-left font-semibold'> {users?.name} </h1>
+                                                    <p className='text-[12px]'> {users?.adress1} </p></div> : <h1>Please Signup/Login</h1>
+                                            }
                                         </motion.div>
                                     </motion.div>
                                 </motion.div>
                                 <hr className='border border-black mb-2' />
-                                <li className=''>
-                                    <motion.div className='flex'>
-                                        <UserOutlined className='text-xl' />
-                                        <motion.div>
-                                            <Link to='/profile'>My Account</Link>
+                                {
+                                    user?.email && <li className=''>
+                                        <motion.div className='flex'>
+                                            <UserOutlined className='text-xl' />
+                                            <motion.div>
+                                                <Link to='/profile'>My Account</Link>
+                                            </motion.div>
                                         </motion.div>
-                                    </motion.div>
-                                </li>
+                                    </li>
+                                }
                                 <li className=''>
                                     <motion.div className='flex'>
 
@@ -330,7 +265,7 @@ const Navbar = () => {
 
             </motion.div>
 
-            <nav className="flex items-center md:hidden  justify-between   px-4 w-full text-white">
+            <nav className="flex items-center  bg-white shadow-2xl p-4 fixed w-full top-0 left-0 z-50  md:hidden  justify-between   px-4  text-white">
 
 
                 {/* Mobile Menu */}
@@ -345,21 +280,21 @@ const Navbar = () => {
 
                 {/* Mobile Menu Links */}
                 {isOpen && (
-                    <motion.div className="md:hidden  absolute top-0 left-0 w-full flex justify-between transition duration-1000 z-10 bg-gray-800 p-4">
+                    <motion.div className="md:hidden fixed    top-0 left-0 w-full flex justify-between transition duration-1000 z-10 bg-gray-800 p-4 ">
 
                         <ul className=''>
                             <li className='my-4'>
-                                <Link className='hover:bg-border hover:border-gray-300 transition duration-400  py-2 px-3 hover:rounded-sm text-[15px] font-semibold ' to='/'>Home</Link>
+                                <Link className='hover:bg-border hover:border-gray-300 transition duration-400  py-2 px-3 hover:rounded-sm text-[16px] font-semibold ' to='/'>Home</Link>
                             </li>
                             <li className='my-4'>
-                                <Link className='hover:bg-border hover:border-gray-300 transition duration-400  py-2 px-3 hover:rounded-sm text-[15px] font-semibold ' to=''>Contact us</Link>
+                                <Link className='hover:bg-border hover:border-gray-300 transition duration-400  py-2 px-3 hover:rounded-sm text-[16px] font-semibold ' to=''>Contact us</Link>
                             </li>
                             <li className='my-4'>
-                                <Link className='hover:bg-border hover:border-gray-300 transition duration-400  py-2 px-3 hover:rounded-sm text-[15px] font-semibold ' to='/blog'>Blog</Link>
+                                <Link className='hover:bg-border hover:border-gray-300 transition duration-400  py-2 px-3 hover:rounded-sm text-[16px] font-semibold ' to='/blog'>Blog</Link>
                             </li>
                             <li className='my-4'>
                                 {
-                                    user && <Link className='hover:bg-gray-200 tra-border hover:border-gray-300uration-400  py-2 px-3 hover:rounded-sm text-[15px] font-semibold ' to='/dashboard'>Dashbored</Link>
+                                    user && <Link className='hover:bg-gray-200 tra-border hover:border-gray-300uration-400  py-2 px-3 hover:rounded-sm text-[16px] font-semibold ' to='/dashboard'>Dashbored</Link>
                                 }
                             </li>
                         </ul>
@@ -388,14 +323,16 @@ const Navbar = () => {
                             </motion.div>
 
                             <hr className='border border-black mb-2' />
-                            <li className=''>
-                                <motion.div className='flex hover:bg-slate-200'>
-                                    <FaUser size={20} color='black' />
-                                    <motion.div>
-                                        <Link to='/dashboard/myorders'>My Account</Link>
+                            {
+                                user?.email ? <li className=''>
+                                    <motion.div className='flex hover:bg-slate-200'>
+                                        <FaUser size={20} color='black' />
+                                        <motion.div>
+                                            <Link to='/dashboard/profile'>My Account</Link>
+                                        </motion.div>
                                     </motion.div>
-                                </motion.div>
-                            </li>
+                                </li> : <></>
+                            }
                             <li className=''>
                                 <motion.div className='flex'>
                                     <MdShoppingCart size={20} color='black' />

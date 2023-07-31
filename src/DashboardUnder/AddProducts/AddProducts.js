@@ -145,8 +145,11 @@ const AddProducts = () => {
                             {
                                 categorisBrand.map(categorybrand =>
                                     <option value={categorybrand._id}>{categorybrand.brand}</option>
+
                                 )
-                            }</select>
+                            }
+                            <option value="watch">Watch</option>
+                        </select>
                     </div>
 
                     <div className="form-control  w-full lg:w-8/12 ">

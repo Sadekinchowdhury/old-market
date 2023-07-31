@@ -16,7 +16,7 @@ import UseSeller from '../UseSeller/UseSeller';
 import { AuthContext } from "../Context/AuthProvider";
 
 const Sidebar = ({ users }) => {
-    console.log(users)
+
     const { user } = useContext(AuthContext)
     const [isAdmin] = UseAdmin(user?.email)
 
@@ -24,7 +24,7 @@ const Sidebar = ({ users }) => {
     const [isBuyer] = UseBuyer(user?.email)
     const [open, setOpen] = useState(false)
     return (
-        <div className="flex justify-center  items-center py-3">
+        <div className="flex justify-center   items-center py-3">
             <div className="flex h-auto  flex-col  bg-gray-900 text-white">
 
                 <div className="flex mt-10  text-center items-center justify-center mb-8">
