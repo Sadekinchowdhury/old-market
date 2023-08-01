@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 
 const Shopings = () => {
     return (
-        <motion.div className=''>
+        <motion.div className='w-11/12 mx-auto'>
             <motion.div
 
                 initial={{ opacity: 0, x: -100 }}

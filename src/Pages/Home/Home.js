@@ -34,7 +34,7 @@ const Home = () => {
 
             </motion.div>
 
-            <motion.div className='w-full py-12   lg:w-8/12 mx-auto'>
+            <motion.div className='w-full py-12   lg:w-7/12 mx-auto'>
                 <Shopings></Shopings>
             </motion.div>
 
