@@ -87,7 +87,7 @@ const AddvirtisCard = ({ product, setBooking }) => {
                 <div className={`card ${open ? 'border shadow-xl' : 'border-none'} rounded-md`}>
                     <Link to={`/card_details/${product?._id}`}>
                         <div className='flex pt-2 justify-center items-center '>
-                            <img className='w-11/12 mx-auto  h-48' src={picture} alt="" />
+                            <img className='w-11/12 mx-auto  h-44' src={picture} alt="" />
                         </div>
                         <h2 className="card-title flex items-center text-center justify-center uppercase py-2">{name}</h2>
                         <div className='flex py-3  gap-4 justify-center items-center text-center'>
@@ -97,12 +97,12 @@ const AddvirtisCard = ({ product, setBooking }) => {
                         </div></Link>
                     <div className={`pt-3 px-3 pb-2  ${open ? 'block' : 'hidden'}`}>
 
-                        <div className="flex pt-2  gap-2 justify-between">
+                        {/* <div className="flex pt-2  gap-1 justify-between">
 
 
                             <div className="flex items-center">
                                 <div className="relative">
-                                    <img className={`border-black border-[1px] w-10 h-10 rounded-full  transition duration-300 ease-in-out ${open && 'hover:scale-105'}`} src={users?.image} alt='' />
+                                    <img className={`border-black border-[1px] w-8 h-8 rounded-full  transition duration-300 ease-in-out ${open && 'hover:scale-105'}`} src={users?.image} alt='' />
                                     {
                                         users?.role === 'seller' && users?.verify ? <FaCheckCircle color='green' className='absolute -top-1 -right-3' /> : <></>
                                     }
@@ -117,15 +117,15 @@ const AddvirtisCard = ({ product, setBooking }) => {
 
                             </div>
 
-                            <div>
+                            <div className='flex'>
                                 {
                                     user?.email ? <>
                                         <label
                                             onClick={handlAddCart}
-                                            className="flex gap-2 items-center px-2 py-1 border border-gray-300 cursor-pointer font-semibold hover:border-blue-700 hover:border-2 hover:bg-black hover:text-white transition duration-200 hover:scale-105"><FaShoppingCart /> Add cart</label>
+                                            className="flex gap-1 items-center px-1 py-1 border border-gray-300 cursor-pointer font-semibold hover:border-blue-700 hover:border-2 hover:bg-black hover:text-white transition duration-200  "><FaShoppingCart /> Add cart</label>
                                     </> :
                                         <>
-                                            <Link className='flex gap-2 items-center px-2 py-1 border border-gray-300 cursor-pointer' to='/login'>
+                                            <Link className='flex gap-1 items-center px-2 py-1 border border-gray-300 cursor-pointer font-semibold hover:border-blue-700 hover:border-2 hover:bg-black hover:text-white transition duration-200  ' to='/login'>
                                                 <FaShoppingCart />
                                                 Add cart
                                             </Link>
@@ -136,6 +136,25 @@ const AddvirtisCard = ({ product, setBooking }) => {
 
 
                             </div>
+                        </div> */}
+                        <div className='w-full text-center'>
+                            {
+                                user?.email ? <>
+                                    <label
+                                        onClick={handlAddCart}
+                                        className="flex uppercase justify-center gap-2 items-center px-1 py-2 border border-gray-300 cursor-pointer font-semibold hover:border-blue-700 hover:border-2 hover:bg-black hover:text-white transition duration-200 text-center "><FaShoppingCart /> <span className='text-center'>Add cart</span> </label>
+                                </> :
+                                    <>
+                                        <Link className='flex gap-1 items-center px-2 py-1 border border-gray-300 cursor-pointer font-semibold hover:border-blue-700 hover:border-2 hover:bg-black hover:text-white transition duration-200  ' to='/login'>
+                                            <FaShoppingCart />
+                                            Add cart
+                                        </Link>
+                                    </>
+
+                            }
+
+
+
                         </div>
                     </div>
 

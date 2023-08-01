@@ -1,12 +1,9 @@
 import { React, useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'
-import { FaSearch, FaShoppingCart, FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa'
+import { Link, useNavigate } from 'react-router-dom'
+import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa'
 import { MdShoppingCart } from 'react-icons/md';
 import { AuthContext } from '../../Context/AuthProvider';
-import { useQuery } from '@tanstack/react-query';
-import { loadStripe } from '@stripe/stripe-js';
 import { FiMenu, FiX } from 'react-icons/fi';
-import { RiArrowDropDownLine, RiHomeLine, RiUserLine, RiSettingsLine, RiArrowLeftCircleFill } from 'react-icons/ri';
 import { SearchOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/icons';
 import { motion } from 'framer-motion';
 
@@ -14,8 +11,19 @@ import { motion } from 'framer-motion';
 
 
 const Navbar = () => {
-    const { user, users, LogOut, notiNumber, setNotiNumber } = useContext(AuthContext)
+
+    const { user, users, LogOut, notiNumber, setNotiNumber, searchQuery, setSearchQuery } = useContext(AuthContext)
+
     const [isOpen, setIsOpen] = useState(false);
+
+
+    const Navigate = useNavigate()
+    const handleSearchChange = (query) => {
+        setSearchQuery(query);
+        Navigate('/products')
+    };
+
+
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -157,6 +165,8 @@ const Navbar = () => {
                     >
                         <input
                             type="text"
+                            onChange={(e) => handleSearchChange(e.target.value)}
+
                             className={`search-bar flex-1 py-2 px-3 outline-none bg-transparent ${!expanded && 'hidden'}`}
                             placeholder="Search..."
                         />

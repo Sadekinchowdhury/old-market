@@ -46,7 +46,7 @@ const Addvirtize = () => {
             </div>
             <div className='grid m-3 gap-7 h-1/2  grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
                 {
-                    products.length &&
+
                     products?.slice(0, 8).map(product =>
 
                         <AddvirtisCard

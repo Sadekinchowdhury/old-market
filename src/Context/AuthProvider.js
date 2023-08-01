@@ -86,6 +86,15 @@ const Authprovide = ({ children }) => {
             .then(data => setUsers(data))
     }, [user?.email])
 
+
+    const [searchQuery, setSearchQuery] = useState('');
+
+    const handleSearchChange = (query) => {
+        setSearchQuery(query);
+    };
+
+
+
     const authInfo = {
         updatePro,
         creatUsers,
@@ -96,7 +105,7 @@ const Authprovide = ({ children }) => {
         GoogleLogin,
         notiNumber,
         setNotiNumber,
-        users
+        users, searchQuery, setSearchQuery
 
 
 

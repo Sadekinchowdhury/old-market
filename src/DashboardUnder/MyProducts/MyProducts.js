@@ -10,21 +10,21 @@ const MyProducts = () => {
     const { data: products = [], refetch } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
-            const res = await fetch(`https://old-server.vercel.app/products?email=${user?.email}`, {
+            const res = await fetch(`http://localhost:5000/product/${user?.email}`, {
                 headers: {
                     'content-type': 'application/json',
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
             })
             const data = await res.json()
-            console.log(data)
+
             return data;
         }
 
     })
     const handlDeleteProducts = id => {
 
-        console.log('delete')
+
 
         fetch(`https://old-server.vercel.app/products/${id}`, {
             method: 'DELETE',
@@ -39,7 +39,7 @@ const MyProducts = () => {
                     toast(`You are successfully deleted product`)
                     refetch()
                 }
-                console.log(data)
+
             })
 
 
@@ -57,7 +57,7 @@ const MyProducts = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+
 
                 if (data.modifiedCount > 0) {
                     toast.success('Product Advertise Successful.')
