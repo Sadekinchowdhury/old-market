@@ -12,7 +12,7 @@ const Addvirtize = () => {
     const [products, setProducts] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/advertise/product')
+        fetch('https://old-server.vercel.app/advertise/product')
             .then(res => res.json())
             .then(data => {
                 setProducts(data)

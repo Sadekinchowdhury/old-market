@@ -19,12 +19,7 @@ const AllProducts = () => {
             .then(data => setProducts(data))
     }, [])
 
-    const [currentPage, setCurrentPage] = useState(1)
-    const [postperPage, setpostperPage] = useState(8)
 
-    const lastpostindex = currentPage * postperPage;
-    const firstpostindex = lastpostindex - postperPage;
-    const currentpost = products.slice(firstpostindex, lastpostindex)
 
     // const [searchQuery, setSearchQuery] = useState('');
 
@@ -37,7 +32,12 @@ const AllProducts = () => {
     );
 
     console.log(filteredProducts)
+    const [currentPage, setCurrentPage] = useState(1)
+    const [postperPage, setpostperPage] = useState(8)
 
+    const lastpostindex = currentPage * postperPage;
+    const firstpostindex = lastpostindex - postperPage;
+    const currentpost = filteredProducts.slice(firstpostindex, lastpostindex)
 
     return (
         <div className='min-h-screen'>
@@ -50,7 +50,7 @@ const AllProducts = () => {
 
                     <div className='grid   grid-cols-1 lg:grid-cols-4 py-10 gap-10 w-11/12 mx-auto'>
                         {
-                            filteredProducts.map(product =>
+                            currentpost.map(product =>
                                 <Products
                                     product={product}
                                     key={product._id}
