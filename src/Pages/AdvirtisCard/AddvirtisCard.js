@@ -87,7 +87,8 @@ const AddvirtisCard = ({ product, setBooking }) => {
                 <div className={`card ${open ? 'border shadow-xl' : 'border-none'} rounded-md`}>
                     <Link to={`/card_details/${product?._id}`}>
                         <div className='flex pt-2 justify-center items-center '>
-                            <img className='w-11/12 mx-auto  h-44' src={picture} alt="" />
+                            <img className='w-11/12 mx-auto  h-40' src={picture} alt="" />
+                            <hr />
                         </div>
                         <h2 className="card-title flex items-center text-center justify-center uppercase py-2">{name}</h2>
                         <div className='flex py-3  gap-4 justify-center items-center text-center'>
@@ -137,17 +138,21 @@ const AddvirtisCard = ({ product, setBooking }) => {
 
                             </div>
                         </div> */}
-                        <div className='w-full text-center'>
+                        <div className='w-full'>
                             {
                                 user?.email ? <>
-                                    <label
+                                    {/* <label
                                         onClick={handlAddCart}
-                                        className="flex uppercase justify-center gap-2 items-center px-1 py-2 border border-gray-300 cursor-pointer font-semibold hover:border-blue-700 hover:border-2 hover:bg-black hover:text-white transition duration-200 text-center "><FaShoppingCart /> <span className='text-center'>Add cart</span> </label>
+                                        className="flex uppercase justify-center gap-2 text-center px-1 py-2 border border-gray-300 cursor-pointer font-semibold hover:border-blue-700 hover:border-2 hover:bg-black hover:text-white transition duration-200"><FaShoppingCart /> add cart </label> */}
+
+                                    <Link onClick={handlAddCart} className='px-5 py-3 bg-black text-white font-semibold hover:text-black hover:bg-gray-300 ease-in-out  transition-colors duration-200 shadow-2xl hover:border-[1px] hover:border-gray-500  justify-center rounded-sm flex items-center gap-2'>
+                                        <FaShoppingCart />  add to cart
+                                    </Link>
+
                                 </> :
                                     <>
-                                        <Link className='flex gap-1 items-center px-2 py-1 border border-gray-300 cursor-pointer font-semibold hover:border-blue-700 hover:border-2 hover:bg-black hover:text-white transition duration-200  ' to='/login'>
-                                            <FaShoppingCart />
-                                            Add cart
+                                        <Link to='/login' className='px-5 py-3 bg-black text-white font-semibold hover:text-black hover:bg-gray-300 ease-in-out  transition-colors duration-200 shadow-2xl hover:border-[1px] hover:border-gray-500  justify-center rounded-sm flex items-center gap-2'>
+                                            <FaShoppingCart />  add to cart
                                         </Link>
                                     </>
 

@@ -40,8 +40,9 @@ const ImageBanner = () => {
         <div className='relative'>
             <Slider {...settings}>
                 {images.map((image, index) => (
-                    <div key={index} className=''>
-                        <img className='w-full bg-cover  h-[250px] lg:h-[400px]' src={image} alt={`Slide ${index + 1}`} />
+                    <div key={index} className=' '>
+                        <img className='w-full bg-cover   h-[250px] lg:h-[400px]' src={image} alt={`Slide ${index + 1}`} />
+                        <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
                     </div>
                 ))}
             </Slider>

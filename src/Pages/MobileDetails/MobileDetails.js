@@ -59,24 +59,7 @@ const MobileDetails = () => {
 
         setCartAdd(true)
 
-        // fetch('https://old-server.vercel.app/cart', {
-        //     method: "POST",
-        //     headers: {
-        //         'content-type': 'application/json',
-        //     },
-        //     body: JSON.stringify(update)
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         
 
-        //         if (data.acknowledged) {
-
-        //             toast.success('congratulations you are successfully cart add ')
-
-        //         }
-
-        //     })
 
         fetch('https://old-server.vercel.app/booking', {
             method: 'POST',

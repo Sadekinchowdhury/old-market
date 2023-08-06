@@ -21,7 +21,7 @@ const AllBuyers = () => {
 
     const handlDeleteBuyers = id => {
 
-        console.log('delete')
+       
 
         fetch(`https://old-server.vercel.app/users/${id}`, {
             method: 'DELETE',
@@ -35,7 +35,7 @@ const AllBuyers = () => {
                     toast(`You are successfully deleted buyers`)
                     refetch()
                 }
-                console.log(data)
+             
             })
 
 

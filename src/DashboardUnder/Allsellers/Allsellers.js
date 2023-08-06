@@ -20,7 +20,7 @@ const AllSellers = () => {
             })
 
             const data = await res.json()
-            console.log(data)
+
             return data;
         },
 
@@ -29,7 +29,7 @@ const AllSellers = () => {
 
     const handlDelete = id => {
 
-        console.log('delete')
+
 
         fetch(`https://old-server.vercel.app/users/${id}`, {
             method: 'DELETE',
@@ -66,7 +66,7 @@ const AllSellers = () => {
                     toast.success('verify make successfully')
                     refetch()
                 }
-                console.log(data)
+
 
             })
     }

@@ -12,28 +12,29 @@ import NewCategory from './NewCategory/NewCategory';
 import CategorySlide from './CategorySlide';
 import HeroBanner from './HeroBanner/HeroBanner';
 import CompanyLogo from './CompanyLogo/CompanyLogo';
+import BannerSlider from './BannerSlider';
 
 
 const Home = () => {
     return (
-        <motion.div className='bg-[#FFFFFF]'>
+        <motion.div className='bg-[#FFFFFF] overflow-hidden w-11/12 mx-auto'>
 
-            <motion.div className='flex  flex-col lg:flex-row w-11/12 gap-5 h-auto lg:h-[400px] items-center  my-4 mx-auto'>
+            {/* <motion.div className='flex  flex-col lg:flex-row w-11/12 gap-5 h-auto lg:h-[400px] items-center  my-4 mx-auto'>
 
                 <motion.div
                     initial={{ opacity: 0, x: -100 }}
                     animate={{ opacity: 1, x: 0, transition: { duration: 3 } }}
                     exit={{ opacity: 0, y: 50, transition: { duration: 3 } }}
                     className='w-full  h-full  rounded-md shadow-2xl lg:w-8/12'>
-                    {/* <Displaypic />   <ImageBanner /> */}   <ImageBanner />
+                     <ImageBanner />
                 </motion.div>
 
                 <motion.div className='w-full h-full lg:w-4/12'>
                     <SideBanner />
                 </motion.div>
 
-            </motion.div>
-
+            </motion.div> */}
+            <BannerSlider />
             <motion.div className='w-full py-12   lg:w-7/12 mx-auto'>
                 <Shopings></Shopings>
             </motion.div>
@@ -53,7 +54,7 @@ const Home = () => {
             </div>
 
             <Addvirtize></Addvirtize>
-            <Exptra></Exptra>
+            {/* <Exptra></Exptra> */}
 
 
         </motion.div>

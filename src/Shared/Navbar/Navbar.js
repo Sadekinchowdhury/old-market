@@ -158,7 +158,7 @@ const Navbar = () => {
                     exit={{ opacity: 0, y: 50, transition: { duration: 2 } }}
 
 
-                    className={`${expanded && 'basis-4/12'} z-50  gap-4 flex items-center justify-center`}>
+                    className={`${expanded && 'basis-4/12'} z-50  gap-x-4 flex items-center justify-center`}>
                     <motion.div
                         className={`search-container ${expanded ? 'w-[250px] z-50 border' : 'w-10'
                             } transition-all duration-300  rounded-lg overflow-hidden flex items-center`}
@@ -173,7 +173,7 @@ const Navbar = () => {
 
                         <SearchOutlined onClick={handleSearchIconClick} className='text-2xl cursor-pointer' />
                     </motion.div>
-                    {/* <FaUser size={28} color='black' className='cursor-pointer' /> */}
+
                     <motion.div className="dropdown relative items-center justify-center text-black">
                         <label onClick={() => setDrop(!drop)} tabIndex={0} className="cursor-pointer">
                             <motion.div className="">

@@ -5,7 +5,7 @@ const PagaNation = ({ totalpost, postperPage, setcurrentPage }) => {
     for (let i = 1; i <= Math.ceil(totalpost / postperPage); i++) {
         pages.push(i)
     }
-    console.log(totalpost, postperPage)
+
     return (
         <div className='flex gap-5 justify-center items-center'>
             {
