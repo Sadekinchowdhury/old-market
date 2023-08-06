@@ -11,7 +11,7 @@ const Main = () => {
         <div className='min-h-screen overflow-hidden'>
             <Navbar className=''></Navbar>
             {
-                loading ? <Spinner /> : <Outlet className="min-h-screen" ></Outlet>
+                loading ? <Spinner /> : <Outlet className="min-h-screen overflow-hidden" ></Outlet>
             }
             <Footer></Footer>
         </div>

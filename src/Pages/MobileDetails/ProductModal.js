@@ -38,57 +38,51 @@ const Modal = ({ details, cart }) => {
 
 
     const handSubmit = event => {
+        if (user) {
+            event.preventDefault()
+            const form = event.target
+            const booking = {
+                userName: users?.name,
+                email: user?.email,
+                price: totalPrice,
+                adress1: users?.adress1, adress2: users?.adress2,
+                quantity: cart,
+                user_phone: users?.phone,
+                productName: name,
+                date,
+                productId: _id
 
-        event.preventDefault()
-        const form = event.target
-
-        // const user_phone = form.phone.value;
-        // const adress1 = form.adress1.value;
-        // const adress2 = form.adress2.value;
-        // const description = form.description.value;
-
-
-        const booking = {
-            userName: users?.name,
-            email: user?.email,
-            price: totalPrice,
-
-
-            adress1: users?.adress1, adress2: users?.adress2,
-
-            quantity: cart,
-            user_phone: users?.phone,
-            productName: name,
-            date,
-            productId: _id
-
-        }
+            }
 
 
-        fetch('https://old-server.vercel.app/booking', {
-            method: 'POST',
+            fetch('https://old-server.vercel.app/booking', {
+                method: 'POST',
 
-            headers: {
-                'content-type': 'application/json',
-                authorization: `bearer ${localStorage.getItem('accessToken')}`
-            },
-            body: JSON.stringify(booking)
-
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.acknowledged) {
-
-                    toast.success('congratulations you are successfully booking ')
-                    navigate('/dashboard/myorders')
-
-                }
-                else {
-                    toast.error(data.message)
-                }
-
+                headers: {
+                    'content-type': 'application/json',
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                },
+                body: JSON.stringify(booking)
 
             })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.acknowledged) {
+
+                        toast.success('congratulations you are successfully booking ')
+                        navigate('/dashboard/myorders')
+
+                    }
+                    else {
+                        toast.error(data.message)
+                    }
+
+
+                })
+        }
+        else {
+            toast('you are not login')
+        }
 
     }
 
@@ -106,7 +100,7 @@ const Modal = ({ details, cart }) => {
 
                     <form onSubmit={handSubmit} className='p-0 lg:p-8'>
 
-                        {/* <input type="text" name='name' defaultValue={user?.displayName} readOnly placeholder="name" className="input w-full mt-10   input-bordered " /> */}
+
 
                         <p className='text-[14px] font-medium '>Buyer Name- {users?.name}</p>
                         <p className='text-[14px] font-medium'>Product Name- {details?.name}</p>
@@ -115,39 +109,7 @@ const Modal = ({ details, cart }) => {
                         <p>Adress- {users?.adress1}</p>
                         <p>Zip-{users?.zip}</p>
 
-                        {/* <input type="text" name='itemname' readOnly defaultValue={name} placeholder="name" className="input w-full mt-10   input-bordered " /> */}
 
-                        {/* <input type="email" name='email' defaultValue={user?.email} readOnly disabled placeholder="email" className="input w-full mt-10   input-bordered " /> */}
-
-                        {/* <input type="number" name='total'
-                            value={totalPrice}
-                            placeholder="price" className="input w-full mt-10  input-bordered " /> */}
-
-
-                        {/* <div className='py-4 gap-3'>
-
-                            <div className='flex items-center gap-5 py-3'>
-                                <div>
-                                    <label htmlFor="">Phone Number</label>
-                                    <Input type="text" name='phone' placeholder="your phone number" className="w-full py-2" />
-                                </div>
-
-                                <div>  <label htmlFor="">Adress 1</label>
-                                    <Input type="text" name='adress1' placeholder="adress1" className="w-full py-2" /></div>
-                            </div>
-
-                            <div className='w-full py-2'>
-                                <label htmlFor="">Adress 2</label>
-                                <Input type="text" name='adress2' placeholder="your location " className="w-full py-2" />
-
-                            </div>
-                            <div className='w-full py-2'>
-                                <label htmlFor="">Description</label>
-
-                                <TextArea type="text" name='description' placeholder="your location" className="w-full " />
-
-                            </div>
-                        </div> */}
 
                         <div className='flex justify-center items-center'>
                             <input className='py-3 px-6 rounded-md border border-gray-300 text-white bg-black shadow-2xl hover:bg-gray-700 cursor-pointer' type="submit" value="submit" />

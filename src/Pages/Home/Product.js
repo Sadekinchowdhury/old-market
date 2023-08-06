@@ -28,7 +28,9 @@ const Product = () => {
 
         <>
             {
-                products && <motion.div className='py-10'>
+                products && <motion.div
+
+                    className='py-10'>
                     <h2 className="text-2xl font-poppins font-semibold">Feature Products</h2>
                     <hr className='border border-black w-1/4 my-2' />
 
@@ -42,7 +44,10 @@ const Product = () => {
 
                     >
                         {
-                            products.slice(0, 8).map(product => <Link to={`/card_details/${product._id}`} className='relative   hover:scale-105   transition hover:opacity-80 duration-500 hover:shadow-2xl hover:border-gray-300 hover:border   rounded-md  ease-in-out'
+                            products.slice(0, 8).map(product => <Link
+
+
+                                to={`/card_details/${product._id}`} className='relative   hover:scale-105   transition hover:opacity-80 duration-500 hover:shadow-2xl hover:border-gray-300 hover:border   rounded-md  ease-in-out'
 
                             >
 
@@ -62,6 +67,9 @@ const Product = () => {
                                         </motion.div>
                                     </motion.div>
                                 </motion.div>
+                                {/* {
+                                    open && <div class="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
+                                } */}
                             </Link>)
                         }
                     </motion.div>

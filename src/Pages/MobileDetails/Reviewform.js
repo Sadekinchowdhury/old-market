@@ -36,43 +36,48 @@ const Reviewform = ({ MobileDetails, refetch }) => {
 
     const handlReview = (event) => {
 
-        event.preventDefault()
-        const form = event.target
+        if (user) {
+            event.preventDefault()
+            const form = event.target
 
-        const name = form.name.value;
-        const email = form.email.value;
+            const name = form.name.value;
+            const email = form.email.value;
 
-        const reviewProduct = {
-            userName: user?.name,
-            userEmail: user?.email,
-            name: name, email: email, comment: inputvalue,
-            reviewId: _id, reviewDate: date,
-            image: users?.image,
-
-        }
-
-
-
-        fetch('https://old-server.vercel.app/review', {
-            method: "POST",
-            headers: {
-                'content-type': 'application/json',
-            },
-            body: JSON.stringify(reviewProduct)
-
-        })
-            .then(res => res.json())
-            .then(result => {
-                if (result.acknowledged) {
-                    toast.success('Wow review aded')
-                    refetch()
-                }
-
-
+            const reviewProduct = {
+                userName: user?.name,
+                userEmail: user?.email,
+                name: name, email: email, comment: inputvalue,
+                reviewId: _id, reviewDate: date,
+                image: users?.image,
 
             }
 
-            )
+
+
+            fetch('https://old-server.vercel.app/review', {
+                method: "POST",
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(reviewProduct)
+
+            })
+                .then(res => res.json())
+                .then(result => {
+                    if (result.acknowledged) {
+                        toast.success('Wow review aded')
+                        refetch()
+                    }
+
+
+
+                }
+
+                )
+        }
+        else {
+            toast('You are not login')
+        }
 
     }
     return (

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { FaCheck, FaShoppingBasket, FaShoppingCart, FaStar } from 'react-icons/fa';
 import { motion, } from 'framer-motion';
 import { AiOutlineMinus, AiOutlinePlus, } from 'react-icons/ai';
@@ -17,6 +17,7 @@ const MobileDetails = () => {
     console.log(users)
 
     const [booking, setBooking] = useState(null)
+    const navigate = useNavigate()
 
     const [cart, setCart] = useState(1)
 
@@ -40,12 +41,22 @@ const MobileDetails = () => {
     const { description, location, name, originalprice, picture, postedtime, price, sellername, usedtime, _id } = MobileDetails
 
     const handleIncrease = () => {
-        setCart(cart + 1)
+        if (user) {
+            setCart(cart + 1)
+        }
+        else {
+            toast('You are not login')
+            navigate('/login')
+        }
     };
 
     const handleDecrease = () => {
-        if (cart >= 2) {
-            setCart(cart - 1)
+        if (user) {
+            cart >= 2 && setCart(cart - 1)
+        }
+        else {
+            toast('You are not login')
+            navigate('/login')
         }
     };
     const update = {
@@ -54,63 +65,49 @@ const MobileDetails = () => {
         MobileDetails
     }
     const handlAddCart = () => {
+        if (user) {
 
-        setNotiNumber(notiNumber + 1)
+            setNotiNumber(notiNumber + 1)
 
-        setCartAdd(true)
-
-
-
-        fetch('https://old-server.vercel.app/booking', {
-            method: 'POST',
-
-            headers: {
-                'content-type': 'application/json',
-                authorization: `bearer ${localStorage.getItem('accessToken')}`
-            },
-            body: JSON.stringify(update)
-
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.acknowledged) {
-
-                    toast.success('congratulations you are successfully cart add ')
+            setCartAdd(true)
 
 
-                }
-                else {
-                    toast.error(data.message)
-                }
 
+            fetch('https://old-server.vercel.app/booking', {
+                method: 'POST',
+
+                headers: {
+                    'content-type': 'application/json',
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                },
+                body: JSON.stringify(update)
 
             })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.acknowledged) {
 
+                        toast.success('congratulations you are successfully cart add ')
+
+
+                    }
+                    else {
+                        toast.error(data.message)
+                    }
+
+
+                })
+
+        }
+        else {
+            toast('You are not login')
+            navigate('/login')
+        }
     }
 
 
 
-
-
     const [loading, setLoading] = React.useState(true);
-
-
-
-    // const [userreview, setUserReview] = useState([])
-
-
-
-
-    // useEffect(() => {
-    //     fetch(`https://old-server.vercel.app/review/${_id}`)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setUserReview(data)
-    //             setLoading(false)
-    //         })
-
-
-    // }, [_id])
 
 
     const { data: userreview = [], refetch } = useQuery({
@@ -190,7 +187,7 @@ const MobileDetails = () => {
 
                             </Link> */}
 
-                        <label className='px-5 py-3 bg-orange-400 text-black font-semibold hover:text-black hover:bg-gray-300 ease-in-out  transition-colors duration-200 shadow-2xl hover:border-[1px] hover:border-gray-500 rounded-sm flex items-center gap-2 cursor-pointer' htmlFor="booking-modal" > <FaShoppingBasket />  buy now</label>
+                        <label className='px-5 py-3 bg-orange-400 text-black font-semibold hover:text-black hover:bg-gray-300 ease-in-out  transition-colors duration-200 shadow-2xl hover:border-[1px] hover:border-gray-500 rounded-sm flex items-center gap-2 cursor-pointer' htmlFor="booking-modal"  > <FaShoppingBasket />  buy now</label>
 
 
 

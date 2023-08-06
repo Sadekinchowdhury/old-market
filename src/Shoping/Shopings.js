@@ -16,29 +16,41 @@ const Shopings = () => {
 
                 className='grid  mx-auto md:grid-cols-4 grid-cols-1  gap-3 '>
 
-                <motion.div className="card rounded-md text-center  items-center py-2 px-3  bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 shadow-xl">
-                    <figure><FaShoppingCart className='w-8 h-8 mb-2'></FaShoppingCart></figure>
+                <motion.div className="border-gray-300 flex lg:flex-col gap-5 lg:gap-0 shadow-2xl bg-black text-white text-center content-center items-center justify-center py-3 rounded-md border">
 
-                    <h2 className="text-[17px] text-center">Free Shopping</h2>
+                    <div className='flex items-center justify-center text-center'>
+                        <FaShoppingCart size={30} color='orange' />
+                    </div>
+
+                    <h2 className="text-[16px] pt-1 font-poppins font-semibold text-center">Free Shoping</h2>
 
                 </motion.div>
-                <motion.div className="card rounded-md text-center  items-center  py-2 px-5  bg-gradient-to-r from-cyan-200 to-cyan-400 shadow-xl">
-                    <figure>  <BiRefresh className='w-8 h-8 mb-2'></BiRefresh></figure>
-                    <motion.div className="">
-                        <h2 className="text-[17px] text-center"> Return</h2>
-                    </motion.div>
+                <motion.div className="border-gray-300 flex lg:flex-col gap-5 lg:gap-0 shadow-2xl bg-black text-white text-center content-center items-center justify-center py-3 rounded-md border">
+
+                    <div className='flex items-center justify-center text-center'>
+                        <BiRefresh size={30} color='orange' />
+                    </div>
+
+                    <h2 className="text-[16px] pt-1 font-poppins font-semibold text-center">Secure </h2>
+
                 </motion.div>
-                <motion.div className="card rounded-md text-center  items-center  py-2 px-5 bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 shadow-xl">
-                    <figure>  <FaProductHunt className='w-8 h-8 mb-2'></FaProductHunt></figure>
-                    <motion.div className="">
-                        <h2 className="text-[17px] text-center">New Product </h2>
-                    </motion.div>
+                <motion.div className="border-gray-300 flex lg:flex-col gap-5 lg:gap-0 shadow-2xl bg-black text-white text-center content-center items-center justify-center py-3 rounded-md border">
+
+                    <div className='flex items-center justify-center text-center'>
+                        <FaProductHunt size={30} color='orange' />
+                    </div>
+
+                    <h2 className="text-[16px] pt-1 font-poppins font-semibold text-center">New Product</h2>
+
                 </motion.div>
-                <motion.div className="card rounded-md text-center  items-center  py-2 px-5 bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-sky-400 to-blue-800 shadow-xl">
-                    <figure>  <AiFillSecurityScan className='w-8 h-8 mb-2'></AiFillSecurityScan></figure>
-                    <motion.div className="">
-                        <h2 className="text-[17px] text-center">Secure </h2>
-                    </motion.div>
+                <motion.div className="border-gray-300 flex lg:flex-col gap-5 lg:gap-0 shadow-2xl bg-black text-white text-center content-center items-center justify-center py-3 rounded-md border">
+
+                    <div className='flex items-center justify-center text-center'>
+                        <AiFillSecurityScan size={30} color='orange' />
+                    </div>
+
+                    <h2 className="text-[16px] pt-1 font-poppins font-semibold text-center">Secure </h2>
+
                 </motion.div>
 
 

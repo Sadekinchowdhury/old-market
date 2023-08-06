@@ -68,7 +68,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/card_details/:id',
-                element: <PrivetRoute> <MobileDetails /></PrivetRoute>,
+                element: <MobileDetails />,
                 loader: ({ params }) => fetch(`https://old-server.vercel.app/card_details/${params.id}`)
             },
             {
