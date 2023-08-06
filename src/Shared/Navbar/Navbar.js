@@ -290,7 +290,7 @@ const Navbar = () => {
 
                 {/* Mobile Menu Links */}
                 {isOpen && (
-                    <motion.div className="md:hidden fixed    top-0 left-0 w-full flex justify-between transition duration-1000 z-10 bg-gray-800 p-4 ">
+                    <motion.div className={`md:hidden fixed    top-0 left-0 w-full flex justify-between   transition-transform duration-1000 ease-in-out transform z-10 bg-gray-800 p-4 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
 
                         <ul className=''>
                             <li className='my-4'>
@@ -301,6 +301,9 @@ const Navbar = () => {
                             </li>
                             <li className='my-4'>
                                 <Link className='hover:bg-border hover:border-gray-300 transition duration-400  py-2 px-3 hover:rounded-sm text-[16px] font-semibold ' to='/blog'>Blog</Link>
+                            </li>
+                            <li>
+                                <Link className='hover:bg-gray-200 transition duration-400  py-2 px-3 hover:rounded-sm text-[16px] font-semibold' to='/products'>Shop</Link>
                             </li>
                             <li className='my-4'>
                                 {

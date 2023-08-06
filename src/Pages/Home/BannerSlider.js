@@ -5,6 +5,7 @@ import { FaArrowLeft, FaChevronLeft, FaChevronRight, FaArrowRight } from 'react-
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthProvider';
+import { motion } from 'framer-motion';
 
 
 const BannerSlider = () => {
@@ -45,7 +46,12 @@ const BannerSlider = () => {
     return (
 
 
-        <div className='overflow-hidden'>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 3 }}
+
+            className='overflow-hidden lg:pt-4 pt-10'>
             <div className="slider-container top-0 h-[350px]  lg:h-[600px] relative">
                 <button
                     className="slider-prev p-2 bg-gray-400 rounded-full hover:bg-gray-700 hover:text-white  bg-transparent border-none text-2xl text-gray-700 absolute left-0 top-1/2 transform -translate-y-1/2 z-10"
@@ -61,7 +67,7 @@ const BannerSlider = () => {
                 </Slider>
                 <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-black  to-transparent"></div>
 
-                <div className='absolute lg:text-left  lg:bottom-[20%] bottom-0 lg:w-full  left-[18%]'>
+                <div className='absolute lg:text-left  lg:bottom-[30%] bottom-0 lg:w-full  left-[18%]'>
                     <div className='hidden lg:block'>
                         <h1 className='text-white text-xl  inline-block lg:text-left lg:text-5xl font-poppins py-4 font-semibold'>
                             Discover Limitless
@@ -72,19 +78,19 @@ const BannerSlider = () => {
                         </p>
                     </div>
                     <div className='hidden lg:block'>
-                        <div className='py-10 flex  items-center justify-center lg:justify-start  lg:gap-7 gap-3'>
+                        <div className='py-8 flex  items-center justify-center lg:justify-start  lg:gap-7 gap-3'>
 
                             {
-                                user ? <Link to='/products' className="btn btn-outline bg-black text-white rounded-full">Shop Now</Link> : <Link to='/signup' className="btn btn-outline  text-white btn-secondary rounded-full">Shop Now</Link>
+                                user ? <Link to='/products' className="btn btn-outline bg-black text-white  rounded-full">Shop Now</Link> : <Link to='/signup' className="btn btn-outline  text-white bg-black btn-secondary rounded-full">Shop Now</Link>
                             }
                             {
-                                user ? <Link to='/products' className="btn btn-outline btn-success rounded-full">Get Started</Link> :
-                                    <Link to='/signup' className="btn btn-outline btn-success rounded-full">Get Started</Link>
+                                user ? <Link to='/products' className="btn btn-outline btn-success bg-white rounded-full">Get Started</Link> :
+                                    <Link to='/signup' className="btn btn-outline btn-success bg-gray-700 rounded-full">Get Started</Link>
                             }
                         </div>
                     </div>
                 </div>
-                <div className='lg:hidden block absolute left-8 bottom-0'>
+                <div className='lg:hidden block absolute  left-[50%] right-[50%]  bottom-[5%] '>
                     <div className='py-10 flex  items-center justify-center lg:justify-start  lg:gap-7 gap-3'>
 
 
@@ -108,7 +114,7 @@ const BannerSlider = () => {
                     <FaChevronRight color='white' />
                 </button>
             </div>
-        </div>
+        </motion.div>
 
     );
 };

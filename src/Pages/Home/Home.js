@@ -39,16 +39,25 @@ const Home = () => {
                 <Shopings></Shopings>
             </motion.div>
 
-            <div className='w-11/12 mx-auto'>
+            <motion.div initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }} className='w-11/12 mx-auto'>
                 <Product />
-            </div>
+            </motion.div>
 
             <div>
                 <CategorySlide />
             </div>
-            <div>
+            <motion.div
+
+                transition={{ duration: 0.5 }}
+                initial={{ opacity: 0, x: -100 }}
+                animate={{ opacity: 1, x: 0, transition: { duration: 3 } }}
+                exit={{ opacity: 0, y: 50, transition: { duration: 3 } }}
+
+            >
                 <HeroBanner />
-            </div>
+            </motion.div>
             <div className='w-full'>
                 <CompanyLogo />
             </div>

@@ -3,7 +3,7 @@ import React from 'react';
 const HeroBanner = () => {
     return (
         <div>
-            <div className='bg-black lg:h-[400px] flex justify-center items-center flex-col lg:flex-row gap-10 w-11/12 mx-auto py-4'>
+            <div className='bg-black lg:h-[400px] flex justify-center items-center flex-col lg:flex-row gap-10   py-4'>
                 <div className='flex justify-center items-center'>
                     <div>
 
