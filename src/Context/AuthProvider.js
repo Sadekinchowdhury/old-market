@@ -1,121 +1,115 @@
-import React, { createContext, useState, useEffect } from 'react';
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
-import app from '../Firebase/Firebase.init';
+import {
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  updateProfile,
+} from "firebase/auth";
+import React, { createContext, useEffect, useState } from "react";
+import app from "../Firebase/Firebase.init";
 
-export const AuthContext = createContext()
+export const AuthContext = createContext();
 const gprovider = new GoogleAuthProvider();
 
-
-const auth = getAuth(app)
+const auth = getAuth(app);
 
 const Authprovide = ({ children }) => {
-    const [user, setUser] = useState(null)
-    const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
+  // signup
+  const creatUsers = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
 
-    // React.useEffect(() => {
-    //     const timer = setTimeout(() => {
-    //         setLoading(false);
-    //     }, 2000);
-    //     return () => clearTimeout(timer);
-    // }, []);
+  // sigout
 
-    // signup
-    const creatUsers = (email, password) => {
-        return createUserWithEmailAndPassword(auth, email, password)
-    }
+  const LogOut = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
 
-    // sigout
+  // google login
+  const GoogleLogin = (Provider) => {
+    return signInWithPopup(auth, Provider);
+  };
 
-    const LogOut = () => {
-        setLoading(true)
-        return signOut(auth)
-    }
+  // signin
+  const LogIn = (email, password) => {
+    setLoading(false);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+  // update profile
 
-    // google login
-    const GoogleLogin = (Provider) => {
-        return signInWithPopup(auth, Provider)
-    }
+  const updatePro = (userInfo) => {
+    return updateProfile(auth.currentUser, userInfo);
+  };
 
+  // statechang
 
-    // signin
+  useEffect(() => {
+    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+    });
+    return () => unSubscribe();
+  }, []);
 
-    const LogIn = (email, password) => {
-        setLoading(false)
-        return signInWithEmailAndPassword(auth, email, password)
-    }
-    // update profile
+  // notification
+  const [notiNumber, setNotiNumber] = useState(0);
 
-    const updatePro = (userInfo) => {
-        return updateProfile(auth.currentUser, userInfo)
-    }
+  const notiFications = () => {
+    setNotiNumber(notiFications + 1);
+  };
 
-    // statechang
+  const [users, setUsers] = useState({});
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `https://old-server.vercel.app/user?email=${user?.email}`
+        );
 
-    useEffect(() => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
 
-        const unSubscribe = onAuthStateChanged(auth, currentUser => {
-
-            setUser(currentUser)
-            setLoading(false)
-        });
-        return () => unSubscribe();
-
-
-    }, [])
-
-    // details
-
-    // notification
-    const [notiNumber, setNotiNumber] = useState(0)
-
-    const notiFications = () => {
-        setNotiNumber(notiFications + 1)
-    }
-
-
-
-
-
-    const [users, setUsers] = useState({})
-
-    useEffect(() => {
-        fetch(`https://old-server.vercel.app/user?email=${user?.email}`)
-            .then(res => res.json())
-            .then(data => setUsers(data))
-    }, [user?.email])
-
-
-    const [searchQuery, setSearchQuery] = useState('');
-
-    const handleSearchChange = (query) => {
-        setSearchQuery(query);
+        const data = await response.json();
+        setUsers(data);
+      } catch (error) {
+        // console.error("Error fetching user data:", error);
+      }
     };
 
+    fetchData();
+  }, [user?.email]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const handleSearchChange = (query) => {
+    setSearchQuery(query);
+  };
 
-
-    const authInfo = {
-        updatePro,
-        creatUsers,
-        LogIn,
-        user,
-        LogOut,
-        loading,
-        GoogleLogin,
-        notiNumber,
-        setNotiNumber,
-        users, searchQuery, setSearchQuery
-
-
-
-
-    }
-    return (
-        <AuthContext.Provider value={authInfo}>
-            {children}
-        </AuthContext.Provider>
-    );
+  const authInfo = {
+    updatePro,
+    creatUsers,
+    LogIn,
+    user,
+    LogOut,
+    loading,
+    GoogleLogin,
+    notiNumber,
+    setNotiNumber,
+    users,
+    searchQuery,
+    setSearchQuery,
+    handleSearchChange,
+  };
+  return (
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+  );
 };
 
 export default Authprovide;
