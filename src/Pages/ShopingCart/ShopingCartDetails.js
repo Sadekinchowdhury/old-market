@@ -8,13 +8,6 @@ import { toast } from "react-toastify";
 const ShopingCartDetails = ({ handleDecrease, handleIncrease, book, cart }) => {
   const [loading, setLoading] = React.useState(true);
 
-  // React.useEffect(() => {
-  //     const timer = setTimeout(() => {
-  //         setLoading(false);
-  //     }, 2000); // Simulating a 3-second loading process
-  //     return () => clearTimeout(timer);
-  // }, []);
-
   const handlDelete = () => {
     fetch(`https://old-server.vercel.app/booking/${book?._id}`, {
       method: "DELETE",

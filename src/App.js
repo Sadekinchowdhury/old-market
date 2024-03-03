@@ -1,21 +1,23 @@
-import './App.css';
-import { RouterProvider } from 'react-router-dom'
-import routes from './Routes/Routers';
-import { ToastContainer, toast } from 'react-toastify';
-import { useContext } from 'react';
-import { AuthContext } from './Context/AuthProvider';
-import Spinner from './Pages/ShopingCart/Spinner';
-
+import { useContext } from "react";
+import { RouterProvider } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "./App.css";
+import { AuthContext } from "./Context/AuthProvider";
+import Spinner from "./Pages/ShopingCart/Spinner";
+import routes from "./Routes/Routers";
 
 function App() {
-  const { loading } = useContext(AuthContext)
+  const { loading } = useContext(AuthContext);
   return (
     <div className="">
-      {
-        loading ? <Spinner /> : <>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <>
           <RouterProvider router={routes}></RouterProvider>
-          <ToastContainer></ToastContainer></>
-      }
+          <ToastContainer></ToastContainer>
+        </>
+      )}
     </div>
   );
 }

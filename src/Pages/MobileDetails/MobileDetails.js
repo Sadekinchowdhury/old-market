@@ -12,7 +12,6 @@ import Reviewform from "./Reviewform";
 
 const MobileDetails = () => {
   const { user, users, notiNumber, setNotiNumber } = useContext(AuthContext);
-  console.log(users);
 
   const [booking, setBooking] = useState(null);
   const navigate = useNavigate();
@@ -111,14 +110,9 @@ const MobileDetails = () => {
   });
 
   return (
-    <motion.div className="">
+    <motion.div className="min-h-[100vh]">
       <div className="flex items-center py-20 flex-col lg:flex-row  gap-10 max-w-[1200px]  px-[20px] mx-auto ">
-        <motion.div
-          initial={{ opacity: 0, x: -100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-          className="p-3 lg:w-7/12   w-full"
-        >
+        <motion.div className="p-3 lg:w-7/12   w-full">
           <div className="flex pb-6 gap-3 items-center">
             <img
               className="w-16 h-16 rounded-full border border-gray-300"
@@ -126,11 +120,7 @@ const MobileDetails = () => {
               alt=""
             />
             <p className="text-xl font-semibold">{MobileDetails.sellername}</p>
-            {/* {
-                            allUsers?.role === "seller" && allUsers?.verify ? <FaCheck size={20} color='black' /> : <></>
-                        } */}
           </div>
-
           <div className="bg-gray-300 py-10 flex justify-center items-center">
             <img className="w-3/5 mx-auto h-[300px]" src={picture} alt="" />
           </div>
@@ -183,12 +173,8 @@ const MobileDetails = () => {
             </div>
           </motion.div>
           <div className="flex flex-col py-4 lg:flex-row items-center gap-5">
-            {/* <Link className='px-5 py-3 bg-orange-400 text-black font-semibold hover:text-black hover:bg-gray-300 ease-in-out  transition-colors duration-200 shadow-2xl hover:border-[1px] hover:border-gray-500 rounded-sm flex items-center gap-2'>
-
-                            </Link> */}
-
             <label
-              className="px-5 py-3 bg-orange-400 text-black font-semibold hover:text-black hover:bg-gray-300 ease-in-out  transition-colors duration-200 shadow-2xl hover:border-[1px] hover:border-gray-500 rounded-sm flex items-center gap-2 cursor-pointer"
+              className="px-5 py-3 bg-orange-400 text-black font-semibold hover:text-black hover:bg-gray-300 ease-in-out  transition-colors duration-200 shadow-2xl hover:border-[1px] hover:border-gray-500 rounded-sm flex items-center gap-2 cursor-pointer border"
               htmlFor="booking-modal"
             >
               {" "}
@@ -197,7 +183,7 @@ const MobileDetails = () => {
 
             <Link
               onClick={handlAddCart}
-              className="px-5 py-3 bg-black text-white font-semibold hover:text-black hover:bg-gray-300 ease-in-out  transition-colors duration-200 shadow-2xl hover:border-[1px] hover:border-gray-500 rounded-sm flex items-center gap-2"
+              className="px-5 py-3 bg-black text-white font-semibold hover:text-black hover:bg-gray-300 ease-in-out  transition-colors duration-200 shadow-2xl hover:border-[1px] hover:border-gray-500 border rounded-sm flex items-center gap-2"
             >
               <FaShoppingCart /> add to cart
             </Link>

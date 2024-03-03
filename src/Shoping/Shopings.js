@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 const Shopings = () => {
   return (
-    <motion.div className="w-[700px] px-[20px] mx-auto">
+    <motion.div className="max-w-[700px] mx-auto">
       <motion.div
         initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 1, x: 0, transition: { duration: 3 } }}

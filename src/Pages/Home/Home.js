@@ -11,12 +11,10 @@ import Product from "./Product";
 const Home = () => {
   return (
     <motion.div className="overflow-hidden">
-      {/* hero banner slider
-       */}
       <motion.div>
         <BannerSlider />
       </motion.div>
-      <motion.div className="py-12 max-w:[700px] mx-auto">
+      <motion.div className="py-12 max-w:[700px] px-[20px] mx-auto">
         <Shopings></Shopings>
       </motion.div>
       <CategorySlide />

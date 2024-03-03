@@ -18,7 +18,7 @@ const AllCategoris = () => {
   const firstPostIndex = lastPostIndex - postPerPage;
   const currentPost = allCategory.slice(lastPostIndex, firstPostIndex);
   return (
-    <section className="max-w-[1200px]  px-[20px] mx-auto">
+    <section className="max-w-[1200px]  h-[100vh] px-[20px] mx-auto">
       <div className="py-6">
         <p className="text-3xl   font-bold pl-2 py-3">Best For you</p>
         <hr />

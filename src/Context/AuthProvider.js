@@ -17,6 +17,8 @@ const gprovider = new GoogleAuthProvider();
 const auth = getAuth(app);
 
 const Authprovide = ({ children }) => {
+  // category data filter
+  const [category, setCategory] = useState();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -106,6 +108,8 @@ const Authprovide = ({ children }) => {
     searchQuery,
     setSearchQuery,
     handleSearchChange,
+    setCategory,
+    category,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

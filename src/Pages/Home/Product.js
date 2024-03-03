@@ -5,14 +5,12 @@ import { Link } from "react-router-dom";
 
 const Product = () => {
   const [products, setProducts] = useState([]);
-
+  const [open, setOpen] = useState(false);
   useEffect(() => {
     fetch("https://old-server.vercel.app/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
-
-  const [open, setOpen] = useState(false);
 
   const hovemouse = () => {
     setOpen(!open);

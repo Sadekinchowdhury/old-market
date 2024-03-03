@@ -22,26 +22,14 @@ const Login = () => {
 
   const from = location.state?.from?.pathname || "/";
 
-  // const [emailData, setEamilData] = useState('')
-  // const handlChange = (event) => {
-  //     event.preventDefault()
-  //     const form = event.target;
-  //     const email = form.email.value;
-  //     setEamilData(email)
-  // }
-  // console.log(emailData)
-
   const handlogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-
-    console.log(email, password);
     LogIn(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -50,7 +38,7 @@ const Login = () => {
   };
 
   return (
-    <div className=" flex items-center justify-center">
+    <div className="min-h-[100vh] flex items-center justify-center">
       <div className="flex flex-col lg:flex-row max-w-[1200px]  px-[20px] mx-auto">
         <motion.div
           initial={{ opacity: 0, x: -100 }}

@@ -69,13 +69,13 @@ const Navbar = () => {
 
   return (
     <motion.div className="lg:py-10">
-      <div className="fixed w-full  top-0 left-0 z-50">
-        <motion.div className="hidden max-w-[1200px]  px-[20px]  bg-white py-6  p-4  lg:flex  flex-col mx-auto lg:flex-row items-center ">
+      <div className="fixed w-full z-999 hidden md:block lg:block bg-white  top-0 left-0 z-50">
+        <motion.div className="max-w-[1200px]  px-[20px] p-4 justify-between flex  flex-row mx-auto items-center ">
           <motion.div
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0, transition: { duration: 2 } }}
             exit={{ opacity: 0, y: 50, transition: { duration: 2 } }}
-            className="basis-2/12 flex justify-center items-center"
+            className=" flex justify-center items-center"
           >
             <motion.div
               animate={{
@@ -108,9 +108,9 @@ const Navbar = () => {
             initial={{ opacity: 0, y: -100 }}
             animate={{ opacity: 1, y: 0, transition: { duration: 2 } }}
             exit={{ opacity: 0, y: 50, transition: { duration: 2 } }}
-            className="basis-8/12 flex  items-center justify-center text-center"
+            className="flex  items-center justify-center text-center"
           >
-            <ul className="flex-col lg:flex-row flex gap-3 ">
+            <ul className="flex-row flex gap-3 ">
               <li>
                 <Link
                   className="hover:bg-gray-200 transition duration-400  py-2 px-3 hover:rounded-sm text-[16px] font-semibold"
@@ -122,17 +122,9 @@ const Navbar = () => {
               <li>
                 <Link
                   className="hover:bg-gray-200 transition duration-400  py-2 px-3 hover:rounded-sm text-[16px] font-semibold"
-                  to=""
+                  to="/mobile"
                 >
-                  Contact us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="hover:bg-gray-200 transition duration-400  py-2 px-3 hover:rounded-sm text-[16px] font-semibold"
-                  to="/blog"
-                >
-                  Blog
+                  Mobile
                 </Link>
               </li>
               <li>
@@ -236,37 +228,30 @@ const Navbar = () => {
                   <hr className="border border-black mb-2" />
                   {user?.email && (
                     <li className="">
-                      <motion.div className="flex">
-                        <UserOutlined className="text-xl" />
-                        <motion.div>
-                          <Link to="/profile">My Account</Link>
-                        </motion.div>
-                      </motion.div>
+                      <Link to="/profile">
+                        {" "}
+                        <UserOutlined className="text-xl flex" /> My Account
+                      </Link>
                     </li>
                   )}
                   <li className="">
-                    <motion.div className="flex">
-                      <ShoppingCartOutlined className="text-xl" />
-                      <Link to="/dashboard/myorders">My Order</Link>
-                    </motion.div>
+                    <Link className="flex" to="/dashboard/myorders">
+                      <ShoppingCartOutlined className="text-xl" /> My Order
+                    </Link>
                   </li>
                   <li>
                     {user?.email ? (
                       <>
-                        <motion.div className="flex">
-                          <FaSignOutAlt size={20} color="black" />
-                          <Link onClick={handlLogout} className="">
-                            SignOut
-                          </Link>
-                        </motion.div>
+                        <Link onClick={handlLogout} className="flex">
+                          {" "}
+                          <FaSignOutAlt size={20} color="black" /> SignOut
+                        </Link>
                       </>
                     ) : (
-                      <motion.div className="flex">
-                        <FaSignInAlt />{" "}
-                        <Link className="" to="/login">
-                          Login
-                        </Link>
-                      </motion.div>
+                      <Link className="" to="/login">
+                        <FaSignInAlt /> {""}
+                        Login
+                      </Link>
                     )}
                   </li>
                   <li>
@@ -311,11 +296,23 @@ const Navbar = () => {
                 </div>
               )}
             </Link>
+            {user ? (
+              <>
+                <img
+                  className="w-5 h-5 lg:hidden"
+                  src="https://i.postimg.cc/nhZ40sWL/icons8-menu-30.png"
+                />
+              </>
+            ) : (
+              <img
+                className="w-5 h-5 lg:hidden"
+                src="https://i.postimg.cc/nhZ40sWL/icons8-menu-30.png"
+              />
+            )}
           </motion.div>
         </motion.div>
       </div>
-
-      <nav className="flex items-center  bg-white shadow-2xl p-4 fixed w-full top-0 left-0 z-50  md:hidden  justify-between   px-4  text-white">
+      <nav className="flex items-center z-999  bg-white shadow-2xl p-4 fixed w-full top-0 left-0 z-50 md:hidden lg:hidden justify-between   px-4  text-white">
         {/* Mobile Menu */}
         <motion.div className="md:hidden">
           {isOpen ? (
